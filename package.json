@@ -1,0 +1,49 @@
+{
+  "name": "express-thing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "concurrently --kill-others \"npm run server:dev\" \"npm run css:watch\" \"npm run browser\"",
+    "db:push": "npx drizzle-kit push:mysql",
+    "server:dev": "nodemon --exec \"ts-node -r dotenv/config --experimental-specifier-resolution=node\" index.ts",
+    "css:watch": "npx tailwindcss -i ./tailwind.css -o ./public/styles/style.css --watch",
+    "browser": " npx browser-sync start --proxy localhost:3000 --files='.'  --ignore=node_modules --no-ui --no-inject-changes --no-open --port 5000",
+    "db:inspect": "drizzle-kit studio"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@planetscale/database": "^1.11.0",
+    "@types/bcrypt": "^5.0.1",
+    "@types/cookie-parser": "^1.4.5",
+    "@types/ejs": "^3.1.4",
+    "@types/express-session": "^1.17.9",
+    "autoprefixer": "^10.4.16",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
+    "drizzle-orm": "^0.28.6",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "mysql2": "^3.6.2",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.4",
+    "@types/express": "^4.17.20",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "browser-sync": "^2.29.3",
+    "concurrently": "^8.2.1",
+    "drizzle-kit": "^0.19.13",
+    "eslint": "^8.51.0",
+    "nodemon": "^3.0.1",
+    "tailwindcss": "^3.3.3",
+    "ts-node": "^10.9.1"
+  }
+}
