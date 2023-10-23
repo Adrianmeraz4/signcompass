@@ -537,3 +537,11 @@ video {
 .mt-6 {
   margin-top: 1.5rem;
 }
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
