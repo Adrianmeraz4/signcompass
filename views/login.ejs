@@ -4,12 +4,17 @@
 	<title>Example Login Form</title>
   </head>
   <body>
+	<h1 class="mt-6">Welcome to SignCompass</h1>
+    <p>In order to sign up or sign in input a valid email & password</p>
 	<form action="login" method="post">
   	<!-- user input-->
-  	Username:<br>
-  	<input type="text" name="username" placeholder="Username" required><br><br>
+  	Email:<br>
+  	<input type="text" name="username" placeholder="Email@mail.com" required pattern="[^@\s]+@[^@\s]+"
+		title="Must be a valid email"><br><br>
   	Password:<br>
-  	<input type="password" name="password" placeholder="Password" required><br><br>
+  	<input type="password" name="password" placeholder="Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[`!@#$%^&*]).{10,}"
+	  title="Password must contain an uppercase/lowercase, special character and minimum of 10 characters"><br><br>
+
   	<!-- submit button -->
   	<input type="submit" value="login">
 	</form>
