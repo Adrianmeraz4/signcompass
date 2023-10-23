@@ -11,8 +11,8 @@
 <body>
     <h1 class="mt-6">SignCompass</h1>
     <p>Here to teach basic Sign Language</p>
-    <%= session.userId %>
-    <% if(session.userId) { %>
+    <%= session.username %>
+    <% if(session.ueserId) { %>
     <a href="/logout">Logout</a>
     <% }else {   %>
         <a href="/login">Login</a>

@@ -34,6 +34,7 @@ app.use(sessions({
 
 declare module 'express-session' {
     interface SessionData {
+        username: string;
         userId: number;
     }
 }
@@ -93,6 +94,8 @@ app.post('/login', async (req, res) => {
 
     
     req.session.userId = parseInt(newUser.insertId);
+
+    req.session.username = username
 
     res.redirect('/');
 });

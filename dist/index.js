@@ -69,6 +69,7 @@ app.post('/login', async (req, res) => {
         hashedPassword: hash
     });
     req.session.userId = parseInt(newUser.insertId);
+    req.session.username = username;
     res.redirect('/');
 });
 app.listen(port, () => {
