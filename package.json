@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
+  "pre-commit": [
+    "build"
+  ],
   "scripts": {
-    "start": "node app.js",
+    "start": "node index.js",
     "dev": "concurrently --kill-others \"npm run server:dev\" \"npm run css:watch\" \"npm run browser\"",
+    "build": "tsc --build --clean && tsc && copyfiles ./views/** ./public/** dist",
     "db:push": "npx drizzle-kit push:mysql",
     "server:dev": "nodemon --exec \"ts-node -r dotenv/config --experimental-specifier-resolution=node\" index.ts",
     "css:watch": "npx tailwindcss -i ./tailwind.css -o ./public/styles/style.css --watch",
@@ -31,7 +35,8 @@
     "express-session": "^1.17.3",
     "mysql2": "^3.6.2",
     "postcss": "^8.4.31",
-    "postcss-cli": "^10.1.0"
+    "postcss-cli": "^10.1.0",
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.4",
@@ -40,6 +45,7 @@
     "@typescript-eslint/parser": "^6.8.0",
     "browser-sync": "^2.29.3",
     "concurrently": "^8.2.1",
+    "copyfiles": "^2.4.1",
     "drizzle-kit": "^0.19.13",
     "eslint": "^8.51.0",
     "nodemon": "^3.0.1",
