@@ -19,6 +19,7 @@ const publicUrl = path_1.default.join(__dirname, 'public');
 app.use(express_1.default.static(publicUrl));
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use((0, cookie_parser_1.default)());
+app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 const oneDay = 1000 * 60 * 60 * 24;
 //session middleware
@@ -41,8 +42,8 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
 });
 app.post('/login', async (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
+    let username = req.body.username;
+    let password = req.body.password;
     if (!username || !password) {
         res.redirect('/login');
     }

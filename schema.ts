@@ -5,7 +5,7 @@ import { int, mysqlTable, serial, text } from "drizzle-orm/mysql-core";
 // userid
 export const users = mysqlTable('users', {
   id: serial('id').primaryKey(),
-  username: text('username'),
+  username: text('username').notNull().unique(),
   hashedPassword: text('password').notNull(),
 });
 

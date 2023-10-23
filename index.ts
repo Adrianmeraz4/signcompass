@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 
+app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 
 const oneDay = 1000 * 60 * 60 * 24;
@@ -56,8 +57,8 @@ app.get('/logout', (req, res) => {
 
 
 app.post('/login', async (req, res) => {
-    const username: string = req.body.username;
-    const password: string = req.body.password;
+    let username: string = req.body.username;
+    let password: string = req.body.password;
     if (!username || !password) {
         res.redirect('/login');
     }

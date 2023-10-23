@@ -5,7 +5,7 @@ const mysql_core_1 = require("drizzle-orm/mysql-core");
 // userid
 exports.users = (0, mysql_core_1.mysqlTable)('users', {
     id: (0, mysql_core_1.serial)('id').primaryKey(),
-    username: (0, mysql_core_1.text)('username'),
+    username: (0, mysql_core_1.text)('username').notNull().unique(),
     hashedPassword: (0, mysql_core_1.text)('password').notNull(),
 });
 //courses
