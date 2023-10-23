@@ -55,6 +55,7 @@ app.post('/login', async (req, res) => {
     if (dbUser) {
         const passwordMatchesHash = await bcrypt_1.default.compare(password, dbUser.hashedPassword);
         if (passwordMatchesHash) {
+            req.session.username = username;
             req.session.userId = dbUser.id;
             res.redirect('/');
             return;
