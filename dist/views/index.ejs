@@ -8,54 +8,46 @@
     <title>Express.js HTML and CSS</title>
 </head>
 
-<body>
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
-        <title>Sign Compass - Learn ASL</title>
-    </head>
-
-    <body>
-        <header>
-            <h1 class="site-title">Sign Compass</h1>
-            <% if(session.userId) { %>
-                <a href="/logout">Logout</a>
-                <% }else { %>
-                    <a href="/login">Login</a>
-                    <% } %>
-        </header>
-        <div class="flex">
-            <img src="\images\homepage-image.png" alt="Image Description">
-            <section class="features flex-1">
-                <div class="feature">
-                    <div class="feature-icon">📹</div>
-                    <h2>Video Lessons</h2>
-                    <p>Access a library of high-quality video lessons to learn American Sign Language at your own pace.
-                    </p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🧩</div>
-                    <h2>Interactive Quizzes</h2>
-                    <p>Test your knowledge with engaging interactive quizzes designed to reinforce your learning and
-                        track
-                        your progress.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">📝</div>
-                    <h2>Feedback</h2>
-                    <p>Receive valuable feedback on your signing skills from our team of experienced ASL instructors and
-                        experts.</p>
-                </div>
+<body class="min-h-screen">
+    <header>
+        <h1 class="site-title">Sign Compass</h1>
+        <% if(session.userId) { %>
+            <a href="/logout">Logout</a>
+            <% }else { %>
+                <a href="/login">Login</a>
+                <% } %>
+    </header>
+    <div class="flex flex-col lg:flex-row">
+        <div class="h-80 lg:h-auto lg:max-w-xl">
+            <img src="\images\homepage-image.png" alt="Image Description" class="object-cover w-full h-full object-top">
         </div>
+        <section class="features flex-1">
+            <div class="feature">
+                <div class="feature-icon">📹</div>
+                <h2>Video Lessons</h2>
+                <p>Access a library of high-quality video lessons to learn American Sign Language at your own pace.
+                </p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🧩</div>
+                <h2>Interactive Quizzes</h2>
+                <p>Test your knowledge with engaging interactive quizzes designed to reinforce your learning and
+                    track
+                    your progress.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📝</div>
+                <h2>Feedback</h2>
+                <p>Receive valuable feedback on your signing skills from our team of experienced ASL instructors and
+                    experts.</p>
+            </div>
         </section>
+    </div>
 
-        <footer>
-            &copy; 2023 Sign Compass
+    <footer class="text-center mt-12">
+        &copy; 2023 Sign Compass
+    </footer>
 
-    </body>
+</body>
 
-    </html>
+</html>

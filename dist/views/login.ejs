@@ -10,29 +10,47 @@
 
 <body>
 	<div class="bg-primary">
-		<div class="container max-w-6xl flex justify-between items-center flex-col lg:flex-row mx-auto">
+		<div
+			class="container max-w-6xl flex justify-center lg:justify-between items-center flex-col lg:flex-row mx-auto px-20 min-h-screen">
 			<h1 class="site-title text-white font-bold">Sign Compass</h1>
-			<div class="background-container">
+			<div class="background-container !h-[unset]">
 				<div class="signin-form" id="signin-form">
-					<form method="post">
-						<p class="pb-3 text-black">In order to sign up or sign in input a valid email & password</p>
+					<form method="post" class="px-8">
+						<p class="mb-2 text-black">In order to sign up or sign in input a valid email & password</p>
 
-						<label class="text-black" for="username">Email:<br></label>
-						<input class="text-black  placeholder-black" type="text" name="username"
+						<p class="mb-1 hidden text-[#FF0000]" id="emailError">Password or email is incorrect</p>
+						<label class="text-black hidden" for="username">Email:<br></label>
+						<input class="text-black outline-none focus:border-primary w-full" type="text" name="username"
 							placeholder="Email@mail.com" required pattern="[^@\s]+@[^@\s]+"
-							title="Must be a valid email"><br><br>
+							title="Must be a valid email">
 
-						<label class="text-black" for="password">Password:<br></label>
-						<input class="text-black placeholder-black" type="password" name="password"
-							placeholder="Password" required
+						<label class="text-black hidden" for="password">Password:<br></label>
+						<input class="text-black outline-none focus:border-primary w-full" type="password"
+							name="password" placeholder="Password" required
 							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[`!@#$%^&*]).{10,}"
-							title="Password must contain an uppercase/lowercase, special character and minimum of 10 characters"><br><br>
+							title="Password must contain an uppercase/lowercase, special character and minimum of 10 characters">
+						<br>
 
-						<div class="flex justify-center gap-x-4">
+						<div class="flex justify-between gap-x-4 mt-2">
+							<a class="back-button !bg-[#ebf5fb] !border-primary border-2 !text-primary flex !pl-0"
+								href="/" id="signin-back-button">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+									fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+									stroke-linejoin="round" class="lucide lucide-chevron-left">
+									<path d="m15 18-6-6 6-6" />
+								</svg>
+								Back</a>
 							<button class="back-button" type="submit">Submit</button>
-							<a class="back-button" href="/" id="signin-back-button">Back</a>
 						</div>
+						<script>
+							const urlParams = new URLSearchParams(window.location.search);
+							const error = urlParams.get('error');
 
+							if (error) {
+								document.querySelector('#emailError').classList.remove('hidden');
+								document.querySelector('input[name="username"]').value = urlParams.get('email');
+							}
+						</script>
 					</form>
 				</div>
 			</div>

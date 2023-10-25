@@ -53,6 +53,7 @@ app.post('/login', async (req, res) => {
     const [dbUser] = await db_1.db.select().from(schema_1.users).where((0, drizzle_orm_1.eq)(schema_1.users.username, username)).limit(1);
     console.log('selected:', dbUser);
     if (dbUser) {
+        console.log('user exists');
         const passwordMatchesHash = await bcrypt_1.default.compare(password, dbUser.hashedPassword);
         if (passwordMatchesHash) {
             req.session.username = username;
@@ -60,7 +61,8 @@ app.post('/login', async (req, res) => {
             res.redirect('/');
             return;
         }
-        res.redirect('/login');
+        console.log('hash does not match');
+        res.redirect('/login?error=password&email=' + username);
         return;
     }
     console.log('insert');

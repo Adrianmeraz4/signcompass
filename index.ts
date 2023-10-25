@@ -42,13 +42,13 @@ declare module 'express-session' {
 // Define a route to serve the HTML file
 app.get('/', (req, res) => {
     console.log('userid: ', req.session.userId)
-    
-    res.render('index', { session: req.session  })
+
+    res.render('index', { session: req.session })
 });
 
 app.get('/login', (req, res) => {
-    
-    res.render('login', { session: req.session  })
+
+    res.render('login', { session: req.session })
 });
 
 app.get('/logout', (req, res) => {
@@ -66,7 +66,7 @@ app.post('/login', async (req, res) => {
 
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt);
-    
+
     console.log('seelct', username, hash);
     const [dbUser] = await db.select().from(users).where(
         eq(users.username, username)
@@ -74,18 +74,20 @@ app.post('/login', async (req, res) => {
 
     console.log('selected:', dbUser)
 
-    if(dbUser) {
+    if (dbUser) {
+        console.log('user exists')
         const passwordMatchesHash = await bcrypt.compare(password, dbUser.hashedPassword);
-        if(passwordMatchesHash) {
+        if (passwordMatchesHash) {
             req.session.username = username
             req.session.userId = dbUser.id;
             res.redirect('/')
             return;
         }
-        res.redirect('/login')
+        console.log('hash does not match')
+        res.redirect('/login?error=password&email=' + username)
         return;
     }
-    
+
     console.log('insert')
     // insert only returns the insertId
     const newUser = await db.insert(users).values({
@@ -93,7 +95,7 @@ app.post('/login', async (req, res) => {
         hashedPassword: hash
     });
 
-    
+
     req.session.userId = parseInt(newUser.insertId);
 
     req.session.username = username
