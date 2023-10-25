@@ -9,32 +9,35 @@
 </head>
 
 <body>
-	<header>
-		<h1 class="site-title">Sign Compass</h1>
-		<div class="background-container">
-			<div class="signin-form" id="signin-form">
-				<form method="post">
-					<p class="pb-3 text-black">In order to sign up or sign in input a valid email & password</p>
+	<div class="bg-primary">
+		<div class="container max-w-6xl flex justify-between items-center flex-col lg:flex-row mx-auto">
+			<h1 class="site-title text-white font-bold">Sign Compass</h1>
+			<div class="background-container">
+				<div class="signin-form" id="signin-form">
+					<form method="post">
+						<p class="pb-3 text-black">In order to sign up or sign in input a valid email & password</p>
 
-					<label class="text-black" for="username">Email:<br></label>
-					<input class="text-black  placeholder-black" type="text" name="username"
-						placeholder="Email@mail.com" required pattern="[^@\s]+@[^@\s]+"
-						title="Must be a valid email"><br><br>
+						<label class="text-black" for="username">Email:<br></label>
+						<input class="text-black  placeholder-black" type="text" name="username"
+							placeholder="Email@mail.com" required pattern="[^@\s]+@[^@\s]+"
+							title="Must be a valid email"><br><br>
 
-					<label class="text-black" for="password">Password:<br></label>
-					<input class="text-black placeholder-black" type="password" name="password" placeholder="Password"
-						required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[`!@#$%^&*]).{10,}"
-						title="Password must contain an uppercase/lowercase, special character and minimum of 10 characters"><br><br>
+						<label class="text-black" for="password">Password:<br></label>
+						<input class="text-black placeholder-black" type="password" name="password"
+							placeholder="Password" required
+							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[`!@#$%^&*]).{10,}"
+							title="Password must contain an uppercase/lowercase, special character and minimum of 10 characters"><br><br>
 
-					<div class="flex justify-center gap-x-4">
-						<button class="back-button" type="submit">Submit</button>
-						<a class="back-button" href="/" id="signin-back-button">Back</a>
-					</div>
+						<div class="flex justify-center gap-x-4">
+							<button class="back-button" type="submit">Submit</button>
+							<a class="back-button" href="/" id="signin-back-button">Back</a>
+						</div>
 
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
-	</header>
+	</div>
 </body>
 
 </html>
