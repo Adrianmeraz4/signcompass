@@ -9,14 +9,53 @@
 </head>
 
 <body>
-    <h1 class="mt-6">SignCompass</h1>
-    <p>Here to teach basic Sign Language</p>
-    <%= session.username %>
-    <% if(session.userId) { %>
-    <a href="/logout">Logout</a>
-    <% }else {   %>
-        <a href="/login">Login</a>
-    <% }  %>        
-</body>
+    <!DOCTYPE html>
+    <html lang="en">
 
-</html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Sign Compass - Learn ASL</title>
+    </head>
+
+    <body>
+        <header>
+            <h1 class="site-title">Sign Compass</h1>
+            <% if(session.userId) { %>
+                <a href="/logout">Logout</a>
+                <% }else { %>
+                    <a href="/login">Login</a>
+                    <% } %>
+        </header>
+        <div class="flex">
+            <img src="\images\homepage-image.png" alt="Image Description">
+            <section class="features flex-1">
+                <div class="feature">
+                    <div class="feature-icon">📹</div>
+                    <h2>Video Lessons</h2>
+                    <p>Access a library of high-quality video lessons to learn American Sign Language at your own pace.
+                    </p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🧩</div>
+                    <h2>Interactive Quizzes</h2>
+                    <p>Test your knowledge with engaging interactive quizzes designed to reinforce your learning and
+                        track
+                        your progress.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📝</div>
+                    <h2>Feedback</h2>
+                    <p>Receive valuable feedback on your signing skills from our team of experienced ASL instructors and
+                        experts.</p>
+                </div>
+        </div>
+        </section>
+
+        <footer>
+            &copy; 2023 Sign Compass
+
+    </body>
+
+    </html>

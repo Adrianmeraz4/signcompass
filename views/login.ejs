@@ -1,22 +1,40 @@
 <!DOCTYPE html>
-<html>
-  <head>
-	<title>Example Login Form</title>
-  </head>
-  <body>
-	<h1 class="mt-6">Welcome to SignCompass</h1>
-    <p>In order to sign up or sign in input a valid email & password</p>
-	<form action="login" method="post">
-  	<!-- user input-->
-  	Email:<br>
-  	<input type="text" name="username" placeholder="Email@mail.com" required pattern="[^@\s]+@[^@\s]+"
-		title="Must be a valid email"><br><br>
-  	Password:<br>
-  	<input type="password" name="password" placeholder="Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[`!@#$%^&*]).{10,}"
-	  title="Password must contain an uppercase/lowercase, special character and minimum of 10 characters"><br><br>
+<html lang="en">
 
-  	<!-- submit button -->
-  	<input type="submit" value="login">
-	</form>
-  </body>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/styles/style.css">
+	<title>Sign In and Sign Up Buttons</title>
+</head>
+
+<body>
+	<header>
+		<h1 class="site-title">Sign Compass</h1>
+		<div class="background-container">
+			<div class="signin-form" id="signin-form">
+				<form method="post">
+					<p class="pb-3 text-black">In order to sign up or sign in input a valid email & password</p>
+
+					<label class="text-black" for="username">Email:<br></label>
+					<input class="text-black  placeholder-black" type="text" name="username"
+						placeholder="Email@mail.com" required pattern="[^@\s]+@[^@\s]+"
+						title="Must be a valid email"><br><br>
+
+					<label class="text-black" for="password">Password:<br></label>
+					<input class="text-black placeholder-black" type="password" name="password" placeholder="Password"
+						required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[`!@#$%^&*]).{10,}"
+						title="Password must contain an uppercase/lowercase, special character and minimum of 10 characters"><br><br>
+
+					<div class="flex justify-center gap-x-4">
+						<button class="back-button" type="submit">Submit</button>
+						<a class="back-button" href="/" id="signin-back-button">Back</a>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</header>
+</body>
+
 </html>
