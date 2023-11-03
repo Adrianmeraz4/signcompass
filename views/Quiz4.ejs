@@ -1,42 +1,185 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
-
-
 <head>
-    <title>Quiz 4</O-T></title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASL Quiz - Lesson 4</title>
+  <style>
+    /* General Styles */
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+    /* Quiz Container */
+    .quiz-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #5a5a5a;
+    }
+    /* Question Styles */
+    .question {
+      margin-bottom: 20px;
+    }
+    /* Options Style */
+    .options label, .question label {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #e9e9e9;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .options label:hover, .question label:hover {
+      background-color: #d3d3d3;
+    }
+    /* Submit Button Style */
+    .submit-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    #submitBtn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #ffffff;
+      transition: background-color 0.3s;
+    }
+    #submitBtn:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
-
 <body>
+  <div class="quiz-container">
+    <h1>Lesson 4: American Sign Language Quiz</h1>
+    <form id="aslQuizForm">
+      <!-- Question 1 -->
+      <div class="question">
+        <p>1. Which sign from this lesson is a dynamic sign?</p>
+        <label><input type="radio" name="q1" value="a"> a. M</label>
+        <label><input type="radio" name="q1" value="b"> b. J</label>
+        <label><input type="radio" name="q1" value="c"> c. H</label>
+        <label><input type="radio" name="q1" value="d"> d. K</label>
+      </div>
 
-    <h1>Lesson 4 Quiz Questions</h1>
-    <p>1. Whach sign from this lesson is a dynamic sign? <br>a. M <br>b. J <br>c. H <br>d. K</p>
-    <p>2. Which sign from this lesson replicates its english letter? <br>a. K <br>b. L <br>c. M <br>d. H</p>
-    <p>3. Which finger is the defining difference between the letters M and N? <br>a. Finger 3 <br>b. Finger 4 <br>c.
-        Finger 1 <br>d. Finger 5</p>
-    <p>4. What is this sign?</p>
-    <img src="\images\letterK.jpg" alt="letter K" width="150" height="250">
-    <p>a. B <br>b. K <br>c. J <br>d. G</p>
-    <p>5. What is this sign?</p>
-    <img src="\images\letterM.jpg" alt="letter M" width="150" height="250">
-    <p>a. M <br>b. N <br>c. E <br>d. A</p>
-    <p>6. What is this sign?</p>
-    <img src="\images\letterI.jpg" alt="letter I" width="175" height="225">
-    <p>a. H <br>b. D <br>c. I <br>d. L</p>
-    <p>7. What is this sign?</p>
-    <img src="\images\letterL.jpg" alt="letter L" width="150" height="250">
-    <p>a. L <br>b. K <br>c. C <br>d. J</p>
-    <p>8. What is this sign?</p>
-    <img src="\images\letterN.jpg" alt="letter N" width="150" height="250">
-    <p>a. B <br>b. E <br>c. N <br>d. M</p>
-    <p>9. What is this sign?</p>
-    <img src="\images\letterH.jpg" alt="letter H" width="200" height="200">
-    <p>a. H <br>b. N <br>c. F <br>d. G</p>
+      <!-- Question 2 -->
+      <div class="question">
+        <p>2. Which sign from this lesson replicates its English letter?</p>
+        <label><input type="radio" name="q2" value="a"> a. K</label>
+        <label><input type="radio" name="q2" value="b"> b. L</label>
+        <label><input type="radio" name="q2" value="c"> c. M</label>
+        <label><input type="radio" name="q2" value="d"> d. H</label>
+      </div>
 
+      <!-- Question 3 -->
+      <div class="question">
+        <p>3. Which finger is the defining difference between the letters M and N?</p>
+        <label><input type="radio" name="q3" value="a"> a. Finger 3</label>
+        <label><input type="radio" name="q3" value="b"> b. Finger 4</label>
+        <label><input type="radio" name="q3" value="c"> c. Finger 1</label>
+        <label><input type="radio" name="q3" value="d"> d. Finger 5</label>
+      </div>
 
+      <!-- Question 4 -->
+      <div class="question">
+        <p>4. What is this sign?</p>
+        <img src="\images\letterK.jpg" alt="letter K" width="150" height="250">
+        <label><input type="radio" name="q4" value="a"> a. B</label>
+        <label><input type="radio" name="q4" value="b"> b. K</label>
+        <label><input type="radio" name="q4" value="c"> c. J</label>
+        <label><input type="radio" name="q4" value="d"> d. G</label>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="question">
+        <p>5. What is this sign?</p>
+        <img src="\images\letterM.jpg" alt="letter M" width="150" height="250">
+        <label><input type="radio" name="q5" value="a"> a. M</label>
+        <label><input type="radio" name="q5" value="b"> b. N</label>
+        <label><input type="radio" name="q5" value="c"> c. E</label>
+        <label><input type="radio" name="q5" value="d"> d. A</label>
+      </div>
+
+      <!-- Question 6 -->
+      <div class="question">
+        <p>6. What is this sign?</p>
+        <img src="\images\letterI.jpg" alt="letter I" width="175" height="225">
+        <label><input type="radio" name="q6" value="a"> a. H</label>
+        <label><input type="radio" name="q6" value="b"> b. D</label>
+        <label><input type="radio" name="q6" value="c"> c. I</label>
+        <label><input type="radio" name="q6" value="d"> d. L</label>
+      </div>
+
+      <!-- Question 7 -->
+      <div class="question">
+        <p>7. What is this sign?</p>
+        <img src="\images\letterL.jpg" alt="letter L" width="150" height="250">
+        <label><input type="radio" name="q7" value="a"> a. L</label>
+        <label><input type="radio" name="q7" value="b"> b. K</label>
+        <label><input type="radio" name="q7" value="c"> c. C</label>
+        <label><input type="radio" name="q7" value="d"> d. J</label>
+      </div>
+
+      <!-- Question 8 -->
+      <div class="question">
+        <p>8. What is this sign?</p>
+        <img src="\images\letterN.jpg" alt="letter N" width="150" height="250">
+        <label><input type="radio" name="q8" value="a"> a. B</label>
+        <label><input type="radio" name="q8" value="b"> b. E</label>
+        <label><input type="radio" name="q8" value="c"> c. N</label>
+        <label><input type="radio" name="q8" value="d"> d. M</label>
+      </div>
+
+      <!-- Question 9 -->
+      <div class="question">
+        <p>9. What is this sign?</p>
+        <img src="\images\letterH.jpg" alt="letter H" width="200" height="200">
+        <label><input type="radio" name="q9" value="a"> a. H</label>
+        <label><input type="radio" name="q9" value="b"> b. N</label>
+        <label><input type="radio" name="q9" value="c"> c. F</label>
+        <label><input type="radio" name="q9" value="d"> d. G</label>
+      </div>
+
+      <div class="submit-container">
+        <input type="submit" id="submitBtn" value="Submit Quiz">
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('aslQuizForm');
+      const correctAnswers = ['b', 'b', 'a', 'b', 'a', 'c', 'a', 'c', 'a']; // Correct answers for Lesson 4
+      
+      form.onsubmit = function(event) {
+        event.preventDefault();
+        let score = 0;
+        const userAnswers = [...form.querySelectorAll('input[type="radio"]:checked')].map(input => input.value);
+        
+        userAnswers.forEach((answer, index) => {
+          if(answer === correctAnswers[index]) {
+            score++;
+          }
+        });
+
+        const totalQuestions = correctAnswers.length;
+        const scorePercentage = (score / totalQuestions) * 100;
+        
+        alert(`You scored ${score} out of ${totalQuestions} (${scorePercentage.toFixed(2)}%)`);
+      };
+    });
+  </script>
 </body>
-
 </html>
