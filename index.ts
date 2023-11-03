@@ -54,6 +54,11 @@ app.get('/login', (req, res) => {
     res.render('login', { session: req.session })
 });
 
+app.get('/Test2', (req, res) => {
+
+    res.render('Test2', { session: req.session })
+});
+
 app.get('/logout', (req, res) => {
     req.session.destroy((err) => console.error(err));
     res.redirect('/')
