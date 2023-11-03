@@ -46,6 +46,11 @@ app.get('/', (req, res) => {
     res.render('index', { session: req.session })
 });
 
+app.get('/Lesson_1', (req, res) => {
+
+    res.render('Lesson_1', { session: req.session })
+});
+
 app.get('/login', (req, res) => {
 
     res.render('login', { session: req.session })
@@ -57,6 +62,8 @@ app.get('/logout', (req, res) => {
 });
 
 
+
+
 app.post('/login', async (req, res) => {
     let username: string = req.body.username;
     let password: string = req.body.password;
@@ -64,18 +71,16 @@ app.post('/login', async (req, res) => {
         res.redirect('/login');
     }
 
+
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt);
 
-    console.log('seelct', username, hash);
     const [dbUser] = await db.select().from(users).where(
         eq(users.username, username)
     ).limit(1);
 
-    console.log('selected:', dbUser)
 
     if (dbUser) {
-        console.log('user exists')
         const passwordMatchesHash = await bcrypt.compare(password, dbUser.hashedPassword);
         if (passwordMatchesHash) {
             req.session.username = username

@@ -34,6 +34,9 @@ app.get('/', (req, res) => {
     console.log('userid: ', req.session.userId);
     res.render('index', { session: req.session });
 });
+app.get('/Lesson_1', (req, res) => {
+    res.render('Lesson_1', { session: req.session });
+});
 app.get('/login', (req, res) => {
     res.render('login', { session: req.session });
 });
@@ -49,11 +52,8 @@ app.post('/login', async (req, res) => {
     }
     const salt = await bcrypt_1.default.genSalt(10);
     const hash = await bcrypt_1.default.hash(password, salt);
-    console.log('seelct', username, hash);
     const [dbUser] = await db_1.db.select().from(schema_1.users).where((0, drizzle_orm_1.eq)(schema_1.users.username, username)).limit(1);
-    console.log('selected:', dbUser);
     if (dbUser) {
-        console.log('user exists');
         const passwordMatchesHash = await bcrypt_1.default.compare(password, dbUser.hashedPassword);
         if (passwordMatchesHash) {
             req.session.username = username;
