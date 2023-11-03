@@ -1,27 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
-    <title>Quiz 1</O-T></title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASL Quiz - Lesson 2</title>
+  <style>
+    /* General Styles */
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    /* Quiz Container */
+    .quiz-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #5a5a5a;
+    }
+
+    /* Question Styles */
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .question h2 {
+      margin: 0;
+      font-size: 24px;
+      color: #333;
+    }
+
+    /* Options Style */
+    .options, .question {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .options label, .question label {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #e9e9e9;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .options label:hover, .question label:hover {
+      background-color: #d3d3d3;
+    }
+
+    /* Submit Button Style */
+    .submit-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #submitBtn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #ffffff;
+      transition: background-color 0.3s;
+    }
+
+    #submitBtn:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
-
 <body>
+  <div class="quiz-container">
+    <h1>Lesson 2: American Sign Language Quiz</h1>
+    <form id="aslQuizForm">
+      <!-- Question 1 -->
+      <div class="question" id="question1">
+        <p>1. What sign from this lesson has fingers 2-5 closed into the palm?</p>
+        <label><input type="radio" name="q1" value="a"> a. A</label>
+        <label><input type="radio" name="q1" value="b"> b. B</label>
+        <label><input type="radio" name="q1" value="c"> c. C</label>
+        <label><input type="radio" name="q1" value="d"> d. None of the above</label>
+      </div>
+      
+      <!-- Question 2 -->
+      <div class="question" id="question2">
+        <p>2. What sign from this lesson has fingers 3,4, and 5 standing up and apart from each other?</p>
+        <label><input type="radio" name="q2" value="a"> a. A</label>
+        <label><input type="radio" name="q2" value="b"> b. B</label>
+        <label><input type="radio" name="q2" value="c"> c. C</label>
+        <label><input type="radio" name="q2" value="d"> d. None of the above</label>
+      </div>
 
-    <h1>Lesson 2 Quiz Questions</h1>
-    <p>1. What sign from this lesson has fingers 2-5 closed into the palm? <br>a. A <br>b. B <br>c. C <br>d. None of the
-        above</p>
-    <p>2. What sign from this lesson has fingers 3,4, and 5 standing up and apart from each other? <br>a. A <br>b. B
-        <br>c. C <br>d. None of the above
-    </p>
-    <p>3. How many fingers does the letter B have pointing upwards? <br>a. 1 <br>b. 2 <br>c. 3 <br>d. 4</p>
-    <p>4. What sign is this?</p>
-    <img src="\images\letterC.jpg" alt="letter C" width="200" height="200">
-    <p>a. A <br>b. B <br>c. C <br>d. None of the above</p>
+      <!-- Question 3 -->
+      <div class="question" id="question3">
+        <p>3. How many fingers does the letter B have pointing upwards?</p>
+        <label><input type="radio" name="q3" value="a"> a. 1</label>
+        <label><input type="radio" name="q3" value="b"> b. 2</label>
+        <label><input type="radio" name="q3" value="c"> c. 3</label>
+        <label><input type="radio" name="q3" value="d"> d. 4</label>
+      </div>
 
+      <!-- Question 4 -->
+      <div class="question" id="question4">
+        <p>4. What sign is this?</p>
+        <img src="\images\letterC.jpg" alt="letter C" width="200" height="200">
+        <label><input type="radio" name="q4" value="a"> a. A</label>
+        <label><input type="radio" name="q4" value="b"> b. B</label>
+        <label><input type="radio" name="q4" value="c"> c. C</label>
+        <label><input type="radio" name="q4" value="d"> d. None of the above</label>
+      </div>
+
+      <!-- Submit button -->
+      <div class="submit-container">
+        <input type="submit" id="submitBtn" value="Submit Quiz">
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('aslQuizForm');
+      const correctAnswers = ['a', 'd', 'd', 'c']; // Replace with correct answers for Lesson 2
+      
+      form.onsubmit = function(event) {
+        event.preventDefault(); // Prevent the traditional form submission
+        let score = 0;
+        const userAnswers = [...form.querySelectorAll('input[type="radio"]:checked')].map(input => input.value);
+        
+        userAnswers.forEach((answer, index) => {
+          if(answer === correctAnswers[index]) {
+            score++;
+          }
+        });
+
+        const totalQuestions = correctAnswers.length;
+        const scorePercentage = (score / totalQuestions) * 100;
+        
+        // Display the score to the user
+        alert(`You scored ${score} out of ${totalQuestions} (${scorePercentage.toFixed(2)}%)`);
+      };
+    });
+  </script>
 </body>
-
 </html>
