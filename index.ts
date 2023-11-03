@@ -40,15 +40,14 @@ declare module 'express-session' {
         userId: number;
     }
 }
+
+// Define a route to serve the HTML file
 app.get('/Lesson:id', function (req, res) {
     res.render('Lesson' + req.params.id);
 });
 app.get('/Quiz:id', function (req, res) {
     res.render('Quiz' + req.params.id);
 });
-
-
-// Define a route to serve the HTML file
 app.get('/', (req, res) => {
     console.log('userid: ', req.session.userId)
 
