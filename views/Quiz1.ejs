@@ -4,79 +4,164 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ASL Quiz</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* General Styles */
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    /* Quiz Container */
+    .quiz-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #5a5a5a;
+    }
+
+    /* Question Styles */
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .question h2 {
+      margin: 0;
+      font-size: 24px;
+      color: #333;
+    }
+
+    /* Options Style */
+    .options label, .question label {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #e9e9e9;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .options label:hover, .question label:hover {
+      background-color: #d3d3d3;
+    }
+
+    /* Submit Button Style */
+    .submit-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #submitBtn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #ffffff;
+      transition: background-color 0.3s;
+    }
+
+    #submitBtn:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
   <div class="quiz-container">
     <h1>Lesson 1: American Sign Language Quiz</h1>
     <form id="aslQuizForm">
-
       <!-- Question 1 -->
-      <div class="question" id="question1">
-        <h2>1. What are the 2 kinds of signs?</h2>
+      <div class="question">
+        <p>1. What are the 2 kinds of signs?</p>
         <label><input type="radio" name="q1" value="a"> a. Static and Dynamic</label>
         <label><input type="radio" name="q1" value="b"> b. Static and Kinetic</label>
         <label><input type="radio" name="q1" value="c"> c. Dynamic and Still</label>
         <label><input type="radio" name="q1" value="d"> d. Mobile and Static</label>
       </div>
-      
-       <!-- Question 2 -->
-    <div class="question hide" id="question2">
-      <p>2. What is Important for making signs?</p>
-      <div class="options">
+
+      <!-- Question 2 -->
+      <div class="question">
+        <p>2. What is Important for making signs?</p>
         <label><input type="radio" name="q2" value="a"> a. Wrist orientation</label>
-        <label><input type="radio" name="q2" value="b"> b. fast movements</label>
+        <label><input type="radio" name="q2" value="b"> b. Fast movements</label>
         <label><input type="radio" name="q2" value="c"> c. Finger position</label>
         <label><input type="radio" name="q2" value="d"> d. a & c</label>
-      
+      </div>
 
-    <!-- Question 3 -->
-    <div class="question hide" id="question3">
-      <p>3. What is the 4th finger identity?</p>
-      <div class="options">
+      <!-- Question 3 -->
+      <div class="question">
+        <p>3. What is the 4th finger identity?</p>
         <label><input type="radio" name="q3" value="a"> a. Pointer</label>
         <label><input type="radio" name="q3" value="b"> b. Ring</label>
         <label><input type="radio" name="q3" value="c"> c. Thumb</label>
         <label><input type="radio" name="q3" value="d"> d. Middle</label>
-      
+      </div>
 
-    <!-- Question 4 -->
-    <div class="question hide" id="question4">
-      <p>4. What is the 3rd finger?</p>
-      <div class="options">
+      <!-- Question 4 -->
+      <div class="question">
+        <p>4. What is the 3rd finger?</p>
         <label><input type="radio" name="q4" value="a"> a. Middle</label>
         <label><input type="radio" name="q4" value="b"> b. Pointer</label>
         <label><input type="radio" name="q4" value="c"> c. Pinkie</label>
         <label><input type="radio" name="q4" value="d"> d. Thumb</label>
-      
-
-    <!-- Question 5 -->
-    <div class="question hide" id="question5">
-      <p>5. What is the 1st finger?</p>
-      <div class="options">
-        <label><input type="radio" name="q5" value="a"> a. Middle</label>
-        <label><input type="radio" name="q5" value="b"> b. Pinkie</label>
-        <label><input type="radio" name="q5" value="c"> c. Thumb</label>
-        <label><input type="radio" name="q5" value="d"> d. Ring</label>
-      
-
-    
-      <!-- Question 6 -->
-      <div class="question hide" id="question6">
-        <p>6. If fingers 1, 4, and 5 are down but fingers 2 and 3 are raised going in opposite directions, what popular hand sign is this?</p>
-        <label><input type="radio" name="q6" value="a"> a. Okay symbol</label>
-        <label><input type="radio" name="q6" value="b"> b. Peace sign</label>
-        <label><input type="radio" name="q6" value="c"> c. Rude gesture</label>
-        <label><input type="radio" name="q6" value="d"> d. Rock and Roll symbol</label>
       </div>
 
-      <!-- Submit button -->
+      <!-- Question 5 -->
+      <div class="question">
+        <p>5. What is the least used finger in ASL?</p>
+        <label><input type="radio" name="q5" value="a"> a. Thumb</label>
+        <label><input type="radio" name="q5" value="b"> b. Pointer</label>
+        <label><input type="radio" name="q5" value="c"> c. Pinkie</label>
+        <label><input type="radio" name="q5" value="d"> d. Middle</label>
+      </div>
+
+      <!-- Question 6 -->
+      <div class="question">
+        <p>6. What part of the body do you use to sign?</p>
+        <label><input type="radio" name="q6" value="a"> a. Hands only</label>
+        <label><input type="radio" name="q6" value="b"> b. Face only</label>
+        <label><input type="radio" name="q6" value="c"> c. Hands and face</label>
+        <label><input type="radio" name="q6" value="d"> d. Entire body</label>
+      </div>
+
       <div class="submit-container">
-        <input type="submit" id="submitBtn" value="Submit Quiz">
+        <button type="submit" id="submitBtn">Submit Quiz</button>
       </div>
     </form>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('aslQuizForm');
+      const correctAnswers = ['a', 'd', 'b', 'a', 'c', 'c']; // Replace with correct answers
+      
+      form.onsubmit = function(event) {
+        event.preventDefault(); // Prevent the traditional form submission
+        let score = 0;
+        const userAnswers = [...form.querySelectorAll('input[type="radio"]:checked')].map(input => input.value);
+        
+        userAnswers.forEach((answer, index) => {
+          if(answer === correctAnswers[index]) {
+            score++;
+          }
+        });
+
+        const totalQuestions = correctAnswers.length;
+        const scorePercentage = (score / totalQuestions) * 100;
+        
+        // Display the score to the user
+        alert(`You scored ${score} out of ${totalQuestions} (${scorePercentage.toFixed(2)}%)`);
+      };
+    });
+  </script>
 </body>
 </html>
