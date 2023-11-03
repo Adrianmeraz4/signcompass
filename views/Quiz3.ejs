@@ -1,30 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
-    <title>Quiz 1</O-T></title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASL Quiz - Lesson 3</title>
+  <style>
+    /* General Styles */
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    /* Quiz Container */
+    .quiz-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #5a5a5a;
+    }
+
+    /* Question Styles */
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .question h2 {
+      margin: 0;
+      font-size: 24px;
+      color: #333;
+    }
+
+    /* Options Style */
+    .options, .question {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .options label, .question label {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #e9e9e9;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .options label:hover, .question label:hover {
+      background-color: #d3d3d3;
+    }
+
+    /* Submit Button Style */
+    .submit-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #submitBtn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #ffffff;
+      transition: background-color 0.3s;
+    }
+
+    #submitBtn:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
-
 <body>
+  <div class="quiz-container">
+    <h1>Lesson 3: American Sign Language Quiz</h1>
+    <form id="aslQuizForm">
 
-    <h1>Lesson 3 Quiz Questions</h1>
-    <p>1. Which of the signs from this lesson have the palm facing yourself? <br>a. D <br>b. E <br>c. F <br>d. G</p>
-    <p>2. Which of these signs uses the knuckles in thier sign formation? <br>a. D <br>b. E <br>c. F <br>d. G</p>
-    <p>3. Which sign has the 2nd finger pointing upwards? <br>a. D <br>b. E <br>c. F <br>d. G</p>
-    <p>4. What is this sign?</p>
-    <img src="\images\letterG.jpg" alt="letter G" width="150" height="250">
-    <p>a. B <br>b. F <br>c. D <br>d. G</p>
-    <p>5. What is this sign?</p>
-    <img src="\images\letterE.jpg" alt="letter E" width="150" height="250">
-    <p>a. E <br>b. F <br>c. A <br>d. G</p>
-    <p>6. What is this sign?</p>
-    <img src="\images\letterF.jpg" alt="letter F" width="175" height="225">
-    <p>a. B <br>b. F <br>c. D <br>d. C</p>
+      <!-- Question 1 -->
+      <div class="question" id="question1">
+        <p>1. Which of the signs from this lesson have the palm facing yourself?</p>
+        <label><input type="radio" name="q1" value="a"> a. D</label>
+        <label><input type="radio" name="q1" value="b"> b. E</label>
+        <label><input type="radio" name="q1" value="c"> c. F</label>
+        <label><input type="radio" name="q1" value="d"> d. G</label>
+      </div>
+      
+      <!-- Question 2 -->
+      <div class="question" id="question2">
+        <p>2. Which of these signs uses the knuckles in their sign formation?</p>
+        <label><input type="radio" name="q2" value="a"> a. D</label>
+        <label><input type="radio" name="q2" value="b"> b. E</label>
+        <label><input type="radio" name="q2" value="c"> c. F</label>
+        <label><input type="radio" name="q2" value="d"> d. G</label>
+      </div>
 
+      <!-- Question 3 -->
+      <div class="question" id="question3">
+        <p>3. Which sign has the 2nd finger pointing upwards?</p>
+        <label><input type="radio" name="q3" value="a"> a. D</label>
+        <label><input type="radio" name="q3" value="b"> b. E</label>
+        <label><input type="radio" name="q3" value="c"> c. F</label>
+        <label><input type="radio" name="q3" value="d"> d. G</label>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="question" id="question4">
+        <p>4. What is this sign?</p>
+        <img src="\images\letterG.jpg" alt="letter G" width="150" height="250">
+        
+        <label><input type="radio" name="q4" value="a"> a. B</label>
+        <label><input type="radio" name="q4" value="b"> b. F</label>
+        <label><input type="radio" name="q4" value="c"> c. D</label>
+        <label><input type="radio" name="q4" value="d"> d. G</label>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="question" id="question5">
+        <p>5. What is this sign?</p>
+        <img src="\images\letterE.jpg" alt="letter E" width="150" height="250">
+        <label><input type="radio" name="q5" value="a"> a. E</label>
+        <label><input type="radio" name="q5" value="b"> b. F</label>
+        <label><input type="radio" name="q5" value="c"> c. A</label>
+        <label><input type="radio" name="q5" value="d"> d. G</label>
+      </div>
+
+      <!-- Question 6 -->
+      <div class="question" id="question6">
+        <p>6. What is this sign?</p>
+        <img src="\images\letterF.jpg" alt="letter F" width="175" height="225">
+        <label><input type="radio" name="q6" value="a"> a. B</label>
+        <label><input type="radio" name="q6" value="b"> b. F</label>
+        <label><input type="radio" name="q6" value="c"> c. D</label>
+        <label><input type="radio" name="q6" value="d"> d. C</label>
+      </div>
+
+      <!-- Submit button -->
+      <div class="submit-container">
+        <input type="submit" id="submitBtn" value="Submit Quiz">
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('aslQuizForm');
+      const correctAnswers = ['a', 'b', 'c', 'd', 'a', 'b']; // Replace with correct answers for Lesson 3
+
+      form.onsubmit = function(event) {
+        event.preventDefault(); // Prevent the traditional form submission
+        let score = 0;
+        const userAnswers = [...form.querySelectorAll('input[type="radio"]:checked')].map(input => input.value);
+
+        userAnswers.forEach((answer, index) => {
+          if(answer === correctAnswers[index]) {
+            score++;
+          }
+        });
+
+        const totalQuestions = correctAnswers.length;
+        const scorePercentage = (score / totalQuestions) * 100;
+
+        // Display the score to the user
+        alert(`You scored ${score} out of ${totalQuestions} (${scorePercentage.toFixed(2)}%)`);
+      };
+    });
+  </script>
 </body>
-
 </html>
