@@ -42,15 +42,29 @@
 								Back</a>
 							<button class="back-button" type="submit">Submit</button>
 						</div>
+						<!-- Added Forgot Password Link -->
+                        			<div class="mt-3 text-center">
+                            				<a href="#" id="forgot-password" class="text-primary">Forgot Password?</a>
+                        			</div>
 						<script>
-							const urlParams = new URLSearchParams(window.location.search);
-							const error = urlParams.get('error');
+                            				const urlParams = new URLSearchParams(window.location.search);
+                            				const error = urlParams.get('error');
 
-							if (error) {
-								document.querySelector('#emailError').classList.remove('hidden');
-								document.querySelector('input[name="username"]').value = urlParams.get('email');
-							}
-						</script>
+                            				if (error) {
+                                				document.querySelector('#emailError').classList.remove('hidden');
+                               					 document.querySelector('input[name="username"]').value = urlParams.get('email');
+                            					}
+
+                           			 // JavaScript for Forgot Password functionality
+                            				document.getElementById('forgot-password').addEventListener('click', function(event) {
+                                			event.preventDefault();
+                                			var email = prompt('Please enter your email to reset your password:');
+                                			if(email) {
+                                    				// You would normally handle the email with a backend service here
+                                    				console.log('Reset password email sent to: ' + email);
+                                }
+                            });
+                        </script>
 					</form>
 				</div>
 			</div>
