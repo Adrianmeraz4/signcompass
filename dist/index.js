@@ -74,30 +74,37 @@ app.get('/logout', (req, res) => {
 app.post('/login', async (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
+    // If the username or password field is empty, go back
     if (!username || !password) {
         res.redirect('/login');
     }
+    // Basic salt and hash for security
     const salt = await bcrypt_1.default.genSalt(10);
     const hash = await bcrypt_1.default.hash(password, salt);
+    // gets user from the db, dbUser is undefined if not in db
     const [dbUser] = await db_1.db.select().from(schema_1.users).where((0, drizzle_orm_1.eq)(schema_1.users.username, username)).limit(1);
+    // If the user exists in the db
     if (dbUser) {
+        // check if password hash matches what's in the db for the username
         const passwordMatchesHash = await bcrypt_1.default.compare(password, dbUser.hashedPassword);
+        // If it matches, set the session data and redirect home
         if (passwordMatchesHash) {
             req.session.username = username;
             req.session.userId = dbUser.id;
             res.redirect('/');
             return;
         }
-        console.log('hash does not match');
+        // Does not match, so redirect to login with error
         res.redirect('/login?error=password&email=' + username);
         return;
     }
-    console.log('insert');
     // insert only returns the insertId
+    // User does not exist in db, so make one
     const newUser = await db_1.db.insert(schema_1.users).values({
         username: username,
         hashedPassword: hash
     });
+    // Set session data to new user and redirect to home
     req.session.userId = parseInt(newUser.insertId);
     req.session.username = username;
     res.redirect('/');

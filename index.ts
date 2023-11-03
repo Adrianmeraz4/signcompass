@@ -33,6 +33,7 @@ app.use(sessions({
     resave: false
 }));
 
+// Declare Typescript session data for code inferencing
 declare module 'express-session' {
     interface SessionData {
         username: string;
@@ -71,44 +72,49 @@ app.get('/logout', (req, res) => {
 app.post('/login', async (req, res) => {
     let username: string = req.body.username;
     let password: string = req.body.password;
+
+    // If the username or password field is empty, go back
     if (!username || !password) {
         res.redirect('/login');
     }
 
-
+    // Basic salt and hash for security
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt);
 
+    // gets user from the db, dbUser is undefined if not in db
     const [dbUser] = await db.select().from(users).where(
         eq(users.username, username)
     ).limit(1);
 
-
+    // If the user exists in the db
     if (dbUser) {
+        // check if password hash matches what's in the db for the username
         const passwordMatchesHash = await bcrypt.compare(password, dbUser.hashedPassword);
+
+        // If it matches, set the session data and redirect home
         if (passwordMatchesHash) {
             req.session.username = username
             req.session.userId = dbUser.id;
             res.redirect('/')
             return;
         }
-        console.log('hash does not match')
+
+        // Does not match, so redirect to login with error
         res.redirect('/login?error=password&email=' + username)
         return;
     }
 
-    console.log('insert')
     // insert only returns the insertId
+    // User does not exist in db, so make one
     const newUser = await db.insert(users).values({
         username: username,
         hashedPassword: hash
     });
 
-
+    // Set session data to new user and redirect to home
     req.session.userId = parseInt(newUser.insertId);
-
     req.session.username = username
-
     res.redirect('/');
 });
 
