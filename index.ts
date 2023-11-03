@@ -8,6 +8,7 @@ import bcrypt from "bcrypt";
 import { users } from "./schema";
 import { and, eq } from "drizzle-orm";
 import { db } from "./db";
+import * as model1 from './public/model1.json'
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -56,7 +57,7 @@ app.get('/login', (req, res) => {
 
 app.get('/Test2', (req, res) => {
 
-    res.render('Test2', { session: req.session })
+    res.render('Test2', { session: req.session, model1: model1 })
 });
 
 app.get('/logout', (req, res) => {

@@ -51,6 +51,7 @@
     }
   </style>
 </head>
+
 <div style="text-align: center;">
   <div id="butHolder">
     <button id="but" autoplay class="button" style="display: none">
@@ -78,7 +79,7 @@
   var net
 
   var doMath = false;
-  fetch('model1.json')
+  fetch('https://signcompass.s3.amazonaws.com/model1.json')
     .then((response) => response.json())
     .then((json) => {
       Json = json;

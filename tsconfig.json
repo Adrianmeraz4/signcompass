@@ -1,43 +1,33 @@
 {
-  
   // This is an alias to @tsconfig/node16: https://github.com/tsconfig/bases
   "extends": "ts-node/node16/tsconfig.json",
-
   // Most ts-node options can be specified here using their programmatic names.
   "ts-node": {
     // It is faster to skip typechecking.
     // Remove if you want ts-node to do typechecking.
     "transpileOnly": true,
-
     "files": true,
-
     "compilerOptions": {
       // compilerOptions specified here will override those declared below,
       // but *only* in ts-node.  Useful if you want ts-node and tsc to use
       // different options with a single tsconfig.json.
     }
   },
-
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
-
-    "target": "ESNext",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-  
+    "target": "ESNext", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
     "moduleResolution": "Node",
-    "module": "commonjs",                                /* Specify what module code is generated. */
-                         /* Disallow 'import's, 'require's or '<reference>'s from expanding the number of files TypeScript should add to a project. */
-
+    "module": "commonjs", /* Specify what module code is generated. */
+    /* Disallow 'import's, 'require's or '<reference>'s from expanding the number of files TypeScript should add to a project. */
+    "resolveJsonModule": true,
     "outDir": "./dist",
-    "allowJs": true,                                  /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */
-  "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
-    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
-
-    "strict": true,                                      /* Enable all strict type-checking options. */
-   
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+    "allowJs": true, /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */
+    "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
+    "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
+    "strict": true, /* Enable all strict type-checking options. */
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
-  
-    "include": [
-        "./**/*"
-    ],
+  "include": [
+    "./**/*"
+  ],
 }
