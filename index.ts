@@ -38,17 +38,15 @@ declare module 'express-session' {
         userId: number;
     }
 }
+app.get('/Lesson:id', function (req, res) {
+    res.render('Lesson' + req.params.id);
+});
 
 // Define a route to serve the HTML file
 app.get('/', (req, res) => {
     console.log('userid: ', req.session.userId)
 
     res.render('index', { session: req.session })
-});
-
-app.get('/Lesson_1', (req, res) => {
-
-    res.render('Lesson_1', { session: req.session })
 });
 
 app.get('/login', (req, res) => {
