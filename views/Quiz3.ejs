@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ASL Quiz - Lesson 3</title>
+  <title>ASL Quiz - Lesson 2</title>
   <style>
     /* General Styles */
     body, html {
@@ -28,6 +28,10 @@
       color: #5a5a5a;
     }
 
+     h1 img {
+      width: 50px; /* Adjust as per your logo's dimensions */
+      margin-right: 10px;
+    }
     /* Question Styles */
     .question {
       margin-bottom: 20px;
@@ -40,11 +44,6 @@
     }
 
     /* Options Style */
-    .options, .question {
-      list-style-type: none;
-      padding: 0;
-    }
-
     .options label, .question label {
       display: block;
       margin: 10px 0;
@@ -78,13 +77,57 @@
     #submitBtn:hover {
       background-color: #45a049;
     }
+
+
+    /* Score Box Styles */
+    .score-box {
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      font-size: 18px;
+      text-align: center;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .green-box {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .yellow-box {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+
+    .red-box {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .review-box {
+      padding: 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+      text-align: center;
+      background-color: #f0f0f0;
+      border: 1px solid #ddd;
+    }
+
+    .review-box a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .review-box a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <div class="quiz-container">
-    <h1>Lesson 3: American Sign Language Quiz</h1>
+    <h1><img src="\images\Logo.png" alt=" ">Lesson 3: American Sign Language Quiz</h1>
     <form id="aslQuizForm">
-
       <!-- Question 1 -->
       <div class="question" id="question1">
         <p>1. Which of the signs from this lesson have the palm facing yourself?</p>
@@ -142,35 +185,64 @@
         <label><input type="radio" name="q6" value="c"> c. D</label>
         <label><input type="radio" name="q6" value="d"> d. C</label>
       </div>
-
       <!-- Submit button -->
       <div class="submit-container">
-        <input type="submit" id="submitBtn" value="Submit Quiz">
+        <button type="button" id="submitBtn">Submit Quiz</button>
       </div>
     </form>
+    <div id="resultsContainer"></div>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const form = document.getElementById('aslQuizForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const resultsContainer = document.getElementById('resultsContainer');
       const correctAnswers = ['a', 'b', 'c', 'd', 'a', 'b']; // Replace with correct answers for Lesson 3
 
-      form.onsubmit = function(event) {
-        event.preventDefault(); // Prevent the traditional form submission
-        let score = 0;
-        const userAnswers = [...form.querySelectorAll('input[type="radio"]:checked')].map(input => input.value);
+      submitBtn.onclick = function() {
+        const allAnswered = [...form.querySelectorAll('.question')].every(question => 
+          question.querySelector('input[type="radio"]:checked')
+        );
+        if (!allAnswered) {
+          alert('Please answer all questions before submitting the quiz.');
+          return;
+        }
 
-        userAnswers.forEach((answer, index) => {
-          if(answer === correctAnswers[index]) {
+        let score = 0;
+        const userAnswers = [...form.querySelectorAll('input[type="radio"]:checked')];
+        
+        userAnswers.forEach((input, index) => {
+          if (input.value === correctAnswers[index]) {
             score++;
           }
         });
 
         const totalQuestions = correctAnswers.length;
         const scorePercentage = (score / totalQuestions) * 100;
+        let scoreBoxClass = '';
 
-        // Display the score to the user
-        alert(`You scored ${score} out of ${totalQuestions} (${scorePercentage.toFixed(2)}%)`);
+        if (scorePercentage >= 90) {
+          scoreBoxClass = 'green-box';
+        } else if (scorePercentage >= 80) {
+          scoreBoxClass = 'yellow-box';
+        } else {
+          scoreBoxClass = 'red-box';
+        }
+
+        resultsContainer.innerHTML = `
+          <div class="score-box ${scoreBoxClass}">
+            You scored ${score} out of ${totalQuestions} (${scorePercentage.toFixed(2)}%).
+          </div>
+        `;
+
+        if (scorePercentage < 90) {
+          resultsContainer.innerHTML += `
+            <div class="review-box">
+              <a href="lesson3.html">Review Lesson 3</a>
+            </div>
+          `;
+        }
       };
     });
   </script>
