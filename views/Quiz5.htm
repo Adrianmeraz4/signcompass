@@ -1,34 +1,310 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Lesson 4 H-N</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASL Quiz - Lesson 5</title>
+  <style>
+    /* General Styles */
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+    /* Quiz Container */
+    .quiz-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+     h1 img {
+      width: 50px; /* Adjust as per your logo's dimensions */
+      margin-right: 10px;
+    }
+    /* Question Styles */
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .question h2 {
+      margin: 0;
+      font-size: 24px;
+      color: #333;
+    }
+
+    /* Options Style */
+    .options label, .question label {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #e9e9e9;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .options label:hover, .question label:hover {
+      background-color: #d3d3d3;
+    }
+
+    /* Submit Button Style */
+    .submit-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #submitBtn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #ffffff;
+      transition: background-color 0.3s;
+    }
+
+    #submitBtn:hover {
+      background-color: #45a049;
+    }
+
+
+    /* Score Box Styles */
+    .score-box {
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      font-size: 18px;
+      text-align: center;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .green-box {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .yellow-box {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+
+    .red-box {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .review-box {
+      padding: 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+      text-align: center;
+      background-color: #f0f0f0;
+      border: 1px solid #ddd;
+    }
+    .hidden {
+      display: none;
+    }
+    .review-box a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .review-box a:hover {
+      text-decoration: underline;
+    }
+    
+    .correct {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .incorrect {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .highlight-missing {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+
+    .result-comment {
+      display: inline-block;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    .result-comment.correct {
+      color: #155724;
+    }
+
+    .result-comment.incorrect {
+      color: #721c24;
+    }
+  </style>
 </head>
 <body>
+  <div class="quiz-container">
+    <h1><img src="\images\Logo.png" alt=" ">Lesson 5: O-T American Sign Language Quiz</h1>
+    <form id="aslQuizForm">
+      <!-- Question 1 -->
+      <div class="question" id="question1" >
+        <p>1. What sign from this lesson resembles K in shape?</p>
+        <label><input type="radio" name="q1" value="a"> a. S</label>
+        <label><input type="radio" name="q1" value="b"> b. O</label>
+        <label><input type="radio" name="q1" value="c"> c. P</label>
+        <label><input type="radio" name="q1" value="d"> d. H</label>
+      </div>
+      
+      <!-- Question 2 -->
+      <div class="question" id="question2">
+        <p>2. What sign from this lesson resembles A in shape?</p>
+        <label><input type="radio" name="q2" value="a"> a. R</label>
+        <label><input type="radio" name="q2" value="b"> b. S</label>
+        <label><input type="radio" name="q2" value="c"> c. Q</label>
+        <label><input type="radio" name="q2" value="d"> d. J</label>
+      </div>
+      
+      <!-- Question 3 -->
+      <div class="question" id="question3">
+        <p>3. What sign from this lesson crosses fingers 2 and 3?</p>
+        <label><input type="radio" name="q3" value="a"> a. R</label>
+        <label><input type="radio" name="q3" value="b"> b. S</label>
+        <label><input type="radio" name="q3" value="c"> c. M</label>
+        <label><input type="radio" name="q3" value="d"> d. N</label>
+      </div>
+      
+      <!-- Question 4 -->
+      <div class="question" id="question4">
+        <p>4. What is this sign?</p>
+        <img src="\images\letterQ.jpg" alt="letter Q" width="150" height="250">
+        <label><input type="radio" name="q4" value="a"> a. H</label>
+        <label><input type="radio" name="q4" value="b"> b. P</label>
+        <label><input type="radio" name="q4" value="c"> c. Q</label>
+        <label><input type="radio" name="q4" value="d"> d. T</label>
+      </div>
+      
+      <!-- Question 5 -->
+      <div class="question" id="question5">
+        <p>5. What is this sign?</p>
+        <img src="\images\letterO.jpg" alt="letter O" width="150" height="250">
+        <label><input type="radio" name="q5" value="a"> a. P</label>
+        <label><input type="radio" name="q5" value="b"> b. O</label>
+        <label><input type="radio" name="q5" value="c"> c. T</label>
+        <label><input type="radio" name="q5" value="d"> d. C</label>
+      </div>
+      
+      <!-- Question 6 -->
+      <div class="question" id="question6">
+        <p>6. What is this sign?</p>
+        <img src="\images\letterT.jpg" alt="letter T" width="200" height="200">
+        <label><input type="radio" name="q6" value="a"> a. M</label>
+        <label><input type="radio" name="q6" value="b"> b. N</label>
+        <label><input type="radio" name="q6" value="c"> c. S</label>
+        <label><input type="radio" name="q6" value="d"> d. T</label>
+      </div>
+      
+      <!-- Question 7 -->
+      <div class="question" id="question7">
+        <p>7. What is this sign?</p>
+        <img src="\images\letterP.jpg" alt="letter P" width="250" height="150">
+        <label><input type="radio" name="q7" value="a"> a. S</label>
+        <label><input type="radio" name="q7" value="b"> b. K</label>
+        <label><input type="radio" name="q7" value="c"> c. L</label>
+        <label><input type="radio" name="q7" value="d"> d. P</label>
+      </div>
+      
+      <!-- Question 8 -->
+      <div class="question" id="question8">
+        <p>8. What is this sign?</p>
+        <img src="\images\letterR.jpg" alt="letter R" width="150" height="250">
+        <label><input type="radio" name="q8" value="a"> a. R</label>
+        <label><input type="radio" name="q8" value="b"> b. D</label>
+        <label><input type="radio" name="q8" value="c"> c. P</label>
+        <label><input type="radio" name="q8" value="d"> d. K</label>
+      </div>
+      
+      <!-- Question 9 -->
+      <div class="question" id="question9">
+        <p>9. What is this sign?</p>
+        <img src="\images\letterS.jpg" alt="letter S" width="200" height="200">
+        <label><input type="radio" name="q9" value="a"> a. T</label>
+        <label><input type="radio" name="q9" value="b"> b. M</label>
+        <label><input type="radio" name="q9" value="c"> c. A</label>
+        <label><input type="radio" name="q9" value="d"> d. S</label>
+      </div>
+      
+      <!-- Submit button -->
+      <div class="submit-container">
+        <button type="button" id="submitBtn">Submit Quiz</button>
+      </div>
+    </form>
+    <div id="scoreContainer" class="score-box"></div>
+    <div id="reviewContainer" class="review-box hidden"></div>
+  </div>
+    
+    
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('aslQuizForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const questions = form.querySelectorAll('.question');
+      const correctAnswers = ['c', 'a', 'a', 'c', 'b', 'd', 'd', 'a', 'd']; // Replace with correct answers for Lesson 5
+      const scoreContainer = document.getElementById('scoreContainer');
+      const reviewContainer = document.getElementById('reviewContainer');
 
-<h1>Lesson 5: O-T</h1>
-<h2>Lesson 5 Quiz Questions</h2>
-<p>1. What sign from this lesson resembles K in shape? <br>a. S <br>b. O <br>c. P <br>d. H</p>
-<p>2. What sign from this lesson resembles A in shape? <br>a. R <br>b. S <br>c. Q <br>d. J</p>
-<p>3. What sign from this lesson crosses fingers 2 and 3? <br>a. R <br>b. S <br>c. M <br>d. N</p>
-<p>4. What is this sign?</p>
-<img src="letterQ.jpg" alt="letter Q" width="150" height ="250">
-<p>a. H <br>b. P <br>c. Q <br>d. T</p>
-<p>5. What is this sign?</p>
-<img src="letterO.jpg" alt="letter O" width="150" height ="250">
-<p>a. P <br>b. O <br>c. T <br>d. C</p>
-<p>6. What is this sign?</p>
-<img src="letterT.jpg" alt="letter T" width="200" height ="200">
-<p>a. M <br>b. N <br>c. S <br>d. T</p>
-<p>7. What is this sign?</p>
-<img src="letterP.jpg" alt="letter P" width="250" height ="150">
-<p>a. S <br>b. K <br>c. L <br>d. P</p>
-<p>8. What is this sign?</p>
-<img src="letterR.jpg" alt="letter R" width="150" height ="250">
-<p>a. R <br>b. D <br>c. P <br>d. K</p>
-<p>9. What is this sign?</p>
-<img src="letterS.jpg" alt="letter S" width="200" height ="200">
-<p>a. T <br>b. M <br>c. A <br>d. S</p>
+      submitBtn.addEventListener('click', function() {
+        let score = 0;
+        let allAnswered = true;
+        let unansweredQuestions = [];
+        
+        questions.forEach((question, index) => {
+          if (!question.querySelector('input[type="radio"]:checked')) {
+            allAnswered = false;
+            unansweredQuestions.push(index + 1);
+          }
+        });
 
+        if (!allAnswered) {
+          alert('Please answer all questions before submitting. You have not answered question numbers: ' + unansweredQuestions.join(', ') + '.');
+          return;
+        }
 
+        questions.forEach((question, index) => {
+          const chosenAnswer = question.querySelector('input[type="radio"]:checked');
+          const isCorrect = chosenAnswer.value === correctAnswers[index];
+          chosenAnswer.parentElement.classList.add(isCorrect ? 'correct' : 'incorrect');
+          const commentSpan = document.createElement('span');
+          commentSpan.classList.add('result-comment', isCorrect ? 'correct' : 'incorrect');
+          commentSpan.textContent = isCorrect ? 'Correct' : 'Incorrect';
+          chosenAnswer.parentElement.appendChild(commentSpan);
+          if (isCorrect) score++;
+        });
+
+        const totalQuestions = correctAnswers.length;
+        const scorePercentage = (score / totalQuestions) * 100;
+        
+        scoreContainer.className = 'score-box';
+        scoreContainer.textContent = `You scored ${score} out of ${totalQuestions} (${scorePercentage.toFixed(2)}%).`;
+        if (scorePercentage === 100) {
+          scoreContainer.textContent += ' Congratulations, you have mastered Lesson 5!';
+          scoreContainer.classList.add('green-box');
+          reviewContainer.style.display = 'none';
+        } else {
+          if (scorePercentage < 90) {
+            reviewContainer.innerHTML = '<a href="lesson5.html">Review Lesson 5</a>';
+            reviewContainer.style.display = 'block';
+          }
+          scoreContainer.classList.add(scorePercentage >= 90 ? 'green-box' : 'red-box');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
