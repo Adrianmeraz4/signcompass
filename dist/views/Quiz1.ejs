@@ -13,7 +13,6 @@
       background-color: #f7f7f7;
       color: #333;
     }
-
     /* Quiz Container */
     .quiz-container {
       max-width: 800px;
@@ -23,11 +22,10 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    h1 {
-      text-align: center;
-      color: #5a5a5a;
+     h1 img {
+      width: 50px; /* Adjust as per your logo's dimensions */
+      margin-right: 10px;
     }
-
     /* Question Styles */
     .question {
       margin-bottom: 20px;
@@ -73,11 +71,87 @@
     #submitBtn:hover {
       background-color: #45a049;
     }
+
+
+    /* Score Box Styles */
+    .score-box {
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      font-size: 18px;
+      text-align: center;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .green-box {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .yellow-box {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+
+    .red-box {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .review-box {
+      padding: 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+      text-align: center;
+      background-color: #f0f0f0;
+      border: 1px solid #ddd;
+    }
+    .hidden {
+      display: none;
+    }
+    .review-box a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .review-box a:hover {
+      text-decoration: underline;
+    }
+    
+    .correct {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .incorrect {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .highlight-missing {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+
+    .result-comment {
+      display: inline-block;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    .result-comment.correct {
+      color: #155724;
+    }
+
+    .result-comment.incorrect {
+      color: #721c24;
+    }
   </style>
 </head>
 <body>
   <div class="quiz-container">
-    <h1>Lesson 1: American Sign Language Quiz</h1>
+    <h1><img src="logo.png" alt=" ">Lesson 1: American Sign Language Quiz</h1>
     <form id="aslQuizForm">
       <!-- Question 1 -->
       <div class="question">
@@ -133,34 +207,70 @@
         <label><input type="radio" name="q6" value="d"> d. Entire body</label>
       </div>
 
+      <!-- Submit button -->
       <div class="submit-container">
-        <button type="submit" id="submitBtn">Submit Quiz</button>
+        <button type="button" id="submitBtn">Submit Quiz</button>
       </div>
     </form>
+    <div id="scoreContainer" class="score-box"></div>
+    <div id="reviewContainer" class="review-box hidden"></div>
   </div>
-
+    
+    
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const form = document.getElementById('aslQuizForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const questions = form.querySelectorAll('.question');
       const correctAnswers = ['a', 'd', 'b', 'a', 'c', 'c']; // Replace with correct answers
-      
-      form.onsubmit = function(event) {
-        event.preventDefault(); // Prevent the traditional form submission
+      const scoreContainer = document.getElementById('scoreContainer');
+      const reviewContainer = document.getElementById('reviewContainer');
+
+      submitBtn.addEventListener('click', function() {
         let score = 0;
-        const userAnswers = [...form.querySelectorAll('input[type="radio"]:checked')].map(input => input.value);
+        let allAnswered = true;
+        let unansweredQuestions = [];
         
-        userAnswers.forEach((answer, index) => {
-          if(answer === correctAnswers[index]) {
-            score++;
+        questions.forEach((question, index) => {
+          if (!question.querySelector('input[type="radio"]:checked')) {
+            allAnswered = false;
+            unansweredQuestions.push(index + 1);
           }
+        });
+
+        if (!allAnswered) {
+          alert('Please answer all questions before submitting. You have not answered question numbers: ' + unansweredQuestions.join(', ') + '.');
+          return;
+        }
+
+        questions.forEach((question, index) => {
+          const chosenAnswer = question.querySelector('input[type="radio"]:checked');
+          const isCorrect = chosenAnswer.value === correctAnswers[index];
+          chosenAnswer.parentElement.classList.add(isCorrect ? 'correct' : 'incorrect');
+          const commentSpan = document.createElement('span');
+          commentSpan.classList.add('result-comment', isCorrect ? 'correct' : 'incorrect');
+          commentSpan.textContent = isCorrect ? 'Correct' : 'Incorrect';
+          chosenAnswer.parentElement.appendChild(commentSpan);
+          if (isCorrect) score++;
         });
 
         const totalQuestions = correctAnswers.length;
         const scorePercentage = (score / totalQuestions) * 100;
         
-        // Display the score to the user
-        alert(`You scored ${score} out of ${totalQuestions} (${scorePercentage.toFixed(2)}%)`);
-      };
+        scoreContainer.className = 'score-box';
+        scoreContainer.textContent = `You scored ${score} out of ${totalQuestions} (${scorePercentage.toFixed(2)}%).`;
+        if (scorePercentage === 100) {
+          scoreContainer.textContent += ' Congratulations, you have mastered Lesson 1!';
+          scoreContainer.classList.add('green-box');
+          reviewContainer.style.display = 'none';
+        } else {
+          if (scorePercentage < 90) {
+            reviewContainer.innerHTML = '<a class=Lesson href="/Lesson1">Review Lesson 1</a>';
+            reviewContainer.style.display = 'block';
+          }
+          scoreContainer.classList.add(scorePercentage >= 90 ? 'green-box' : 'red-box');
+        }
+      });
     });
   </script>
 </body>
