@@ -13,7 +13,6 @@
       background-color: #f7f7f7;
       color: #333;
     }
-
     /* Quiz Container */
     .quiz-container {
       max-width: 800px;
@@ -21,11 +20,6 @@
       padding: 20px;
       background-color: #fff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      text-align: center;
-      color: #5a5a5a;
     }
 
      h1 img {
@@ -112,7 +106,9 @@
       background-color: #f0f0f0;
       border: 1px solid #ddd;
     }
-
+    .hidden {
+      display: none;
+    }
     .review-box a {
       color: #007bff;
       text-decoration: none;
@@ -121,6 +117,35 @@
 
     .review-box a:hover {
       text-decoration: underline;
+    }
+    
+    .correct {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .incorrect {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .highlight-missing {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+
+    .result-comment {
+      display: inline-block;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    .result-comment.correct {
+      color: #155724;
+    }
+
+    .result-comment.incorrect {
+      color: #721c24;
     }
   </style>
 </head>
@@ -169,60 +194,65 @@
         <button type="button" id="submitBtn">Submit Quiz</button>
       </div>
     </form>
-    <div id="resultsContainer"></div>
+    <div id="scoreContainer" class="score-box"></div>
+    <div id="reviewContainer" class="review-box hidden"></div>
   </div>
-
+    
+    
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const form = document.getElementById('aslQuizForm');
       const submitBtn = document.getElementById('submitBtn');
-      const resultsContainer = document.getElementById('resultsContainer');
+      const questions = form.querySelectorAll('.question');
       const correctAnswers = ['a', 'd', 'd', 'c']; // Correct answers for Lesson 2
+      const scoreContainer = document.getElementById('scoreContainer');
+      const reviewContainer = document.getElementById('reviewContainer');
 
-      submitBtn.onclick = function() {
-        const allAnswered = [...form.querySelectorAll('.question')].every(question => 
-          question.querySelector('input[type="radio"]:checked')
-        );
+      submitBtn.addEventListener('click', function() {
+        let score = 0;
+        let allAnswered = true;
+        let unansweredQuestions = [];
+        
+        questions.forEach((question, index) => {
+          if (!question.querySelector('input[type="radio"]:checked')) {
+            allAnswered = false;
+            unansweredQuestions.push(index + 1);
+          }
+        });
+
         if (!allAnswered) {
-          alert('Please answer all questions before submitting the quiz.');
+          alert('Please answer all questions before submitting. You have not answered question numbers: ' + unansweredQuestions.join(', ') + '.');
           return;
         }
 
-        let score = 0;
-        const userAnswers = [...form.querySelectorAll('input[type="radio"]:checked')];
-        
-        userAnswers.forEach((input, index) => {
-          if (input.value === correctAnswers[index]) {
-            score++;
-          }
+        questions.forEach((question, index) => {
+          const chosenAnswer = question.querySelector('input[type="radio"]:checked');
+          const isCorrect = chosenAnswer.value === correctAnswers[index];
+          chosenAnswer.parentElement.classList.add(isCorrect ? 'correct' : 'incorrect');
+          const commentSpan = document.createElement('span');
+          commentSpan.classList.add('result-comment', isCorrect ? 'correct' : 'incorrect');
+          commentSpan.textContent = isCorrect ? 'Correct' : 'Incorrect';
+          chosenAnswer.parentElement.appendChild(commentSpan);
+          if (isCorrect) score++;
         });
 
         const totalQuestions = correctAnswers.length;
         const scorePercentage = (score / totalQuestions) * 100;
-        let scoreBoxClass = '';
-
-        if (scorePercentage >= 90) {
-          scoreBoxClass = 'green-box';
-        } else if (scorePercentage >= 80) {
-          scoreBoxClass = 'yellow-box';
+        
+        scoreContainer.className = 'score-box';
+        scoreContainer.textContent = `You scored ${score} out of ${totalQuestions} (${scorePercentage.toFixed(2)}%).`;
+        if (scorePercentage === 100) {
+          scoreContainer.textContent += ' Congratulations, you have mastered Lesson 2!';
+          scoreContainer.classList.add('green-box');
+          reviewContainer.style.display = 'none';
         } else {
-          scoreBoxClass = 'red-box';
+          if (scorePercentage < 90) {
+            reviewContainer.innerHTML = '<a href="lesson2.html">Review Lesson 2</a>';
+            reviewContainer.style.display = 'block';
+          }
+          scoreContainer.classList.add(scorePercentage >= 90 ? 'green-box' : 'red-box');
         }
-
-        resultsContainer.innerHTML = `
-          <div class="score-box ${scoreBoxClass}">
-            You scored ${score} out of ${totalQuestions} (${scorePercentage.toFixed(2)}%).
-          </div>
-        `;
-
-        if (scorePercentage < 90) {
-          resultsContainer.innerHTML += `
-            <div class="review-box">
-              <a href="lesson2.html">Review Lesson 2</a>
-            </div>
-          `;
-        }
-      };
+      });
     });
   </script>
 </body>
