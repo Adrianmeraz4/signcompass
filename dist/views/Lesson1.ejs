@@ -4,85 +4,432 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/style.css">
+    <title>ASL Lesson 1: Introduction</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Reset some basic elements */
+        body,
+        h1,
+        h2,
+        p,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #005f73;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            color: #005f73;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        p,
+        ul {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        ul {
+            list-style: inside square;
+            padding-left: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #005f73;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 0 10px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                margin: 10px 0;
+            }
+        }
+
+        /* Interactive Elements Style */
+        button,
+        .btn {
+            display: inline-block;
+            background: #0077b6;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover,
+        .btn:hover {
+            background: #023e8a;
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .bg-primary {
+            background-color: #023e8a;
+            color: #fff;
+        }
+
+        .bg-light {
+            background-color: #caf0f8;
+        }
+
+        .text-white {
+            color: #fff;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .justify-center {
+            text-align: center;
+        }
+
+        .max-md {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .px-20 {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        /* Adding some animations for engagement */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Aligns items to the top */
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        .content-container {
+            display: flex;
+            align-items: start;
+            /* Aligns items to the top */
+            margin-right: 0;
+        }
+
+        .introduction {
+            flex-grow: 1;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+
+        .did-you-know {
+            width: 300px;
+            /* Adjust the width as needed */
+            margin-left: 3px;
+            /* Space between the main content and the box */
+            padding: 10px;
+            background-color: #add8e6;
+            /* Changing background color to yellow */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Optional: Adds a subtle shadow for depth */
+        }
+
+        .did-you-know h3 {
+            background-color: #f9c74f;
+            /* A shade of yellow for the title background */
+            padding: 5px;
+            margin: -10px -10px 10px -10px;
+            /* Aligns the title background with the box edges */
+            border-bottom: 1px solid #ccc;
+            /* A border to separate the title */
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .toggle-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+            padding: 0 10px;
+        }
+
+        #didYouKnowContent.hide {
+            display: none;
+        }
+
+
+
+        .section-container {
+            /* Optional: General styling for sections */
+        }
+
+        .section-container {
+            /* Optional: General styling for sections */
+        }
+
+        .flex-container {
+            display: flex;
+            align-items: flex-start;
+            /* Aligns items to the top */
+            gap: 20px;
+            /* Space between text and example boxes */
+        }
+
+        .text-content {
+            flex-grow: 1;
+            /* Allows text content to grow and fill the space */
+        }
+
+        .examples-container {
+            display: flex;
+            flex-direction: column;
+            /* Stack boxes vertically */
+            gap: 10px;
+            /* Space between the two boxes */
+        }
+
+        .example-box {
+            flex-basis: 200px;
+            /* Adjust the width of the example boxes */
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+        .tab {
+            display: inline-block;
+            background-color: #0077b6;
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            margin: 5px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #005f73;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="bg-primary">
-        <div class="justify-center">
-            <h1 class="site-title text-white font-bold">Lesson 1: Introduction</h1>
-        </div>
-    </div>
-    <div class="container justify-center max-md: px-20">
-        <h2>What is ASL?</h2>
-        <p>ASL or American Sign Language is a non-verbal language used by the deaf and mute community in the US. ASL
-            uses a
-            combination of hand signs,
-            <br> directional motions, and gestures to convey language and meaning. Around 430,000 people In the US
-            use ASL
-            to communicate and now you can
-            <br> too. This introductory lesson will teach you basic information about ASL before learning any signs,
-            the
-            information is crucial still so
-            <br> pay attention.
-        </p>
-        <h2>Static vs Dynamic</h2>
-        <p>In American Sign Language there are two types of signs: Static and Dynamic</p>
-        <p>Static signs rely on the use of the shape and direction of your hands and fingers and are typically
-            reserved for
-            letters, numbers, and simple
-            <br> words. This Introductory will primarily focus on these signs.
-        </p>
-        <p>Dynamic signs incorporate gestures and movements with shape and direction to symbolize larger words or
-            even
-            strings of them.</p>
+    <header>
+        <h1><img src="\images\Logo.png" alt=" ">Lesson 1: Introduction</h1>
+    </header>
 
+
+    <div class="flex-container">
+        <section class="introduction">
+            <h2>What is ASL?</h2>
+            <p>ASL or American Sign Language is a non-verbal language used by the deaf and mute community in the US. ASL
+                uses a combination of hand signs,
+                directional motions, and gestures to convey language and meaning. Around 430,000 people In the US use
+                ASL to communicate and now you can
+                too. This introductory lesson will teach you basic information about ASL before learning any signs, the
+                information is crucial still so
+                pay attention.</p>
+        </section>
+
+        <aside class="did-you-know">
+            <h3>Did You Know?<span class="toggle-button" onclick="toggleDidYouKnow()">+</span></h3>
+            <div id="didYouKnowContent" class="hide">
+                <p>American Sign Language is a complete, natural language with its own unique rules of grammar and
+                    syntax? It's not just a visual representation of English, but a distinct language in its own right
+                </p>
+            </div>
+        </aside>
+
+    </div>
+
+    </div>
+
+    <div class="section-container">
+        <section class="static-dynamic">
+            <div class="flex-container">
+                <div class="text-content">
+                    <h2>Static vs Dynamic Signs</h2>
+                    <div class="paragraph">
+                        <h3>Static</h3>
+                        <p>In American Sign Language there are two types of signs: Static and Dynamic
+
+                            Static signs rely on the use of the shape and direction of your hands and fingers and are
+                            typically reserved for letters, numbers, and simple
+                            words. This Introductory will primarily focus on these signs.</p>
+                    </div>
+                    <div class="paragraph">
+                        <h3>Dynamic</h3>
+                        <p>Dynamic signs incorporate gestures and movements with shape and direction to symbolize larger
+                            words or even strings of them.</p>
+                    </div>
+                </div>
+                <div class="examples-container">
+                    <aside class="example-box">
+                        <h3>Static</h3>
+                        <p>Example of a static sign...</p>
+                    </aside>
+                    <aside class="example-box">
+                        <h3>Dynamic</h3>
+                        <p>Example of a dynamic sign...</p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+        <!-- ... other sections ... -->
+    </div>
+
+
+    <section class="orientation">
         <h2>Importance of Orientation</h2>
-        <p>Verbal language uses several letters to compose endless combinations. The way sign languages approach
-            this is
+        <p>Verbal language uses several letters to compose endless combinations. The way sign languages approach this is
             similar, using the hand direction
-            <br> and fingers to represent the particular word. Just like the words brood and broad are only a one
-            letter
+            and fingers to represent the particular word. Just like the words brood and broad are only a one letter
             difference, signs do the same, the
-            <br>difference between the letter A and S is the position of the thumb in the sign.
-        </p>
-        <img src="\images\AandSexample.jpg" alt="A and S example" width="100" height="100">
+            difference between the letter A and S is the position of the thumb in the sign..</p>
+    </section>
 
+    <section class="hand-direction">
         <h2>Hand Direction</h2>
-        <p>The direction of the hand is of great importance, not only because it can change the word entirely, it
-            also is
-            crucial in the readability of your
-            <br> signs. Think of a limp wrist symbolizing a slurred word, it can be harder to read and understand if
-            your
+        <p>The direction of the hand is of great importance, not only because it can change the word entirely, it also
+            is crucial in the readability of your
+            signs. Think of a limp wrist symbolizing a slurred word, it can be harder to read and understand if your
             sign isn't properly displayed. When
-            <br>displaying a sign, your hand should be steady with your palm typically facing your listener and each
-            sign
+            displaying a sign, your hand should be steady with your palm typically facing your listener and each sign
             should be completed and pronounced before
-            <br> starting the next
-        </p>
+            starting the next</p>
+    </section>
 
-        <h2>Finger identification</h2>
-        <p>Throughout these lessons you will have instructions on how to arrange your fingers to produce the sign
-            being
+    <section class="finger-identification">
+        <h2>Finger Identification</h2>
+        <p>Throughout these lessons you will have instructions on how to arrange your fingers to produce the sign being
             taught. The Fingers will be labeled
-            <br> from Thumb to pinkie and your right hand to produce the signs. The Fingers number assignment will
-            be shown
+            from Thumb to pinkie and your right hand to produce the signs. The Fingers number assignment will be shown
             below
-        </p>
-        <p>1 - Thumb</p>
-        <p>2 - Pointer finger</p>
-        <p>3 - Middle finger</p>
-        <p>4 - Ring finger</p>
-        <p>5 - Pinky</p>
 
+            1 - Thumb
+
+            2 - Pointer finger
+
+            3 - Middle finger
+
+            4 - Ring finger
+
+            5 - Pinky
+
+        </p>
+        <ul>
+            <li>1 - Thumb</li>
+            <li>2 - Pointer finger</li>
+            <li>3 - Middle finger</li>
+            <li>4 - Ring finger</li>
+            <li>5 - Pinky</li>
+        </ul>
+    </section>
+
+    <section class="example">
         <h2>Example</h2>
-        <p>Can you figure out what hand sign is being made here? If fingers 3 and 4 are down but fingers 1, 2, and 5
-            are
-            out, what popular hand sign is this?</p>
-        <p>Its the rock and roll hand sign. Fun Fact, in ASL that sign means "I love you"</p>
-        <img src="\images\Rockexample.jpg" alt="rock symbol" width="100" height="100">
-        <img src="\images\Loveexample.jpg" alt="Love symbol" width="100" height="100">
+        <p>Example
+            Can you figure out what hand sign is being made here? If fingers 3 and 4 are down but fingers 1, 2, and 5
+            are out, what popular hand sign is this?
+
+            Its the rock and roll hand sign. Fun Fact, in ASL that sign means "I love you"</p>
+    </section>
+    <div class="tab-container">
+        <a class="tab" href="/Lesson2">Continue with Lesson 2</a>
+        <a href="/Quiz1" class="tab">Practice Quiz 1</a>
+        <class=Test2 href="/Test2" class="tab">Practice on Webcam</a>
     </div>
+
+    <footer class="text-center mt-12">
+        &copy; 2023 Sign Compass
+    </footer>
+
+
+    <script>
+        // JavaScript to toggle the visibility of the Did You Know content
+        function toggleDidYouKnow() {
+            var content = document.getElementById("didYouKnowContent");
+            var toggleButton = document.querySelector('.toggle-button');
+            if (content.classList.contains('hide')) {
+                content.classList.remove('hide');
+                toggleButton.textContent = '-';
+            } else {
+                content.classList.add('hide');
+                toggleButton.textContent = '+';
+            }
+        }
+    </script>
 </body>
 
 </html>
