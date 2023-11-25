@@ -157,6 +157,12 @@ async function main()
     models.push(tempmodel);
     tempmodel = await tf.loadLayersModel('https://raw.githubusercontent.com/Adrianmeraz4/signcompass/main/AImodels/TSmodel3.json');
     models.push(tempmodel);
+    tempmodel = await tf.loadLayersModel('https://raw.githubusercontent.com/Adrianmeraz4/signcompass/main/AImodels/TSmodel4.json');
+    models.push(tempmodel);
+    tempmodel = await tf.loadLayersModel('https://raw.githubusercontent.com/Adrianmeraz4/signcompass/main/AImodels/TSmodel6.json');
+    models.push(tempmodel);
+    
+    
     numModels = models.length;
     console.log(models);
   }
@@ -234,7 +240,7 @@ var doMath = false;
                             console.log(prediction);
                             var j = 0;
                             while (j < 26) {
-                              totalPredictions[j] += prediction[j];
+                              totalPredictions[j] += prediction[j] * prediction[j];
                               j++;
                             }
                           }
