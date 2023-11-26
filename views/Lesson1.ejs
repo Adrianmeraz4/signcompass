@@ -37,6 +37,12 @@
             font-size: 2.5rem;
         }
 
+        h1 img {
+            width: 50px;
+            /* Adjust as per your logo's dimensions */
+            margin-right: 10px;
+        }
+
         section {
             padding: 20px;
             margin: 20px;
@@ -179,11 +185,11 @@
 
 
         .did-you-know {
-            width: 300px;
+            width: 500px;
             /* Adjust the width as needed */
             margin-left: 3px;
             /* Space between the main content and the box */
-            padding: 10px;
+            padding: 30px;
             background-color: #add8e6;
             /* Changing background color to yellow */
             border: 1px solid #ccc;
@@ -200,8 +206,13 @@
             /* Aligns the title background with the box edges */
             border-bottom: 1px solid #ccc;
             /* A border to separate the title */
-            font-size: 1.2rem;
+            font-size: 1rem;
             position: relative;
+        }
+
+        .did-you-know p {
+            font-size: 0.8rem;
+            /* Reduced font size for the content */
         }
 
         .toggle-button {
@@ -230,12 +241,12 @@
             display: flex;
             align-items: flex-start;
             /* Aligns items to the top */
-            gap: 20px;
+            gap: 5px;
             /* Space between text and example boxes */
         }
 
         .text-content {
-            flex-grow: 1;
+            flex-grow: 0.5px;
             /* Allows text content to grow and fill the space */
         }
 
@@ -247,13 +258,167 @@
             /* Space between the two boxes */
         }
 
+
+        /* Set a fixed size for .example-box for PC screens */
         .example-box {
-            flex-basis: 200px;
-            /* Adjust the width of the example boxes */
-            padding: 10px;
+            width: 300px;
+            /* Fixed width for PC */
+            height: 300px;
+            /* Fixed height for PC */
+            padding: 80px;
             background-color: #f0f0f0;
             border: 1px solid #ccc;
             border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 5px;
+            /* Spacing between the example box and thumbnails */
+        }
+
+
+
+        .example-box iframe {
+            width: 100%;
+            /* Full width of the box */
+            height: 100%;
+            /* Full height of the box */
+            position: absolute;
+            /* Position it over the box */
+            top: 0;
+            left: 0;
+        }
+
+        .video-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent background */
+            color: white;
+            text-align: center;
+            padding: 5px;
+            font-size: 0.8rem;
+        }
+
+        .video-thumbnails img {
+            width: 100px;
+            /* Adjust as needed */
+            height: auto;
+            margin: 5px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            /* Optional border for thumbnails */
+            border-radius: 4px;
+        }
+
+        .video-thumbnails {
+            margin-top: 5px;
+            /* 0.5 inch margin */
+            /* Additional styles if needed */
+        }
+
+        /* Responsive adjustments for mobile devices */
+        @media (max-width: 768px) {
+            .example-box {
+                position: static;
+                /* Reset to default flow of document */
+                width: 100%;
+                /* Full width on smaller screens */
+                height: auto;
+                /* Height is auto to maintain aspect ratio */
+                padding: 10px;
+                margin: 20px 0;
+                /* Add margin on top and bottom for spacing */
+            }
+        }
+
+        .example-box iframe {
+            height: auto;
+            aspect-ratio: 16 / 9;
+            /* Standard aspect ratio for videos */
+        }
+
+
+        .orientation h2 {
+            color: #005f73;
+            /* Dark, contrasting color for the heading */
+            margin-bottom: 15px;
+            /* Space below the heading */
+            font-size: 2rem;
+            /* Larger font size for the heading */
+            text-align: center;
+            /* Center-align the heading */
+        }
+
+        .orientation p {
+            font-size: 1rem;
+            /* Standard font size for paragraph */
+            margin-bottom: 20px;
+            /* Space between paragraphs */
+            text-align: justify;
+            /* Justified text for a clean look */
+        }
+
+        .example-pictures {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .orientation {
+            background-color: #f8f9fa;
+            /* Light background for the section */
+            border-radius: 8px;
+            /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow for depth */
+            padding: 30px;
+            /* Ample padding for content */
+            margin: 20px 0;
+            /* Vertical margin for separation from other content */
+            max-width: 800px;
+            /* Maximum width for better readability */
+            margin-left: auto;
+            /* Center the section horizontally */
+            margin-right: auto;
+            font-family: 'Arial', sans-serif;
+            /* Modern, readable font */
+            color: #333;
+            /* Dark gray color for text for readability */
+            line-height: 1.6;
+            /* Comfortable line spacing */
+            display: flex;
+            /* Enable flexbox layout */
+            flex-wrap: wrap;
+            /* Allow items to wrap to the next line */
+            justify-content: space-around;
+            /* Space out items evenly */
+            align-items: center;
+            /* Vertically align items in the middle */
+        }
+
+        .picture-box {
+            width: 30%;
+            /* Adjust based on desired size */
+            border: 1px solid #ccc;
+            /* Example border */
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .picture-box img {
+            width: 100%;
+            /* Make image fill the box */
+            height: auto;
+            /* Keep aspect ratio */
+        }
+
+        .picture-box {
+            flex-basis: 30%;
+            margin: 10px;
+            /* Add more styles if needed */
         }
 
         .tab-container {
@@ -293,11 +458,25 @@
     <div class="flex-container">
         <section class="introduction">
             <h2>What is ASL?</h2>
-            <p>ASL or American Sign Language is a non-verbal language used by the deaf and mute community in the US. ASL
-                uses a combination of hand signs,
-                directional motions, and gestures to convey language and meaning. Around 430,000 people In the US use
-                ASL to communicate and now you can
-                too. This introductory lesson will teach you basic information about ASL before learning any signs, the
+            <p>American Sign Language (ASL) is an intricate and profound form of non-verbal communication widely used by
+                the deaf and hard-of-hearing community across the United States. Distinguished by its complexity, ASL
+                transcends mere hand gestures, incorporating a spectrum of facial expressions, body language, and
+                directional movements to articulate a complete linguistic system. This language is not a manual-gestural
+                rendition of English, but a unique linguistic entity with its own grammar, syntax, and cultural nuances.
+                With approximately 430,000 individuals in the U.S. using ASL as their primary communication mode, its
+                role in everyday interactions is both significant and impactful.
+                In this introductory module on our Sign Language website, we aim to lay a foundational understanding of
+                ASL. Our focus is not just on teaching hand signs, but rather on conveying the essence of ASL as a
+                culturally rich language. An important aspect of learning ASL is recognizing the importance of facial
+                expressions and body dynamics, which are as crucial as the hand signs themselves in conveying meanings
+                and emotions. ASL is inherently a visual language where subtleties in expression and gesture play a key
+                role in effective communication.
+                As we delve into the world of ASL, it's important to appreciate its cultural and contextual aspects.
+                This immersive learning experience is designed to provide a comprehensive understanding of ASL,
+                preparing you for a deeper exploration of this fascinating language in future lessons.
+
+
+                This introductory lesson will teach you basic information about ASL before learning any signs, the
                 information is crucial still so
                 pay attention.</p>
         </section>
@@ -321,42 +500,109 @@
                 <div class="text-content">
                     <h2>Static vs Dynamic Signs</h2>
                     <div class="paragraph">
+                        <p>In American Sign Language there are two types of signs: Static and Dynamic.</p>
                         <h3>Static</h3>
-                        <p>In American Sign Language there are two types of signs: Static and Dynamic
+                        <p> Definition: Static signs in ASL are those that do not involve movement. They are stationary
+                            handshapes or gestures. Static signs rely on the use of the shape and direction of your
+                            hands and fingers and are typically reserved for letters, numbers, and simple
+                            words. This Introductory will primarily focus on these signs.<br> </br>
+                            Characteristics: These signs usually involve a specific handshape held in a particular
+                            position or location relative to the body, without any change in the handshape or movement
+                            of the hands through space.<br> </br>
+                            Examples:<br> </br>
+                            • The sign for "tree" typically involves an extended arm and fingers to mimic the shape of a
+                            tree trunk and branches, held in a stationary position.<br></br>
+                            • The sign for "book" often involves holding your hands together as if holding a closed
+                            book, without moving them.
 
-                            Static signs rely on the use of the shape and direction of your hands and fingers and are
-                            typically reserved for letters, numbers, and simple
-                            words. This Introductory will primarily focus on these signs.</p>
+                        </p>
                     </div>
                     <div class="paragraph">
                         <h3>Dynamic</h3>
                         <p>Dynamic signs incorporate gestures and movements with shape and direction to symbolize larger
-                            words or even strings of them.</p>
+                            words or even strings of them. <br> </br>
+                            Definition: Dynamic signs, on the other hand, involve movement. These are signs where the
+                            shape, position, or orientation of the hands change during the course of making the sign.
+                            <br> </br>
+
+                            Characteristics: These signs may involve moving the hands through space, changing hand
+                            orientation, or altering the handshape during the sign. The movement is a critical component
+                            of the sign's meaning. <br> </br>
+
+                            Examples: <br> </br>
+
+                            The sign for "to eat" involves moving a handshape towards the mouth.<br></br>
+                            The sign for "running" involves a repeated motion with both hands to represent legs moving
+                            rapidly. <br> </br>
+                        </p>
                     </div>
                 </div>
                 <div class="examples-container">
                     <aside class="example-box">
                         <h3>Static</h3>
-                        <p>Example of a static sign...</p>
+                        <p><img src="\images\Logo.png" </p>
                     </aside>
                     <aside class="example-box">
-                        <h3>Dynamic</h3>
-                        <p>Example of a dynamic sign...</p>
+                        <h3 id="videoTitle">Dynamic sign example "Run"</h3>
+                        <iframe id="videoFrame" src="https://www.youtube.com/embed/3SfSTfhE5wU" frameborder="0"
+                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div id="videoSource" class="video-footer">
+                            Source: YouTube / Learn How to Sign- Dictionary
+                        </div>
                     </aside>
+
+                    <div class="video-thumbnails">
+                        <img src="https://img.youtube.com/vi/7vb1keBnzwg/0.jpg"
+                            onclick="changeVideo('7vb1keBnzwg', 'ASK', 'YouTube / Sign')" alt="ASK">
+                        <img src="https://img.youtube.com/vi/d9hsNSJCs2A/0.jpg"
+                            onclick="changeVideo('d9hsNSJCs2A', 'Eat', 'YouTube / Springdale public school')" alt="Eat">
+                        <img src="https://img.youtube.com/vi/3SfSTfhE5wU/0.jpg"
+                            onclick="changeVideo('3SfSTfhE5wU', 'Run', 'YouTube / Learn How to Sign- Dictionary')"
+                            alt="Run">
+                        <!-- Add more thumbnails here -->
+                    </div>
+
+
                 </div>
-            </div>
         </section>
         <!-- ... other sections ... -->
     </div>
 
-
     <section class="orientation">
         <h2>Importance of Orientation</h2>
-        <p>Verbal language uses several letters to compose endless combinations. The way sign languages approach this is
-            similar, using the hand direction
-            and fingers to represent the particular word. Just like the words brood and broad are only a one letter
-            difference, signs do the same, the
-            difference between the letter A and S is the position of the thumb in the sign..</p>
+        <p>Imagine you're drawing a picture, but the way you hold your pencil changes what the picture looks like.
+            That's kind of how sign language works. In sign language, the way you position your hands, the direction
+            they're facing, and where your fingers are can change the meaning of what you're saying, just like different
+            pencil strokes change a drawing.<br> </br>
+            For instance, in American Sign Language (ASL), there are letters like 'A' and 'S' that look very similar.
+            The only difference is where the thumb is placed. This is a bit like how in English, words like 'cat' and
+            'bat' sound similar but mean different things because of one letter. In sign language, moving your hand a
+            little bit, or changing how a finger is bent, can completely change what the sign means.<br> </br>
+            This is why being precise with hand movements in sign language is so important. If you don't use your hands
+            and fingers correctly, people might get the wrong message. It's like telling a story with your hands, and
+            every detail of your hand movement adds to the story, making it clear and interesting.
+            Learning sign language isn't just about knowing a bunch of hand signs; it's about learning a whole new way
+            to talk without speaking. Every hand shape, every movement, tells part of the story. And just like learning
+            any new language, it takes practice and attention to details.<br> </br>
+            For kids and adults alike, understanding this is key to being good at sign language. It's not only useful
+            for talking to people who are deaf or hard of hearing but also a fun way to communicate silently, like
+            having your own secret code. By paying attention to the small details in how you move your hands, you can
+            become really good at this beautiful language.<br> </br>
+            Remember, in sign language, every hand movement is like a word in a story. So, when you're signing, think
+            about making your story as clear and vivid as possible with your hands. It's a wonderful way to express
+            yourself and connect with others in a unique and special way.
+
+        </p>
+        <!-- Example Pictures within the section -->
+        <div class="example-pictures">
+            <div class="picture-box">
+                <img src="\images\AandSexample.jpg" alt="A ">
+            </div>
+            <div class="picture-box">
+                <img src="\images\AandSexample.jpg" alt="S">
+            </div>
+
+        </div>
     </section>
 
     <section class="hand-direction">
@@ -368,6 +614,7 @@
             displaying a sign, your hand should be steady with your palm typically facing your listener and each sign
             should be completed and pronounced before
             starting the next</p>
+
     </section>
 
     <section class="finger-identification">
@@ -404,10 +651,12 @@
             are out, what popular hand sign is this?
 
             Its the rock and roll hand sign. Fun Fact, in ASL that sign means "I love you"</p>
+        <img src="\images\Rockexample.jpg" alt="rock symbol" width="100" height="100">
+        <img src="\images\Loveexample.jpg" alt="Love symbol" width="100" height="100">
     </section>
     <div class="tab-container">
-        <a class="tab" href="/Lesson2">Continue with Lesson 2</a>
-        <a href="/Quiz1" class="tab">Practice Quiz 1</a>
+        <a href="/lesson2" class="tab">Continue with Lesson 2</a>w
+        <a href="/quiz1" class="tab">Practice Quiz 1</a>
         <class=Test2 href="/Test2" class="tab">Practice on Webcam</a>
     </div>
 
@@ -415,8 +664,8 @@
         &copy; 2023 Sign Compass
     </footer>
 
-
     <script>
+
         // JavaScript to toggle the visibility of the Did You Know content
         function toggleDidYouKnow() {
             var content = document.getElementById("didYouKnowContent");
@@ -429,6 +678,17 @@
                 toggleButton.textContent = '+';
             }
         }
+
+        function changeVideo(videoId, title, source) {
+            var iframe = document.getElementById('videoFrame');
+            var videoTitle = document.getElementById('videoTitle');
+            var videoSource = document.getElementById('videoSource');
+
+            iframe.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
+            videoTitle.textContent = "Dynamic sign example \"" + title + "\"";
+            videoSource.textContent = "Source: " + source;
+        }
+
     </script>
 </body>
 

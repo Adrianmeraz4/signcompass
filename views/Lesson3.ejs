@@ -1,67 +1,1219 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
-    <title>Lesson 3 D-G</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/style.css">
+    <title>ASL Lesson 1: Introduction</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Resets margin and padding for a list of elements to ensure consistency across browsers */
+        body,
+        h1,
+        h2,
+        p,
+        ul,
+        li {
+            margin: 0;
+            /* Removes default margin */
+            padding: 0;
+            /* Removes default padding */
+        }
+
+        /* Body element styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            /* Sets the default font family */
+            line-height: 1.6;
+            /* Sets the default line height */
+            color: #333;
+            /* Sets the default text color */
+            background-color: #f4f4f4;
+            /* Sets the default background color */
+        }
+
+        /* Header element styling */
+        header {
+            background: #005f73;
+            /* Background color for the header */
+            color: #fff;
+            /* Text color for content in the header */
+            padding: 20px 0;
+            /* Vertical padding for the header */
+            text-align: center;
+            /* Centers the text horizontally */
+        }
+
+        /* Main header title styling */
+        header h1 {
+            font-size: 2.5rem;
+            /* Sets the font size for the main title */
+            margin: 0;
+            /* Resets any default margin */
+        }
+
+        /* Responsive styling for header title on smaller screens */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+                /* Decreases font size for smaller screens */
+            }
+        }
+
+        /* Section element styling */
+        section {
+            padding: 20px;
+            /* Padding inside each section */
+            margin: 10px;
+            /* Margin around each section */
+            background: white;
+            /* Background color for each section */
+            border-radius: 8px;
+            /* Rounded corners for the section backgrounds */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            /* Shadow effect for sections */
+        }
+
+        /* Subsection titles styling */
+        section h2 {
+            color: #005f73;
+            /* Text color for subsection titles */
+            margin-bottom: 10px;
+            /* Bottom margin for spacing under the title */
+            font-size: 1.8rem;
+            /* Font size for subsection titles */
+        }
+
+
+
+        /* sample */
+        /* Paragraph text styling */
+        p,
+        ul {
+            font-size: 1rem;
+            /* Slightly larger font size for readability */
+            line-height: 1.7;
+            /* Increased line height for better readability */
+            color: #333;
+            /* Dark grey for improved legibility */
+            margin-bottom: 1rem;
+            /* Adds a bottom margin to separate paragraphs and lists from following content */
+            max-width: 60ch;
+            /* Optimizes line length for reading comfort; 'ch' is the width of the '0' character */
+            text-align: justify;
+            /* Justifies the text for a clean, aligned appearance */
+        }
+
+        /* Unordered list styling */
+        ul {
+            list-style: inside square;
+            /* Removes the default list style */
+            padding-left: 20px;
+            /* Resets padding to align with other content */
+            margin-left: 1rem;
+            /* Adds a left margin where bullet points will be placed */
+            position: relative;
+            /* Enables positioning of pseudo-elements */
+        }
+
+        /* Add custom styled bullets with pseudo-elements */
+        ul li::before {
+            /* The bullet point character */
+            color: #0077b6;
+            /* A color that matches the website's theme */
+            display: inline-block;
+            /* Allows setting of width and margin */
+            width: 1.1rem;
+            /* Width of the bullet area */
+            margin-left: -1.5rem;
+            /* Pulls the bullet into the correct position */
+            text-align: center;
+            /* Centers the bullet in the allocated area */
+        }
+
+        /* Unordered list item styling */
+        ul li {
+            margin-bottom: 0.5rem;
+            /* Adds spacing between list items */
+            padding-left: 0.5rem;
+            /* A little padding from the bullet to the text */
+        }
+
+        /* Footer element styling */
+        footer {
+            text-align: center;
+            /* Centers the text horizontally in the footer */
+            padding: 20px 0;
+            /* Vertical padding for the footer */
+            background: #005f73;
+            /* Background color for the footer */
+            color: white;
+            /* Text color for content in the footer */
+        }
+
+
+
+        /* Button and button-like elements (.btn class) styling */
+        button,
+        .btn {
+            background: #0077b6;
+            /* Background color for buttons */
+            color: #fff;
+            /* Text color for buttons */
+            padding: 10px 20px;
+            /* Padding inside buttons */
+            border: none;
+            /* Removes the border from buttons */
+            border-radius: 5px;
+            /* Rounded corners for buttons */
+            cursor: pointer;
+            /* Changes cursor to pointer when hovering over buttons */
+            transition: background 0.3s ease;
+            /* Transition effect for background color changes */
+        }
+
+        /* Hover effect for buttons */
+        button:hover,
+        .btn:hover {
+            background: #023e8a;
+            /* Darkens the button background on hover */
+        }
+
+
+
+
+        /*. Start */
+
+        .flex-container {
+            display: flex;
+            /* Enables flexbox layout */
+            flex-wrap: wrap;
+            /* Prevents the items from wrapping */
+            align-items: stretch;
+            /* Stretches the child elements to fit the container height */
+            width: 100%;
+            /* Full width of the container */
+            box-sizing: border-box;
+            /* Border and padding are included in the width */
+        }
+
+        .asf-lesson {
+            display: flex;
+            /* Enables flexbox layout */
+            width: 100%;
+            /* Full width of the container */
+        }
+
+
+        .lesson-text {
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: auto;
+            /* Adjusted based on the fixed widths of the example box and sidebar */
+            padding: 20px;
+            /* Adds space inside the borders of the content area */
+            margin-right: 10px;
+            /* Adds space between the lesson text and the example box */
+            background-color: #f9f9f9;
+            /* A subtle background color */
+            border-radius: 4px;
+            /* Slightly rounded corners for a modern look */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Soft shadow for depth */
+            color: #333;
+            /* Darker text for better readability */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* A modern, readable font-family */
+            line-height: 1.4;
+            /* Space between lines for readability */
+            overflow: hidden;
+            /* Ensures no content spills out */
+            border: 1px solid #ddd;
+            /* Adds a border for definition */
+        }
+
+        /* You might want to style the <ul> inside the .lesson-text for better typography */
+        .lesson-text ul {
+            padding-left: 20px;
+            /* Indent the list items */
+            list-style-type: disc;
+            /* Changes the bullet style */
+            margin-bottom: 10px;
+            /* Adds space below the list */
+        }
+
+        /* Style for list items */
+        .lesson-text li {
+            margin-bottom: 10px;
+            /* Adds space between list items */
+            font-size: 1rem;
+            /* Font size for list items */
+        }
+
+        /* Style for the <p> tags inside the .lesson-text for consistent typography */
+        .lesson-text p {
+            margin-bottom: 20px;
+            /* Adds space below paragraphs */
+            font-size: 1rem;
+            /* Font size for paragraphs */
+            text-align: justify;
+            /* Justify text for a polished layout */
+        }
+
+        /* If you have buttons, you might want to style them too */
+        .lesson-text .btn {
+            background-color: #007bff;
+            /* Example button color */
+            color: white;
+            /* Text color for buttons */
+            border: none;
+            /* No border for buttons */
+            padding: 10px 15px;
+            /* Padding inside buttons */
+            text-align: center;
+            /* Center text inside buttons */
+            text-decoration: none;
+            /* No underline on text */
+            display: inline-block;
+            /* Allows setting margins and padding */
+            font-size: 1rem;
+            /* Text size for buttons */
+            margin: 4px 2px;
+            /* Margin around buttons */
+            cursor: pointer;
+            /* Pointer cursor on hover */
+            border-radius: 4px;
+            /* Rounded corners for buttons */
+            transition: background-color 0.3s;
+            /* Smooth transition for hover effect */
+        }
+
+        /* Hover effect for buttons */
+        .lesson-text .btn:hover {
+            background-color: #0056b3;
+            /* Darken button color on hover */
+        }
+
+
+        /* Set a fixed size for .example-box for PC screens */
+        .example-box {
+            position: fixed;
+            right: 200px;
+            width: 200px;
+            /* Fixed width for PC */
+            height: 200px;
+            /* Fixed height for PC */
+            padding: 100px;
+            background-color: #f0f0f0;
+            border-left: 1px solid #ccc;
+            /* Separates example box from text */
+            border-right: 1px solid #ccc;
+            /* Separates example box from sidebar */
+            border-radius: 5px;
+            position: absolute;
+            overflow: hidden;
+            margin-bottom: 5px;
+            /* Spacing between the example box and thumbnails */
+        }
+
+        /* Sidebar for words */
+        .sidebar {
+            position: fixed;
+            /* Takes up 1 part of the available space */
+            right: 1in;
+            width: 100px;
+            /* Adjust the width as needed */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+            border-left: 1px solid #ccc;
+            /* Separates sidebar from content */
+            background-color: #f0f8ff;
+            /* Lightest shade of blue for the sidebar */
+            height: 45%;
+            /* Height to fit content */
+            position: absolute;
+            /* Relative to the flex container */
+            z-index: 1;
+            /* Ensures sidebar is above other content */
+        }
+
+        /* Style adjustments for buttons inside sidebar */
+        .sidebar .tablinks {
+            display: block;
+            background-color: inherit;
+            color: #FF1493;
+            /* Pinkish-red color for the text */
+            padding: 10px 16px;
+            width: 100%;
+            border: none;
+            outline: none;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* Hover effect for sidebar buttons */
+        .sidebar .tablinks:hover {
+            background-color: #f0f8ff;
+            /* Lightest shade of blue for the sidebar */
+        }
+
+        .tabcontent {
+            display: none;
+            /* Initially hidden */
+            /* Other styles remain the same */
+        }
+
+        /* Pop-up box styling */
+        .tabcontent {
+            display: none;
+            /* Keeps the content hidden until it's triggered */
+            position: fixed;
+            /* Keeps the box in the same place in the viewport */
+            right: 0;
+            /* Aligns the box to the right */
+            top: 0;
+            /* Aligns the box to the top */
+            background-color: white;
+            /* Background color for the box */
+            z-index: 3;
+            /* Ensures the box stacks on top of other content */
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            /* Shadow for a 3D effect */
+            overflow-y: auto;
+            /* Allows for a scrollbar if the content is too long */
+            padding: 10px;
+            /* Padding to prevent content from touching the edges of the box */
+            border-left: 1px solid #ccc;
+            /* Border to separate from the rest of the content */
+            max-width: 300px;
+            /* Maximum width of the box */
+            max-height: 90%;
+            /* Maximum height of the box */
+        }
+
+        /* Close button styling */
+        .closebtn {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            background-color: #f44336;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+        }
+
+
+        /*.  */
+        /* Individual lesson card styling */
+        .lesson-card {
+            background: white;
+            /* Background color for lesson cards */
+            padding: 20px;
+            /* Padding inside lesson cards */
+            border-radius: 8px;
+            /* Rounded corners for lesson cards */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            /* Shadow effect for lesson cards */
+            flex-basis: calc(33.333% - 20px);
+            /* Width of lesson cards accounting for the gap */
+            margin-bottom: 20px;
+            /* Bottom margin for spacing under lesson cards */
+        }
+
+        /* Responsive adjustments for the flex container on smaller screens */
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column;
+                /* Stacks flex items vertically */
+                align-items: center;
+                /* Centers flex items on the cross axis */
+            }
+
+            .lesson-card {
+                flex-basis: auto;
+                /* Allows the flex item to grow or shrink as needed */
+                width: 100%;
+                /* Sets the width to occupy the full width of the container */
+            }
+        }
+
+        .tab {
+            display: inline-block;
+            background-color: #0077b6;
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            margin: 5px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #005f73;
+        }
+
+        .full-width-section {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .content-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .text-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .video-container {
+            flex-basis: 560px;
+            padding: 20px;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 315px;
+        }
+
+        .video-source {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .asl-thumbnail {
+            margin-top: 20px;
+            /* space above the thumbnail */
+            text-align: center;
+            /* center the contents */
+        }
+
+        .asl-thumbnail img {
+            max-width: 100%;
+            /* ensure the image is responsive */
+            height: auto;
+            /* maintain aspect ratio */
+            border-radius: 4px;
+            /* optional: rounded corners */
+        }
+
+        .asl-thumbnail p {
+            margin-top: 10px;
+            /* space between the image and text */
+        }
+    </style>
 </head>
 
 <body>
-    <div class="bg-primary">
-        <div class="justify-center">
-            <h1 class="site-title text-white font-bold">Lesson 1: Introduction</h1>
-        </div>
+    <header>
+        <h1>Lesson 3 D - G</h1>
+    </header>
+
+    <!-- Main content flex container -->
+    <!-- New flex container for the top title -->
+
+
+
+
+
+    <div class="top-flex-title">
+        <section class="full-width-section">
+            <div class="content-container">
+                <div class="text-content">
+
+
+
+                    <h3>Unique Characteristics and Cultural Significance of ASL Letters D, E, F, G</h3>
+                    <p>In American Sign Language (ASL), the letters D, E, F, and G are more than just components of the
+                        alphabet; they embody unique traits and hold cultural significance. These letters illustrate the
+                        depth and versatility of ASL:</p>
+                    <ul>
+                        <li><strong>Letter D:</strong> The 'D' in ASL is used in various signs requiring pointing or
+                            directional gestures, showcasing its versatility. It also reflects the interconnectedness of
+                            global sign languages.</li>
+                        <li><strong>Letter E:</strong> The 'E' in ASL is distinguished by its tightly closed formation,
+                            emphasizing precision in hand positioning. It also plays a symbolic role in ASL poetry and
+                            storytelling.</li>
+                        <li><strong>Letter F:</strong> The 'F' handshape in ASL uniquely represents both the letter and
+                            the number 9. This dual role exemplifies the efficiency and adaptability of ASL.</li>
+                        <li><strong>Letter G:</strong> The 'G' in ASL, often used in signs related to pointing or
+                            direction, is crucial for clear communication. Its precision highlights the language's
+                            expressiveness.</li>
+                    </ul>
+                    <p>Each of these letters contributes to the expressive capacity and cultural richness of American
+                        Sign Language, making them integral to both spelling and communication.</p>
+                </div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/lYhAAMDQl-Q" frameborder="0" allowfullscreen></iframe>
+                    <p class="video-source">Source: YouTube/ Our Berg Life</p>
+                </div>
+                <div class="asl-thumbnail">
+                    <a href="https://www.handspeak.com/word/" target="_blank">
+                        <img src="\images\ASL Dictionary.png" alt="ASL Dictionary Thumbnail">
+                        <p> ASL Dictionary</p>
+
+
+
+                    </a>
+                </div>
+            </div>
     </div>
-    <div class="container justify-center max-md: px-20">
+    </section>
+    </div>
 
-        <h1>Lesson 3: D-G</h1>
-        <h2>Before we Start</h2>
-        <p>Before we begin flex and close your hand a few times and make sure your fingers are good to go.</p>
-        <p>Remember, your wrist orientation and finger position are crucial in sign making</p>
-        <p>This lesson you will be learning the rest of the first line of letters in the alphabet: D, E, F, and G. After
-            this lesson, each lesson will be
-            <br> an entire line of the alphabet and the quizzes will begin to be more complex. After this lesson you
-            will be
-            given the choice of a multiple
-            <br>choice quiz and the camera identification quiz or returning to the main menu
-        </p>
 
-        <h2>D</h2>
-        <p>Traditionally, the palm is facing the listener</p>
-        <p>The letter d begins with finger 2 pointing upwards</p>
-        <p>Fingers 3-5 will form a semicircle and meet Finger 1 doing the same from under and touch.</p>
-        <p>This hand sign is also popularly done by facing the palm sideways similar to the letter C. This is an
-            acceptable
-            alternative</p>
-        <img src="\images\letterD.jpg" alt="letter D" width="150" height="250">
 
-        <h2>E</h2>
-        <p>E can occasionally trick someone up with fingers 2-5, so read carefully</p>
-        <p>Palm should face the listener</p>
-        <p>Fingers 2-5 from the base knuckle (on your hand) to the middle knuckle(first bend on your finger) should be
-            pointing up</p>
-        <p>Then fingers 2-5 will curve point downward from the middle knuckle to fingertip</p>
-        <p>The Thumb will be horizontally placed under fingers 2-5</p>
-        <img src="\images\letterE.jpg" alt="letter E" width="150" height="250">
+    <div class="flex-container">
 
-        <h2>F</h2>
-        <p>F is similar to the “Okay” symbol except its fingers are side by side and the palm faces the listener</p>
-        <p>Fingers 3-5 should be side by side facing upwards</p>
-        <p>Fingers 1-2 will create a circle and meet in on the opposite side</p>
-        <img src="\images\letterF.jpg" alt="letter F" width="175" height="225">
+        <!-- D Section with its own sidebar -->
+        <section class="asf-lesson">
+            <!-- Lesson Content for 'D' -->
+            <div class="lesson-content">
+                <!-- Content for 'D' -->
+                <h2>Letter D</h2>
+                <p>The letter 'D' in ASL represents a circular shape formed by the thumb and index finger, resembling
+                    the uppercase 'D'. It's important for both clarity in communication and as a foundational sign in
+                    the language.</p>
+                <ul>
+                    <li><strong>Start with Your Hand Open:</strong> Begin with your hand open, palm facing away from
+                        you, fingers together and straight.</li>
+                    <li><strong>Curl Your Fingers:</strong> Curl your fingers into a circle, touching your thumb with
+                        the tips of your fingers, forming the shape of a 'D'.</li>
+                    <li><strong>Position Your Thumb:</strong> Keep your thumb crossed over the index finger, completing
+                        the circle.</li>
+                </ul>
+                <p>Practice this sign to ensure that you are understood when communicating with others in ASL. The
+                    distinct round shape of the 'D' is a critical element to master.</p>
+                <button class="btn">Practice 'D'</button>
+            </div>
 
-        <h2>G</h2>
-        <p>G is a bit difficult to show with one image, so this one will have 2</p>
-        <p>First, face your palm towards yourself and point your hand left</p>
-        <p>Finger 3,4, and 5 will close into the hand</p>
-        <p>Finger 2 and 1 with extend left and remain parallel with each other.</p>
-        <p>Your 2nd finger (pointer) should be mostly blocking the view of finger 1 (thumb)</p>
-        <img src="\images\letterG.jpg" alt="letter G" width="150" height="250">
-        <img src="\images\letterGalt.jpg" alt="letter Galt" width="150" height="250">
 
+            <!-- Example Box for 'D' -->
+            <aside class="example-box">
+                <img src="\images\letterD.jpg" alt="letter D" width="150" height="250">
+            </aside>
+            <!-- Sidebar for 'A' -->
+            <aside class="sidebar">
+                <!-- Sidebar content specific to 'A' -->
+                <!-- Sidebar with list of words -->
+                <div class="tab">
+                    <button class="tablinks" onclick="openWord('Dance')">Dance</button>
+                    <button class="tablinks" onclick="openWord('Dog')">Dog</button>
+                    <button class="tablinks" onclick="openWord('Doctor')">Doctor</button>
+                    <button class="tablinks" onclick="openWord('Drink')">Drink</button>
+                    <button class="tablinks" onclick="openWord('Day')">Day</button>
+                    <button class="tablinks" onclick="openWord('Deaf')">Deaf</button>
+                    <button class="tablinks" onclick="openWord('Door')">Door</button>
+                    <button class="tablinks" onclick="openWord('Dream')">Dream</button>
+                    <button class="tablinks" onclick="openWord('Dress')">Dress</button>
+                    <button class="tablinks" onclick="openWord('Danger')"></button>
+                    <button class="tablinks" onclick="openWord('')"></button>
+
+                    <!-- Add more buttons as needed -->
+
+            </aside>
+            <!-- Pop-up boxes -->
+            <div id="Dance" class="tabcontent">
+                <span class="closebtn" onclick="closeTab('Dance')">&times;</span>
+                <div class="description">
+                    <h3>Dance</h3>
+                    <p><strong>Handshape:</strong> Use both hands in a relaxed open position.</p>
+                    <p><strong>Location:</strong> In front of the body.</p>
+                    <p><strong>Movement:</strong> Move your hands rhythmically as if dancing with your hands.</p>
+                </div>
+            </div>
+            <div id="Dog" class="tabcontent">
+                <span class="closebtn" onclick="closeTab('Dog')">&times;</span>
+                <div class="description">
+                    <h3>Dog</h3>
+                    <p><strong>Handshape:</strong> Snap your fingers twice.</p>
+                    <p><strong>Location:</strong> At your side, as if calling a dog.</p>
+                    <p><strong>Movement:</strong> Snap fingers as if getting a dog's attention.</p>
+                </div>
+            </div>
+            <div id="Doctor" class="tabcontent">
+                <span class="closebtn" onclick="closeTab('Doctor')">&times;</span>
+                <div class="description">
+                    <h3>Doctor</h3>
+                    <p><strong>Handshape:</strong> Form a 'D' handshape and tap it on your wrist.</p>
+                    <p><strong>Location:</strong> On your wrist.</p>
+                    <p><strong>Movement:</strong> Tap the 'D' handshape on the wrist twice.</p>
+                </div>
+            </div>
+            <div id="Drink" class="tabcontent">
+                <span class="closebtn" onclick="closeTab('Drink')">&times;</span>
+                <div class="description">
+                    <h3>Drink</h3>
+                    <p><strong>Handshape:</strong> Form a 'C' handshape and bring it to your mouth.</p>
+                    <p><strong>Location:</strong> At your mouth.</p>
+                    <p><strong>Movement:</strong> Tilt the 'C' handshape as if drinking from a cup.</p>
+                </div>
+            </div>
+            <div id="Day" class="tabcontent">
+                <span class="closebtn" onclick="closeTab('Day')">&times;</span>
+                <div class="description">
+                    <h3>Day</h3>
+                    <p><strong>Handshape:</strong> Use the index finger of your dominant hand.</p>
+                    <p><strong>Location:</strong> In front of your body, with your non-dominant hand flat, representing
+                        the horizon.</p>
+                    <p><strong>Movement:</strong> Move the index finger from one side of the non-dominant hand to the
+                        other, representing the sun moving across the sky.</p>
+                </div>
+            </div>
+            <div id="Deaf" class="tabcontent">
+                <span class="closebtn" onclick="closeTab('Deaf')">&times;</span>
+                <div class="description">
+                    <h3>Deaf</h3>
+                    <p><strong>Handshape:</strong> Touch your ear then your chin with an index finger.</p>
+                    <p><strong>Location:</strong> Start at your ear and move to your chin.</p>
+                    <p><strong>Movement:</strong> A single motion touching the ear first, then the chin.</p>
+                </div>
+            </div>
+            <div id="Door" class="tabcontent">
+                <span class="closebtn" onclick="closeTab('Door')">&times;</span>
+                <div class="description">
+                    <h3>Door</h3>
+                    <p><strong>Handshape:</strong> Use both flat hands facing each other.</p>
+                    <p><strong>Location:</strong> In front of your body.</p>
+                    <p><strong>Movement:</strong> Move your hands as if opening or closing a door.</p>
+                </div>
+            </div>
+            <div id="Dream" class="tabcontent">
+                <span class="closebtn" onclick="closeTab('Dream')">&times;</span>
+                <div class="description">
+                    <h3>Dream</h3>
+                    <p><strong>Handshape:</strong> Place your flat hand over your forehead and then spiral it away.</p>
+                    <p><strong>Location:</strong> Starting from the forehead.</p>
+                    <p><strong>Movement:</strong> Move your hand away from your forehead in a spiral motion.</p>
+                </div>
+            </div>
+            <div id="Dress" class="tabcontent">
+                <span class="closebtn" onclick="closeTab('Dress')">&times;</span>
+                <div class="description">
+                    <h3>Dress</h3>
+                    <p><strong>Handshape:</strong> Use both hands to mimic the action of pulling up a dress.</p>
+                    <p><strong>Location:</strong> At the sides of your body.</p>
+                    <p><strong>Movement:</strong> Move your hands upward along your body as if adjusting a dress.</p>
+                </div>
+            </div>
+            <div id="Danger" class="tabcontent">
+                <span class="closebtn" onclick="closeTab('Danger')">&times;</span>
+                <div class="description">
+                    <h3>Danger</h3>
+                    <p><strong>Handshape:</strong> Form a 'D' handshape and shake it side to side.</p>
+                    <p><strong>Location:</strong> In front of your body.</p>
+                    <p><strong>Movement:</strong> Shake the 'D' handshape from side to side.</p>
+                </div>
+            </div>
+
+
+
+
+
+
+        </section>
+    </div>
+
+
+    <div class="flex-container">
+        <section class="asf-lesson">
+            <!-- Lesson Content for 'E' -->
+            <div class="lesson-content">
+                <!-- Content for 'B' -->
+                <h2>Letter E</h2>
+                <p>The 'E' in ASL is made by curling all four fingers down to the palm and placing the thumb at the
+                    side. This sign resembles a closed fist, with the thumb partially covering the side of the fingers,
+                    distinguishing it from other letters.</p>
+                <ul>
+                    <li><strong>Hand Open Start:</strong> Begin with your hand completely open.</li>
+                    <li><strong>Curl Fingers:</strong> Curl your fingers toward your palm, making sure they stay
+                        together.</li>
+                    <li><strong>Place Thumb:</strong> Place your thumb at the side of your fingers, not over them.</li>
+                </ul>
+                <p>With the 'E', ensure that the fingers are tightly curled and the thumb is properly placed for clear
+                    communication. Practice this form to become proficient.</p>
+                <button class="btn">Practice 'E'</button>
+            </div>
+            <!-- Example Box for 'B' -->
+            <aside class="example-box">
+                <img src="\images\letterE.jpg" alt="letter E" width="150" height="250">
+            </aside>
+            <aside class="sidebar">
+                <!-- Sidebar content specific to 'E' -->
+                <!-- Sidebar with list of words -->
+                <div class="tab">
+                    <button class="tablinks" onclick="openWord('Eat')">Eat</button>
+                    <button class="tablinks" onclick="openWord('Early')">Early</button>
+                    <button class="tablinks" onclick="openWord('Evening')">Evening</button>
+                    <button class="tablinks" onclick="openWord('Elephant')">Elephant</button>
+                    <button class="tablinks" onclick="openWord('Excited')">Excited</button>
+                    <button class="tablinks" onclick="openWord('Email')">Email</button>
+                    <button class="tablinks" onclick="openWord('Earth')">Earth</button>
+                    <button class="tablinks" onclick="openWord('Easy')">Easy</button>
+                    <button class="tablinks" onclick="openWord('Empty')">Empty</button>
+                    <button class="tablinks" onclick="openWord('Enjoy')">Enjoy</button>
+                    <button class="tablinks" onclick="openWord('')"></button>
+
+
+                    <!-- Add more buttons as needed -->
+                </div>
+
+                <div id="Eat" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Eat')">&times;</span>
+                    <div class="description">
+                        <h3>Eat</h3>
+                        <p><strong>Handshape:</strong> Bring a flat hand up to your mouth as if holding food.</p>
+                        <p><strong>Location:</strong> In front of your mouth.</p>
+                        <p><strong>Movement:</strong> Touch your mouth with your hand, mimicking the action of eating.
+                        </p>
+                    </div>
+                </div>
+                <div id="Early" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Early')">&times;</span>
+                    <div class="description">
+                        <h3>Early</h3>
+                        <p><strong>Handshape:</strong> Form the sun with the non-dominant hand and a horizon line with
+                            the dominant hand.</p>
+                        <p><strong>Location:</strong> In front of your body, at chest level.</p>
+                        <p><strong>Movement:</strong> Show the sun rising from below the horizon to indicate early
+                            morning.</p>
+                    </div>
+                </div>
+                <div id="Evening" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Evening')">&times;</span>
+                    <div class="description">
+                        <h3>Evening</h3>
+                        <p><strong>Handshape:</strong> Similar to 'Early', but the hand representing the sun moves down.
+                        </p>
+                        <p><strong>Location:</strong> In front of your body, at chest level.</p>
+                        <p><strong>Movement:</strong> Indicate the sun setting below the horizon line to represent
+                            evening.</p>
+                    </div>
+                </div>
+                <div id="Elephant" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Elephant')">&times;</span>
+                    <div class="description">
+                        <h3>Elephant</h3>
+                        <p><strong>Handshape:</strong> Use an extended arm as the elephant's trunk.</p>
+                        <p><strong>Location:</strong> In front of your nose.</p>
+                        <p><strong>Movement:</strong> Swing the arm down and then up, mimicking an elephant's trunk.</p>
+                    </div>
+                </div>
+                <div id="Excited" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Excited')">&times;</span>
+                    <div class="description">
+                        <h3>Excited</h3>
+                        <p><strong>Handshape:</strong> Use both hands with fingers spread out.</p>
+                        <p><strong>Location:</strong> In front of the chest.</p>
+                        <p><strong>Movement:</strong> Shake your hands up and down in front of your chest, showing
+                            excitement.</p>
+                    </div>
+                </div>
+                <div id="Email" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Email')">&times;</span>
+                    <div class="description">
+                        <h3>Email</h3>
+                        <p><strong>Handshape:</strong> Use a flat hand with thumb touching the side of your forehead.
+                        </p>
+                        <p><strong>Location:</strong> At the side of your forehead.</p>
+                        <p><strong>Movement:</strong> Move your hand away from your forehead and open it as if sending
+                            an email.</p>
+                    </div>
+                </div>
+                <div id="Earth" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Earth')">&times;</span>
+                    <div class="description">
+                        <h3>Earth</h3>
+                        <p><strong>Handshape:</strong> Form an 'E' handshape and rotate it around the other hand, which
+                            is in a fist shape.</p>
+                        <p><strong>Location:</strong> In front of your body.</p>
+                        <p><strong>Movement:</strong> Rotate the 'E' hand around the fist to represent the Earth's
+                            rotation.</p>
+                    </div>
+                </div>
+                <div id="Easy" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Easy')">&times;</span>
+                    <div class="description">
+                        <h3>Easy</h3>
+                        <p><strong>Handshape:</strong> Use a flat hand with palm facing upwards.</p>
+                        <p><strong>Location:</strong> In front of your body.</p>
+                        <p><strong>Movement:</strong> Tilt your hand side to side as if balancing something easily.</p>
+                    </div>
+                </div>
+                <div id="Empty" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Empty')">&times;</span>
+                    <div class="description">
+                        <h3>Empty</h3>
+                        <p><strong>Handshape:</strong> Show empty hands, palms facing up.</p>
+                        <p><strong>Location:</strong> In front of your body, at waist level.</p>
+                        <p><strong>Movement:</strong> Rotate your hands to show that there is nothing in them.</p>
+                    </div>
+                </div>
+                <div id="Enjoy" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Enjoy')">&times;</span>
+                    <div class="description">
+                        <h3>Enjoy</h3>
+                        <p><strong>Handshape:</strong> Use both hands in the '5' handshape (open hands with fingers
+                            spread).</p>
+                        <p><strong>Location:</strong> In front of the chest.</p>
+                        <p><strong>Movement:</strong> Move both hands in a circular motion over the chest to indicate
+                            enjoyment.</p>
+                    </div>
+                </div>
+
+        </section>
+    </div>
+    </div>
+
+    <div class="flex-container">
+        <section class="asf-lesson">
+            <!-- F Section -->
+            <section class="asf-lesson">
+                <div class="lesson-content">
+                    <h2>Letter F</h2>
+                    <p>The letter 'F' in ASL is similar to the 'okay' gesture, with a few distinctive differences that
+                        are key for clear communication. It is formed by creating a circle with the thumb and index
+                        finger while the other fingers remain extended.</p>
+                    <ul>
+                        <li><strong>Hand Open Start:</strong> Begin with your hand open and palm facing towards the
+                            person you are communicating with, fingers spread slightly.</li>
+                        <li><strong>Create Circle:</strong> Touch the tip of your thumb to the tip of your index finger.
+                            The touch should be gentle but firm, creating a clear and visible circle or 'O' shape.</li>
+                        <li><strong>Extend Other Fingers:</strong> Keep your middle, ring, and pinky fingers straight
+                            and spread out. They should be elevated, making sure they do not droop, to maintain the
+                            integrity of the 'F' sign.</li>
+                        <li><strong>Thumb and Index Finger Position:</strong> Verify that the thumb and index finger are
+                            not pinching too tight or too loose. The circle should be round and the size consistent,
+                            resembling the letter 'O' from the side view.</li>
+                        <li><strong>Hand Orientation:</strong> Ensure your hand is oriented correctly with your palm
+                            facing forward or slightly towards yourself, which helps in differentiating the 'F' from
+                            other similar signs.</li>
+                    </ul>
+                    <p>Practicing the 'F' sign is essential as it not only represents the letter but is also used in
+                        various other signs in ASL. Focus on the roundness of the circle and the position of the other
+                        fingers to clearly convey the letter 'F'.</p>
+                    <button class="btn">Practice 'F'</button>
+
+                </div>
+                <!-- Example Box for 'F' -->
+                <aside class="example-box">
+                    <img src="\images\letterF.jpg" alt="letter F" width="175" height="225">
+                </aside>
+                <aside class="sidebar">
+                    <!-- Sidebar content specific to 'C' -->
+                    <!-- Sidebar with list of words -->
+                    <div class="tab">
+                        <button class="tablinks" onclick="openWord('Family')">Family</button>
+                        <button class="tablinks" onclick="openWord('Friend')">Friend</button>
+                        <button class="tablinks" onclick="openWord('Food')">Food</button>
+                        <button class="tablinks" onclick="openWord('Finish')">Finish</button>
+                        <button class="tablinks" onclick="openWord('Fish')">Fish</button>
+                        <button class="tablinks" onclick="openWord('Find')">Find</button>
+                        <button class="tablinks" onclick="openWord('Forget')">Forget</button>
+                        <button class="tablinks" onclick="openWord('Freeze')">Freeze</button>
+                        <button class="tablinks" onclick="openWord('Funny')">Funny</button>
+                        <button class="tablinks" onclick="openWord('')"></button>
+
+
+
+
+
+
+
+                        <!-- Add more buttons as needed -->
+
+                    </div>
+
+                    <!-- Pop-up box ' -->
+                    <div id="Family" class="tabcontent">
+                        <span class="closebtn" onclick="closeTab('Family')">&times;</span>
+                        <div class="description">
+                            <h3>Family</h3>
+                            <p><strong>Handshape:</strong> Form the ASL sign for 'F' with both hands.</p>
+                            <p><strong>Location:</strong> In front of the chest.</p>
+                            <p><strong>Movement:</strong> Circle both 'F' hands horizontally in front of the chest.</p>
+                        </div>
+                    </div>
+                    <div id="Friend" class="tabcontent">
+                        <span class="closebtn" onclick="closeTab('Friend')">&times;</span>
+                        <div class="description">
+                            <h3>Friend</h3>
+                            <p><strong>Handshape:</strong> Hook the index fingers of both hands together.</p>
+                            <p><strong>Location:</strong> In front of the body.</p>
+                            <p><strong>Movement:</strong> Interlock and then reverse the hooking of the index fingers
+                                several times.</p>
+                        </div>
+                    </div>
+                    <div id="Food" class="tabcontent">
+                        <span class="closebtn" onclick="closeTab('Food')">&times;</span>
+                        <div class="description">
+                            <h3>Food</h3>
+                            <p><strong>Handshape:</strong> Use a flat hand to mimic bringing food to your mouth.</p>
+                            <p><strong>Location:</strong> In front of your mouth.</p>
+                            <p><strong>Movement:</strong> Touch the lips with the fingertips then move the hand away
+                                from the mouth.</p>
+                        </div>
+                    </div>
+                    <div id="Finish" class="tabcontent">
+                        <span class="closebtn" onclick="closeTab('Finish')">&times;</span>
+                        <div class="description">
+                            <h3>Finish</h3>
+                            <p><strong>Handshape:</strong> Start with open hands.</p>
+                            <p><strong>Location:</strong> In front of the body.</p>
+                            <p><strong>Movement:</strong> Move both hands outward, turning the palms down.</p>
+                        </div>
+                    </div>
+                    <div id="Fish" class="tabcontent">
+                        <span class="closebtn" onclick="closeTab('Fish')">&times;</span>
+                        <div class="description">
+                            <h3>Fish</h3>
+                            <p><strong>Handshape:</strong> Mimic the movement of a fish swimming.</p>
+                            <p><strong>Location:</strong> In front of the body.</p>
+                            <p><strong>Movement:</strong> Wiggle the hand sideways like a fish tail.</p>
+                        </div>
+                    </div>
+                    <div id="Find" class="tabcontent">
+                        <span class="closebtn" onclick="closeTab('Find')">&times;</span>
+                        <div class="description">
+                            <h3>Find</h3>
+                            <p><strong>Handshape:</strong> Use a flat hand with the index finger extended.</p>
+                            <p><strong>Location:</strong> Start near the eyes.</p>
+                            <p><strong>Movement:</strong> Move the hand forward away from the eyes, as if searching and
+                                then finding something.</p>
+                        </div>
+                    </div>
+                    <div id="Forget" class="tabcontent">
+                        <span class="closebtn" onclick="closeTab('Forget')">&times;</span>
+                        <div class="description">
+                            <h3>Forget</h3>
+                            <p><strong>Handshape:</strong> Use a flat hand touching the forehead.</p>
+                            <p><strong>Location:</strong> At the forehead.</p>
+                            <p><strong>Movement:</strong> Move the hand away from the forehead and flick the fingers
+                                open, as if something is being thrown away from the mind.</p>
+                        </div>
+                    </div>
+                    <div id="Freeze" class="tabcontent">
+                        <span class="closebtn" onclick="closeTab('Freeze')">&times;</span>
+                        <div class="description">
+                            <h3>Freeze</h3>
+                            <p><strong>Handshape:</strong> Use both hands with fingers spread out.</p>
+                            <p><strong>Location:</strong> In front of the body.</p>
+                            <p><strong>Movement:</strong> Start with moving hands, then suddenly stop all movement, as
+                                if freezing in place.</p>
+                        </div>
+                    </div>
+                    <div id="Funny" class="tabcontent">
+                        <span class="closebtn" onclick="closeTab('Funny')">&times;</span>
+                        <div class="description">
+                            <h3>Funny</h3>
+                            <p><strong>Handshape:</strong> Use the index finger, and wiggle it against the nose.</p>
+                            <p><strong>Location:</strong> At the nose.</p>
+                            <p><strong>Movement:</strong> Wiggle the finger against the nose, often accompanied by a
+                                humorous facial expression.</p>
+                        </div>
+                    </div>
+
+
+
+
+            </section>
+    </div>
+    </div>
+
+
+    <div class="flex-container">
+        <section class="asf-lesson">
+            <!-- Lesson Content for 'G' -->
+            <div class="lesson-content">
+                <h2>Letter G</h2>
+                <p>The 'G' in ASL is indicated by a pointed index finger, with the rest of the fingers curled into the
+                    palm and the thumb extended across. It’s a precise gesture that requires attention to finger
+                    positioning.</p>
+                <ul>
+                    <li><strong>Initial Hand Position:</strong> Start with your hand open, palm facing down towards the
+                        ground.</li>
+                    <li><strong>Index Finger Extension:</strong> Extend your index finger straight out from the palm,
+                        keeping it isolated and pointing directly forward.</li>
+                    <li><strong>Curling Other Fingers:</strong> Curl your middle, ring, and pinky fingers into your
+                        palm. Ensure they're held tightly against your palm to avoid confusion with other signs.</li>
+                    <li><strong>Thumb Positioning:</strong> Position your thumb so it extends outwards, lying flat and
+                        perpendicular to the index finger. The thumb should not touch any other fingers, maintaining the
+                        clear shape of the 'G'.</li>
+                    <li><strong>Ensure Clarity:</strong> Keep the 'G' sign clear by maintaining the index finger fully
+                        extended and the thumb outstretched, not tucked in or bent. The hand should be steady and the
+                        sign held at eye level for visibility.</li>
+                </ul>
+                <p>Repeat the formation of the 'G' sign multiple times, checking in a mirror to ensure accuracy. This
+                    letter is essential for many words in ASL, and its correct formation is important for effective
+                    communication.</p>
+                <button class="btn">Practice 'G'</button>
+
+            </div>
+            <!-- Example Box for 'C' -->
+            <aside class="example-box">
+                <img src="\images\letterG.jpg" alt="letter G" width="150" height="250">
+                <img src="\images\letterGalt.jpg" alt="letter Galt" width="150" height="250">
+            </aside>
+            <aside class="sidebar">
+                <!-- Sidebar content specific to 'C' -->
+                <!-- Sidebar with list of words -->
+                <div class="tab">
+                    <button class="tablinks" onclick="openWord('Good')">Good</button>
+                    <button class="tablinks" onclick="openWord('Go')">Go</button>
+                    <button class="tablinks" onclick="openWord('Grandmother')">Grandmother</button>
+                    <button class="tablinks" onclick="openWord('Green')">Green</button>
+                    <button class="tablinks" onclick="openWord('Guitar')"></button>
+                    <button class="tablinks" onclick="openWord('Game')">Game</button>
+                    <button class="tablinks" onclick="openWord('Gift')">Gift</button>
+                    <button class="tablinks" onclick="openWord('Giraffe')">Giraffe</button>
+                    <button class="tablinks" onclick="openWord('Glass')">Glass</button>
+                    <button class="tablinks" onclick="openWord('Grass')">Grass</button>
+
+
+
+
+
+
+
+
+                    <!-- Add more buttons as needed -->
+
+                </div>
+
+                <div id="Good" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Good')">&times;</span>
+                    <div class="description">
+                        <h3>Good</h3>
+                        <p><strong>Handshape:</strong> Start with a flat hand touching your chin.</p>
+                        <p><strong>Location:</strong> At your chin.</p>
+                        <p><strong>Movement:</strong> Move your hand away from your chin and change it to a thumbs-up
+                            gesture.</p>
+                    </div>
+                </div>
+                <div id="Go" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Go')">&times;</span>
+                    <div class="description">
+                        <h3>Go</h3>
+                        <p><strong>Handshape:</strong> Point forward with one or both index fingers.</p>
+                        <p><strong>Location:</strong> In front of your body.</p>
+                        <p><strong>Movement:</strong> Thrust your hand or hands forward, as if indicating direction.</p>
+                    </div>
+                </div>
+                <div id="Grandmother" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Grandmother')">&times;</span>
+                    <div class="description">
+                        <h3>Grandmother</h3>
+                        <p><strong>Handshape:</strong> Form a '5' handshape and touch your chin, then move it away in
+                            small steps.</p>
+                        <p><strong>Location:</strong> Touching and moving away from your chin.</p>
+                        <p><strong>Movement:</strong> Tap your chin once and then move your hand away, slightly upward,
+                            with each tap.</p>
+                    </div>
+                </div>
+                <div id="Green" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Green')">&times;</span>
+                    <div class="description">
+                        <h3>Green</h3>
+                        <p><strong>Handshape:</strong> Use a 'G' handshape (index finger and thumb extended).</p>
+                        <p><strong>Location:</strong> In front of your body.</p>
+                        <p><strong>Movement:</strong> Twist the 'G' handshape at the wrist twice.</p>
+                    </div>
+                </div>
+                <div id="Guitar" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Guitar')">&times;</span>
+                    <div class="description">
+                        <h3>Guitar</h3>
+                        <p><strong>Handshape:</strong> Mime strumming a guitar with your dominant hand while the other
+                            hand forms the neck of the guitar.</p>
+                        <p><strong>Location:</strong> In front of your body.</p>
+                        <p><strong>Movement:</strong> Strumming motion with one hand while the other remains still, as
+                            if holding a guitar.</p>
+                    </div>
+                </div>
+                <div id="Game" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Game')">&times;</span>
+                    <div class="description">
+                        <h3>Game</h3>
+                        <p><strong>Handshape:</strong> Use both 'A' handshapes (fists with thumbs up).</p>
+                        <p><strong>Location:</strong> In front of your body.</p>
+                        <p><strong>Movement:</strong> Alternately move each hand up and down in a playful manner.</p>
+                    </div>
+                </div>
+                <div id="Gift" class="tabcontent">
+                    <span class="closebtn" onclick="closeTab('Gift')">&times;</span>
+                    <div class="description">
+                        <h3>Gift</h3>
+                        <p><strong>Handshape:</strong> Use both hands to form a box shape.</p>
+                        <p><strong>Location:</strong> In front of your torso.</p>
+                        <p><strong>Movement:</strong> Mime the action of giving a gift with both hands.</p>
+                    </div>
+                    <div id="Giraffe" class="tabcontent">
+                        <span class="closebtn" onclick="closeTab('Giraffe')">&times;</span>
+                        <div class="description">
+                            <h3>Giraffe</h3>
+                            <p><strong>Handshape:</strong> Use an extended flat hand to mimic a giraffe's long neck.</p>
+                            <p><strong>Location:</strong> Start at your chest and move upwards.</p>
+                            <p><strong>Movement:</strong> Move your hand upward to represent the height and neck of a
+                                giraffe.</p>
+                        </div>
+                    </div>
+                    <div id="Glass" class="tabcontent">
+                        <span class="closebtn" onclick="closeTab('Glass')">&times;</span>
+                        <div class="description">
+                            <h3>Glass</h3>
+                            <p><strong>Handshape:</strong> Form a 'C' shape with your dominant hand.</p>
+                            <p><strong>Location:</strong> In front of your mouth.</p>
+                            <p><strong>Movement:</strong> Tilt the 'C' shape as if drinking from a glass.</p>
+                        </div>
+                    </div>
+                    <div id="Grass" class="tabcontent">
+                        <span class="closebtn" onclick="closeTab('Grass')">&times;</span>
+                        <div class="description">
+                            <h3>Grass</h3>
+                            <p><strong>Handshape:</strong> Use both hands with fingers slightly spread and pointing
+                                downwards.</p>
+                            <p><strong>Location:</strong> At waist level.</p>
+                            <p><strong>Movement:</strong> Move your hands slightly up and down to mimic grass swaying.
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+        </section>
+    </div>
+    </div>
+
+
+    <!-- Your existing JavaScript -->
+    <script>
+        function openWord(wordName) {
+            // Close any open tabcontent
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            // Show the clicked tabcontent
+            document.getElementById(wordName).style.display = "block";
+        }
+
+        function closeTab(wordName) {
+            // Hide the tabcontent
+            document.getElementById(wordName).style.display = "none";
+        }
+    </script>
 </body>
 
 </html>
