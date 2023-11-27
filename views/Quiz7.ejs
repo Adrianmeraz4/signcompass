@@ -4,190 +4,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Compass - Learn ASL Online</title>
+    <title>ASL Quiz - Lesson 6</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        body,
+        html {
+            height: 100%;
             margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
         }
 
-        .header {
-            background: skyblue;
-            /* Background color */
-            color: white;
-            /* Text color */
-            padding: 1rem;
-            /* Padding around the header */
-            display: flex;
-            align-items: center;
+        .quiz-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .header img {
-            height: 50px;
-            /* Height of the logo */
+        .question {
+            margin-bottom: 20px;
         }
 
-        .header h1 {
-            margin-left: 1rem;
-            /* Spacing between the logo and website name */
-            font-size: 1.5rem;
-            /* Font size of the website name */
+        .question h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
         }
 
-
-
-        .container {
-            max-width: 2000px;
-            margin: 0 auto;
-            background: white;
-            display: flex;
+        .options label,
+        .question label {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e9e9e9;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
+        .options label:hover,
+        .question label:hover {
+            background-color: #d3d3d3;
+        }
 
+        .submit-container {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-        .sidebar {
-            flex: 1;
+        #submitBtn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            transition: background-color 0.3s;
+        }
 
-            background: #f7f7f7;
+        #submitBtn:hover {
+            background-color: #45a049;
+        }
+
+        .score-box {
+            padding: 20px;
             border-radius: 10px;
-            padding: 1rem;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            overflow-y: auto;
-            text-align: left;
-        }
-
-        .lessons {
-            background: Honeydew;
-            flex: 1;
-        }
-
-        .video {
-            background: white;
-            flex: 3;
-
+            margin: 20px 0;
+            font-size: 18px;
             text-align: center;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .quizzes {
-            flex: 1;
-            background: BlanchedAlmond;
+        .green-box {
+            background-color: #d4edda;
+            color: #155724;
         }
 
-        .lessons ul,
-        .quizzes ul {
-            list-style-type: none;
-            padding: 0;
+        .red-box {
+            background-color: #f8d7da;
+            color: #721c24;
         }
 
-        .lessons li,
-        .quizzes li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer {
-            background: #333;
-            color: white;
+        .review-box {
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
             text-align: center;
-            padding: 0.5rem;
-            width: 100%;
-            margin-top: auto;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
         }
 
-        /* Scrollbar styles */
-        ::-webkit-scrollbar {
-            width: 10px;
+        .hidden {
+            display: none;
         }
 
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+        .review-box a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: #888;
+        .review-box a:hover {
+            text-decoration: underline;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
         }
 
-        .content {
-            background: #f9f9f9;
-            padding: 2rem;
-            text-align: justify;
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .result-comment {
+            display: inline-block;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        .result-comment.correct {
+            color: #155724;
+        }
+
+        .result-comment.incorrect {
+            color: #721c24;
         }
     </style>
 </head>
 
 <body>
+    <div class="quiz-container">
+        <h1><img src="\images\Logo.png" alt="Logo"> Lesson 6: American Sign Language Quiz</h1>
+        <form id="aslQuizForm">
 
-    <div class="header">
-        <img src="path-to-your-logo.png" alt="Sign Compass Logo">
-        <h1>Sign Compass</h1>
-    </div>
+            <!-- Question 1 -->
+            <div class="question">
+                <p>1. Which sign from this lesson has all fingers outward?</p>
+                <label><input type="radio" name="q1" value="a"> a. 1</label>
+                <label><input type="radio" name="q1" value="b"> b. 8</label>
+                <label><input type="radio" name="q1" value="c"> c. 10</label>
+                <label><input type="radio" name="q1" value="d"> d. 5</label>
+            </div>
 
-    <div class="container">
-        <div class="sidebar lessons">
-            <h2>Lessons</h2>
-            <ul>
-                <li>Lesson 1: Introduction</li>
-                <li>Lesson 2: Basic Signs</li>
-                <li>Lesson 3: Common Phrases</li>
-                <li>Lesson 4: Finger Spelling</li>
-                <li>Lesson 5: Advanced Signs</li>
-                <li>Lesson 6: Expressions</li>
-                <li>Lesson 7: Conversations</li>
-            </ul>
+            <!-- Question 2 -->
+            <div class="question">
+                <p>2. Which sign from this lesson has fingers 1, 3, 4, and 5 closed?</p>
+                <label><input type="radio" name="q2" value="a"> a. 2</label>
+                <label><input type="radio" name="q2" value="b"> b. 1</label>
+                <label><input type="radio" name="q2" value="c"> c. 5</label>
+                <label><input type="radio" name="q2" value="d"> d. 7</label>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question">
+                <p>3. Which sign from this lesson is dynamic?</p>
+                <label><input type="radio" name="q3" value="a"> a. 1</label>
+                <label><input type="radio" name="q3" value="b"> b. 4</label>
+                <label><input type="radio" name="q3" value="c"> c. 7</label>
+                <label><input type="radio" name="q3" value="d"> d. 10</label>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question">
+                <p>4. What is this sign?</p>
+                <img src="\images\number9.jpg" alt="letter 9" width="200" height="200">
+                <label><input type="radio" name="q4" value="a"> a. 9</label>
+                <label><input type="radio" name="q4" value="b"> b. 2</label>
+                <label><input type="radio" name="q4" value="c"> c. 5</label>
+                <label><input type="radio" name="q4" value="d"> d. 7</label>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question">
+                <p>5. What is this sign?</p>
+                <img src="\images\number1.jpg" alt="letter 1" width="150" height="250">
+                <label><input type="radio" name="q5" value="a"> a. 2</label>
+                <label><input type="radio" name="q5" value="b"> b. 1</label>
+                <label><input type="radio" name="q5" value="c"> c. 8</label>
+                <label><input type="radio" name="q5" value="d"> d. 6</label>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question">
+                <p>6. What is this sign?</p>
+                <img src="\images\number5.jpg" alt="letter 5" width="225" height="175">
+                <label><input type="radio" name="q6" value="a"> a. 2</label>
+                <label><input type="radio" name="q6" value="b"> b. 7</label>
+                <label><input type="radio" name="q6" value="c"> c. 9</label>
+                <label><input type="radio" name="q6" value="d"> d. 5</label>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question">
+                <p>7. What is this sign?</p>
+                <img src="\images\number2.jpg" alt="letter 2" width="175" height="225">
+                <label><input type="radio" name="q7" value="a"> a. 1</label>
+                <label><input type="radio" name="q7" value="b"> b. 5</label>
+                <label><input type="radio" name="q7" value="c"> c. 2</label>
+                <label><input type="radio" name="q7" value="d"> d. 10</label>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question">
+                <p>8. What is this sign?</p>
+                <img src="\images\number6.jpg" alt="letter 6" width="150" height="250">
+                <label><input type="radio" name="q8" value="a"> a. 9</label>
+                <label><input type="radio" name="q8" value="b"> b. 6</label>
+                <label><input type="radio" name="q8" value="c"> c. 7</label>
+                <label><input type="radio" name="q8" value="d"> d. 8</label>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question">
+                <p>9. What is this sign?</p>
+                <img src="\images\number4.jpg" alt="letter 4" width="200" height="200">
+                <label><input type="radio" name="q9" value="a"> a. 2</label>
+                <label><input type="radio" name="q9" value="b"> b. 7</label>
+                <label><input type="radio" name="q9" value="c"> c. 5</label>
+                <label><input type="radio" name="q9" value="d"> d. 4</label>
+            </div>
+
+
+
+
+        </form>
+        <div class="submit-container">
+            <button type="button" id="submitBtn">Submit Quiz</button>
         </div>
-
-        <div class="sidebar video">
-            <h2>Website Demo Video</h2>
-            <!-- Embed your video here -->
-            <iframe src="https://www.youtube.com/embed/6r8HDsBMk1E" frameborder="0" allowfullscreen></iframe>
-        </div>
-
-        <div class="sidebar quizzes">
-            <h2>Quizzes</h2>
-            <ul>
-                <li>Quiz 1: Basics</li>
-                <li>Quiz 2: Phrases</li>
-                <li>Quiz 3: Finger Spelling</li>
-                <li>Quiz 4: Advanced Signs</li>
-                <li>Quiz 5: Expressions</li>
-                <li>Quiz 6: Conversations</li>
-                <li>Quiz 7: Final Challenge</li>
-            </ul>
-        </div>
+        <div id="scoreContainer" class="score-box hidden"></div>
+        <div id="reviewContainer" class="review-box hidden"></div>
     </div>
 
-    <div class="content">
-        <h2>History of ASL</h2>
-        <p>American Sign Language (ASL) has a fascinating history that traces its roots back to the early 19th century.
-            It emerged as a distinct visual language in the United States, primarily among Deaf communities. ASL's
-            development was influenced by various factors, including French Sign Language, Martha's Vineyard Sign
-            Language, regional sign languages, and even home signs used by Deaf individuals within their families.</p>
-        <!-- Add the rest of the content here -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('aslQuizForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const scoreContainer = document.getElementById('scoreContainer');
+            const reviewContainer = document.getElementById('reviewContainer');
+            const correctAnswers = {
+                'q1': 'c', 'q2': 'b', 'q3': 'a', 'q4': 'b', 'q5': 'b',
+                'q6': 'a', 'q7': 'b', 'q8': 'b', 'q9': 'c'
+                // Continue with correct answers for each question
+            };
 
-        <h2>ASL in Daily Use</h2>
-        <p>American Sign Language (ASL) is an integral part of the daily lives of Deaf and hard-of-hearing individuals
-            in the United States. ASL offers a unique and dynamic means of communication that goes beyond mere gestures.
-            It encompasses a rich array of handshapes, movements, facial expressions, and body language, all of which
-            combine to convey intricate meanings and emotions.</p>
-        <!-- Add the rest of the content here -->
+            submitBtn.addEventListener('click', function () {
+                let score = 0;
+                let allAnswered = true;
+                Object.keys(correctAnswers).forEach(question => {
+                    const radios = form[question];
+                    let answered = false;
+                    radios.forEach(radio => {
+                        if (radio.checked) {
+                            answered = true;
+                            if (radio.value === correctAnswers[question]) {
+                                score++;
+                                radio.parentElement.classList.add('correct');
+                            } else {
+                                radio.parentElement.classList.add('incorrect');
+                            }
+                        }
+                    });
+                    if (!answered) {
+                        allAnswered = false;
+                    }
+                });
 
-        <h2>ASL Mandatory</h2>
-        <p>In certain educational and workplace environments, the knowledge of American Sign Language (ASL) may be
-            mandatory, reflecting the commitment to inclusivity and accessibility.</p>
-        <!-- Add the rest of the content here -->
-    </div>
+                if (!allAnswered) {
+                    alert('Please answer all questions before submitting.');
+                    return;
+                }
 
-    <div class="footer">
-        <p>Copyright &copy; Sign Compass 2023</p>
-    </div>
+                const totalQuestions = Object.keys(correctAnswers).length;
+                const scorePercentage = (score / totalQuestions) * 100;
+                scoreContainer.textContent = `You scored ${score} out of ${totalQuestions} (${scorePercentage.toFixed(2)}%).`;
+                scoreContainer.classList.remove('hidden');
 
+                if (scorePercentage >= 90) {
+                    scoreContainer.classList.add('green-box');
+                } else {
+                    scoreContainer.classList.add('red-box');
+                    reviewContainer.classList.remove('hidden');
+                    reviewContainer.innerHTML = '<a href="/lesson6/review">Review Lesson 6</a>';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
