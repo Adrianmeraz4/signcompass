@@ -1,0 +1,439 @@
+/* Reset some basic elements */
+body,
+h1,
+h2,
+p,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #005f73;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+h1 img {
+    width: 50px;
+    /* Adjust as per your logo's dimensions */
+    margin-right: 10px;
+}
+
+section {
+    padding: 20px;
+    margin: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #005f73;
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+p,
+ul {
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+ul {
+    list-style: inside square;
+    padding-left: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background: #005f73;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 0 10px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    section {
+        margin: 10px 0;
+    }
+}
+
+/* Interactive Elements Style */
+button,
+.btn {
+    display: inline-block;
+    background: #0077b6;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover,
+.btn:hover {
+    background: #023e8a;
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.bg-primary {
+    background-color: #023e8a;
+    color: #fff;
+}
+
+.bg-light {
+    background-color: #caf0f8;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.justify-center {
+    text-align: center;
+}
+
+.max-md {
+    max-width: 800px;
+    margin: auto;
+}
+
+.px-20 {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Adding some animations for engagement */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* Aligns items to the top */
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+.content-container {
+    display: flex;
+    align-items: start;
+    /* Aligns items to the top */
+    margin-right: 0;
+}
+
+.introduction {
+    flex-grow: 1;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+.did-you-know {
+    width: 500px;
+    /* Adjust the width as needed */
+    margin-left: 3px;
+    /* Space between the main content and the box */
+    padding: 30px;
+    background-color: #add8e6;
+    /* Changing background color to yellow */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Optional: Adds a subtle shadow for depth */
+}
+
+.did-you-know h3 {
+    background-color: #f9c74f;
+    /* A shade of yellow for the title background */
+    padding: 5px;
+    margin: -10px -10px 10px -10px;
+    /* Aligns the title background with the box edges */
+    border-bottom: 1px solid #ccc;
+    /* A border to separate the title */
+    font-size: 1rem;
+    position: relative;
+}
+
+.did-you-know p {
+    font-size: 0.8rem;
+    /* Reduced font size for the content */
+}
+
+.toggle-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+#didYouKnowContent.hide {
+    display: none;
+}
+
+
+
+.section-container {
+    /* Optional: General styling for sections */
+}
+
+.section-container {
+    /* Optional: General styling for sections */
+}
+
+.flex-container {
+    display: flex;
+    align-items: flex-start;
+    /* Aligns items to the top */
+    gap: 5px;
+    /* Space between text and example boxes */
+}
+
+.text-content {
+    flex-grow: 0.5px;
+    /* Allows text content to grow and fill the space */
+}
+
+.examples-container {
+    display: flex;
+    flex-direction: column;
+    /* Stack boxes vertically */
+    gap: 10px;
+    /* Space between the two boxes */
+}
+
+
+/* Set a fixed size for .example-box for PC screens */
+.example-box {
+    width: 300px;
+    /* Fixed width for PC */
+    height: 300px;
+    /* Fixed height for PC */
+    padding: 80px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 5px;
+    /* Spacing between the example box and thumbnails */
+}
+
+
+
+.example-box iframe {
+    width: 100%;
+    /* Full width of the box */
+    height: 100%;
+    /* Full height of the box */
+    position: absolute;
+    /* Position it over the box */
+    top: 0;
+    left: 0;
+}
+
+.video-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: 0.8rem;
+}
+
+.video-thumbnails img {
+    width: 100px;
+    /* Adjust as needed */
+    height: auto;
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    /* Optional border for thumbnails */
+    border-radius: 4px;
+}
+
+.video-thumbnails {
+    margin-top: 5px;
+    /* 0.5 inch margin */
+    /* Additional styles if needed */
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 768px) {
+    .example-box {
+        position: static;
+        /* Reset to default flow of document */
+        width: 100%;
+        /* Full width on smaller screens */
+        height: auto;
+        /* Height is auto to maintain aspect ratio */
+        padding: 10px;
+        margin: 20px 0;
+        /* Add margin on top and bottom for spacing */
+    }
+}
+
+.example-box iframe {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    /* Standard aspect ratio for videos */
+}
+
+
+.orientation h2 {
+    color: #005f73;
+    /* Dark, contrasting color for the heading */
+    margin-bottom: 15px;
+    /* Space below the heading */
+    font-size: 2rem;
+    /* Larger font size for the heading */
+    text-align: center;
+    /* Center-align the heading */
+}
+
+.orientation p {
+    font-size: 1rem;
+    /* Standard font size for paragraph */
+    margin-bottom: 20px;
+    /* Space between paragraphs */
+    text-align: justify;
+    /* Justified text for a clean look */
+}
+
+.example-pictures {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.orientation {
+    background-color: #f8f9fa;
+    /* Light background for the section */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    padding: 30px;
+    /* Ample padding for content */
+    margin: 20px 0;
+    /* Vertical margin for separation from other content */
+    max-width: 800px;
+    /* Maximum width for better readability */
+    margin-left: auto;
+    /* Center the section horizontally */
+    margin-right: auto;
+    font-family: 'Arial', sans-serif;
+    /* Modern, readable font */
+    color: #333;
+    /* Dark gray color for text for readability */
+    line-height: 1.6;
+    /* Comfortable line spacing */
+    display: flex;
+    /* Enable flexbox layout */
+    flex-wrap: wrap;
+    /* Allow items to wrap to the next line */
+    justify-content: space-around;
+    /* Space out items evenly */
+    align-items: center;
+    /* Vertically align items in the middle */
+}
+
+.picture-box {
+    width: 30%;
+    /* Adjust based on desired size */
+    border: 1px solid #ccc;
+    /* Example border */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.picture-box img {
+    width: 100%;
+    /* Make image fill the box */
+    height: auto;
+    /* Keep aspect ratio */
+}
+
+.picture-box {
+    flex-basis: 30%;
+    margin: 10px;
+    /* Add more styles if needed */
+}
+
+.tab-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.tab {
+    display: inline-block;
+    background-color: #0077b6;
+    color: white;
+    text-align: center;
+    padding: 10px 15px;
+    margin: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.tab:hover {
+    background-color: #005f73;
+}

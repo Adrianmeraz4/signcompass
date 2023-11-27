@@ -59,9 +59,9 @@ app.get('/login', (req, res) => {
     res.render('login', { session: req.session })
 });
 
-app.get('/NNTest3', (req, res) => {
+app.get('/TScamera3', (req, res) => {
 
-    res.render('NNTest3', { session: req.session, model1: model1 })
+    res.render('TScamera3', { session: req.session, model1: model1 })
 });
 
 app.get('/logout', (req, res) => {

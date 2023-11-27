@@ -67,8 +67,8 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('login', { session: req.session });
 });
-app.get('/Test2', (req, res) => {
-    res.render('Test2', { session: req.session, model1: model1 });
+app.get('/TScamera3', (req, res) => {
+    res.render('TScamera3', { session: req.session, model1: model1 });
 });
 app.get('/logout', (req, res) => {
     req.session.destroy((err) => console.error(err));
