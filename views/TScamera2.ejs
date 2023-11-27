@@ -162,6 +162,8 @@ async function main()
     numModels = models.length;
     console.log(models);
   }
+
+  // ends the loading animation
   loadingAnimation = -1;
   but.style = "display: block; text-align: center;";
 }
@@ -170,20 +172,23 @@ loadingAnim();
 main();
 
 var Json;
-var net;
-var net2;
 
 var doMath = false;
 
-
+    // load the camera
     document.addEventListener("DOMContentLoaded", () => {
         
         let video = document.getElementById("vid");
         let mediaDevices = navigator.mediaDevices;
         vid.muted = true;
+
+        // button to open the webcam
         but.addEventListener("click", () => {
           
           but.remove();
+
+          // removes that last button then 
+          // then creates a new button to take screenshots
           const butHolder = document.getElementById("butHolder");
           const newBut = document.createElement("button");
           newBut.classList.add("button2");
@@ -199,28 +204,38 @@ var doMath = false;
                 })
                 .then((stream) => {
  
-                    // Changing the source of video to current stream.
+                    // This will make sure a loop that the
+                    // step function is called every frame
                     video.srcObject = stream;
                     video.addEventListener("loadedmetadata", () => {
                         video.play();
                         function step() {
+                          // only does stuff when doMath is true
                           if (doMath) {
                           doMath = false;
+
+                          // puts the camera video onto the canvas
+                          // (allows easy way to turn images into usable data)
                           ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
                           var imgd = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                          
+                          // pix is now an array of pixel data [0] is red, [1] is blue, [2] is green
+                          // [3] is alpha, [4] is next red ... repeat
                           var pix = imgd.data;
                           // 0-4 is RGBA - assume 5 is next pixel
-                          //alert(pix[0]);
-                          // Loop over each pixel and invert the color.
+                          
+                          // Converts each pixel to grayscale
                           var currentGrays = [];
                           for (var i = 0, n = pix.length; i < n; i += 4) {
                               let avg = Math.round((pix[i] + pix[i + 1] + pix[i + 2]) / 3.0);
                               //alert(avg);
                               currentGrays.push(avg);
                           }
-                          
+
+                          // this what the NNs will predict
                           var predictionData = tf.tensor([currentGrays]);
-                          
+
+                          // all the weights of every letter (26 letters)
                           var totalPredictions = [];
                           
                           var k = 0;
@@ -228,7 +243,11 @@ var doMath = false;
                             totalPredictions.push(0);
                             k++;
                           }
+
                           console.log(totalPredictions);
+                          // gets the prediction of all models
+                          // and adds them together to get
+                          // the average result
                           for (k = 0; k < numModels; k++) 
                           {
                             var prediction = models[k].predict(predictionData ).dataSync();
@@ -240,20 +259,18 @@ var doMath = false;
                             }
                           }
                           
-                          
+                          // gets the index of what the NNs think the sign is
                           var indexed = indexOfMax(totalPredictions)
                           console.log(totalPredictions);
                           console.log(indexed);
-                          
+
+                          // converts this to a letter
                           var predLetter = String.fromCharCode(65 + indexed);
-                          
+
+                          // shows it to the User
                           testText.innerHTML = "You were using: " + predLetter
                           
-                          //ctx.font = "30px Arial";
-                          //ctx.fillText("Hello World", 10, 50);
                           }
-                          // Draw the ImageData at the given (x,y) coordinates.
-                          //ctx.putImageData(currentGrays, 0, 0);
                           requestAnimationFrame(step);
                           
                         }
@@ -264,6 +281,8 @@ var doMath = false;
         });
     });
 
+// makes a nice 5 second countdown
+// so the User can get ready
 function timerAnimation(ti) {
   if (ti != 0) {
   timerText.innerHTML = ti;
