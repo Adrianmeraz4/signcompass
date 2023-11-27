@@ -1,4 +1,4 @@
-/* Reset some basic elements */
+/* Resets margin and padding for a list of elements to ensure consistency across browsers */
 body,
 h1,
 h2,
@@ -6,420 +6,429 @@ p,
 ul,
 li {
     margin: 0;
+    /* Removes default margin */
     padding: 0;
+    /* Removes default padding */
 }
 
+/* Body element styling */
 body {
     font-family: 'Arial', sans-serif;
+    /* Sets the default font family */
     line-height: 1.6;
+    /* Sets the default line height */
     color: #333;
+    /* Sets the default text color */
     background-color: #f4f4f4;
+    /* Sets the default background color */
 }
 
+/* Header element styling */
 header {
     background: #005f73;
+    /* Background color for the header */
     color: #fff;
+    /* Text color for content in the header */
     padding: 20px 0;
+    /* Vertical padding for the header */
     text-align: center;
+    /* Centers the text horizontally */
 }
 
+/* Main header title styling */
 header h1 {
-    margin: 0;
     font-size: 2.5rem;
+    /* Sets the font size for the main title */
+    margin: 0;
+    /* Resets any default margin */
 }
 
-h1 img {
-    width: 50px;
-    /* Adjust as per your logo's dimensions */
-    margin-right: 10px;
+/* Responsive styling for header title on smaller screens */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+        /* Decreases font size for smaller screens */
+    }
 }
 
+/* Section element styling */
 section {
     padding: 20px;
-    margin: 20px;
+    /* Padding inside each section */
+    margin: 10px;
+    /* Margin around each section */
     background: white;
+    /* Background color for each section */
     border-radius: 8px;
+    /* Rounded corners for the section backgrounds */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    /* Shadow effect for sections */
 }
 
+/* Subsection titles styling */
 section h2 {
     color: #005f73;
+    /* Text color for subsection titles */
     margin-bottom: 10px;
+    /* Bottom margin for spacing under the title */
     font-size: 1.8rem;
+    /* Font size for subsection titles */
 }
 
+
+
+/* sample */
+/* Paragraph text styling */
 p,
 ul {
     font-size: 1rem;
+    /* Slightly larger font size for readability */
     line-height: 1.7;
+    /* Increased line height for better readability */
+    color: #333;
+    /* Dark grey for improved legibility */
+    margin-bottom: 1rem;
+    /* Adds a bottom margin to separate paragraphs and lists from following content */
+    max-width: 60ch;
+    /* Optimizes line length for reading comfort; 'ch' is the width of the '0' character */
+    text-align: justify;
+    /* Justifies the text for a clean, aligned appearance */
 }
 
+/* Unordered list styling */
 ul {
     list-style: inside square;
+    /* Removes the default list style */
     padding-left: 20px;
+    /* Resets padding to align with other content */
+    margin-left: 1rem;
+    /* Adds a left margin where bullet points will be placed */
+    position: relative;
+    /* Enables positioning of pseudo-elements */
 }
 
+/* Add custom styled bullets with pseudo-elements */
+ul li::before {
+    /* The bullet point character */
+    color: #0077b6;
+    /* A color that matches the website's theme */
+    display: inline-block;
+    /* Allows setting of width and margin */
+    width: 1.1rem;
+    /* Width of the bullet area */
+    margin-left: -1.5rem;
+    /* Pulls the bullet into the correct position */
+    text-align: center;
+    /* Centers the bullet in the allocated area */
+}
+
+/* Unordered list item styling */
+ul li {
+    margin-bottom: 0.5rem;
+    /* Adds spacing between list items */
+    padding-left: 0.5rem;
+    /* A little padding from the bullet to the text */
+}
+
+/* Footer element styling */
 footer {
     text-align: center;
+    /* Centers the text horizontally in the footer */
     padding: 20px 0;
+    /* Vertical padding for the footer */
     background: #005f73;
+    /* Background color for the footer */
     color: white;
+    /* Text color for content in the footer */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    body {
-        padding: 0 10px;
-    }
 
-    header h1 {
-        font-size: 2rem;
-    }
 
-    section {
-        margin: 10px 0;
-    }
-}
-
-/* Interactive Elements Style */
+/* Button and button-like elements (.btn class) styling */
 button,
 .btn {
-    display: inline-block;
     background: #0077b6;
+    /* Background color for buttons */
     color: #fff;
+    /* Text color for buttons */
     padding: 10px 20px;
+    /* Padding inside buttons */
     border: none;
+    /* Removes the border from buttons */
     border-radius: 5px;
+    /* Rounded corners for buttons */
     cursor: pointer;
+    /* Changes cursor to pointer when hovering over buttons */
     transition: background 0.3s ease;
+    /* Transition effect for background color changes */
 }
 
+/* Hover effect for buttons */
 button:hover,
 .btn:hover {
     background: #023e8a;
+    /* Darkens the button background on hover */
 }
 
-/* Utility Classes */
-.text-center {
-    text-align: center;
-}
 
-.bg-primary {
-    background-color: #023e8a;
-    color: #fff;
-}
 
-.bg-light {
-    background-color: #caf0f8;
-}
 
-.text-white {
-    color: #fff;
-}
-
-.font-bold {
-    font-weight: bold;
-}
-
-.justify-center {
-    text-align: center;
-}
-
-.max-md {
-    max-width: 800px;
-    margin: auto;
-}
-
-.px-20 {
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-/* Adding some animations for engagement */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
+/*. Start */
 
 .flex-container {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    /* Aligns items to the top */
+    /* Enables flexbox layout */
+    flex-wrap: wrap;
+    /* Prevents the items from wrapping */
+    align-items: stretch;
+    /* Stretches the child elements to fit the container height */
+    width: 100%;
+    /* Full width of the container */
+    box-sizing: border-box;
+    /* Border and padding are included in the width */
 }
 
-.fade-in {
-    animation: fadeIn 1s ease-in;
-}
-
-.content-container {
+.asf-lesson {
     display: flex;
-    align-items: start;
-    /* Aligns items to the top */
-    margin-right: 0;
+    /* Enables flexbox layout */
+    width: 100%;
+    /* Full width of the container */
 }
 
-.introduction {
+
+.lesson-text {
     flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    /* Adjusted based on the fixed widths of the example box and sidebar */
+    padding: 20px;
+    /* Adds space inside the borders of the content area */
+    margin-right: 10px;
+    /* Adds space between the lesson text and the example box */
+    background-color: #f9f9f9;
+    /* A subtle background color */
+    border-radius: 4px;
+    /* Slightly rounded corners for a modern look */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Soft shadow for depth */
+    color: #333;
+    /* Darker text for better readability */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* A modern, readable font-family */
+    line-height: 1.4;
+    /* Space between lines for readability */
+    overflow: hidden;
+    /* Ensures no content spills out */
+    border: 1px solid #ddd;
+    /* Adds a border for definition */
 }
 
-.flex-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+/* You might want to style the <ul> inside the .lesson-text for better typography */
+.lesson-text ul {
+    padding-left: 20px;
+    /* Indent the list items */
+    list-style-type: disc;
+    /* Changes the bullet style */
+    margin-bottom: 10px;
+    /* Adds space below the list */
 }
 
-
-.did-you-know {
-    width: 500px;
-    /* Adjust the width as needed */
-    margin-left: 3px;
-    /* Space between the main content and the box */
-    padding: 30px;
-    background-color: #add8e6;
-    /* Changing background color to yellow */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Optional: Adds a subtle shadow for depth */
-}
-
-.did-you-know h3 {
-    background-color: #f9c74f;
-    /* A shade of yellow for the title background */
-    padding: 5px;
-    margin: -10px -10px 10px -10px;
-    /* Aligns the title background with the box edges */
-    border-bottom: 1px solid #ccc;
-    /* A border to separate the title */
+/* Style for list items */
+.lesson-text li {
+    margin-bottom: 10px;
+    /* Adds space between list items */
     font-size: 1rem;
-    position: relative;
+    /* Font size for list items */
 }
 
-.did-you-know p {
-    font-size: 0.8rem;
-    /* Reduced font size for the content */
+/* Style for the <p> tags inside the .lesson-text for consistent typography */
+.lesson-text p {
+    margin-bottom: 20px;
+    /* Adds space below paragraphs */
+    font-size: 1rem;
+    /* Font size for paragraphs */
+    text-align: justify;
+    /* Justify text for a polished layout */
 }
 
-.toggle-button {
-    position: absolute;
-    top: 0;
-    right: 0;
+/* If you have buttons, you might want to style them too */
+.lesson-text .btn {
+    background-color: #007bff;
+    /* Example button color */
+    color: white;
+    /* Text color for buttons */
+    border: none;
+    /* No border for buttons */
+    padding: 10px 15px;
+    /* Padding inside buttons */
+    text-align: center;
+    /* Center text inside buttons */
+    text-decoration: none;
+    /* No underline on text */
+    display: inline-block;
+    /* Allows setting margins and padding */
+    font-size: 1rem;
+    /* Text size for buttons */
+    margin: 4px 2px;
+    /* Margin around buttons */
     cursor: pointer;
-    padding: 0 10px;
+    /* Pointer cursor on hover */
+    border-radius: 4px;
+    /* Rounded corners for buttons */
+    transition: background-color 0.3s;
+    /* Smooth transition for hover effect */
 }
 
-#didYouKnowContent.hide {
-    display: none;
-}
-
-
-
-.section-container {
-    /* Optional: General styling for sections */
-}
-
-.section-container {
-    /* Optional: General styling for sections */
-}
-
-.flex-container {
-    display: flex;
-    align-items: flex-start;
-    /* Aligns items to the top */
-    gap: 5px;
-    /* Space between text and example boxes */
-}
-
-.text-content {
-    flex-grow: 0.5px;
-    /* Allows text content to grow and fill the space */
-}
-
-.examples-container {
-    display: flex;
-    flex-direction: column;
-    /* Stack boxes vertically */
-    gap: 10px;
-    /* Space between the two boxes */
+/* Hover effect for buttons */
+.lesson-text .btn:hover {
+    background-color: #0056b3;
+    /* Darken button color on hover */
 }
 
 
 /* Set a fixed size for .example-box for PC screens */
 .example-box {
-    width: 300px;
+    position: fixed;
+    right: 200px;
+    width: 200px;
     /* Fixed width for PC */
-    height: 300px;
+    height: 200px;
     /* Fixed height for PC */
-    padding: 80px;
+    padding: 100px;
     background-color: #f0f0f0;
-    border: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    /* Separates example box from text */
+    border-right: 1px solid #ccc;
+    /* Separates example box from sidebar */
     border-radius: 5px;
-    position: relative;
+    position: absolute;
     overflow: hidden;
     margin-bottom: 5px;
     /* Spacing between the example box and thumbnails */
 }
 
-
-
-.example-box iframe {
-    width: 100%;
-    /* Full width of the box */
-    height: 100%;
-    /* Full height of the box */
-    position: absolute;
-    /* Position it over the box */
-    top: 0;
-    left: 0;
-}
-
-.video-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Semi-transparent background */
-    color: white;
-    text-align: center;
-    padding: 5px;
-    font-size: 0.8rem;
-}
-
-.video-thumbnails img {
+/* Sidebar for words */
+.sidebar {
+    position: fixed;
+    /* Takes up 1 part of the available space */
+    right: 1in;
     width: 100px;
-    /* Adjust as needed */
-    height: auto;
-    margin: 5px;
+    /* Adjust the width as needed */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    border-left: 1px solid #ccc;
+    /* Separates sidebar from content */
+    background-color: #f0f8ff;
+    /* Lightest shade of blue for the sidebar */
+    height: 45%;
+    /* Height to fit content */
+    position: absolute;
+    /* Relative to the flex container */
+    z-index: 1;
+    /* Ensures sidebar is above other content */
+}
+
+/* Style adjustments for buttons inside sidebar */
+.sidebar .tablinks {
+    display: block;
+    background-color: inherit;
+    color: #FF1493;
+    /* Pinkish-red color for the text */
+    padding: 10px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
     cursor: pointer;
-    border: 1px solid #ddd;
-    /* Optional border for thumbnails */
-    border-radius: 4px;
+    transition: 0.3s;
 }
 
-.video-thumbnails {
-    margin-top: 5px;
-    /* 0.5 inch margin */
-    /* Additional styles if needed */
+/* Hover effect for sidebar buttons */
+.sidebar .tablinks:hover {
+    background-color: #f0f8ff;
+    /* Lightest shade of blue for the sidebar */
 }
 
-/* Responsive adjustments for mobile devices */
-@media (max-width: 768px) {
-    .example-box {
-        position: static;
-        /* Reset to default flow of document */
-        width: 100%;
-        /* Full width on smaller screens */
-        height: auto;
-        /* Height is auto to maintain aspect ratio */
-        padding: 10px;
-        margin: 20px 0;
-        /* Add margin on top and bottom for spacing */
-    }
+.tabcontent {
+    display: none;
+    /* Initially hidden */
+    /* Other styles remain the same */
 }
 
-.example-box iframe {
-    height: auto;
-    aspect-ratio: 16 / 9;
-    /* Standard aspect ratio for videos */
+/* Pop-up box styling */
+.tabcontent {
+    display: none;
+    /* Keeps the content hidden until it's triggered */
+    position: fixed;
+    /* Keeps the box in the same place in the viewport */
+    right: 0;
+    /* Aligns the box to the right */
+    top: 0;
+    /* Aligns the box to the top */
+    background-color: white;
+    /* Background color for the box */
+    z-index: 3;
+    /* Ensures the box stacks on top of other content */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    /* Shadow for a 3D effect */
+    overflow-y: auto;
+    /* Allows for a scrollbar if the content is too long */
+    padding: 10px;
+    /* Padding to prevent content from touching the edges of the box */
+    border-left: 1px solid #ccc;
+    /* Border to separate from the rest of the content */
+    max-width: 300px;
+    /* Maximum width of the box */
+    max-height: 90%;
+    /* Maximum height of the box */
+}
+
+/* Close button styling */
+.closebtn {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    background-color: #f44336;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50%;
 }
 
 
-.orientation h2 {
-    color: #005f73;
-    /* Dark, contrasting color for the heading */
-    margin-bottom: 15px;
-    /* Space below the heading */
-    font-size: 2rem;
-    /* Larger font size for the heading */
-    text-align: center;
-    /* Center-align the heading */
-}
-
-.orientation p {
-    font-size: 1rem;
-    /* Standard font size for paragraph */
-    margin-bottom: 20px;
-    /* Space between paragraphs */
-    text-align: justify;
-    /* Justified text for a clean look */
-}
-
-.example-pictures {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.orientation {
-    background-color: #f8f9fa;
-    /* Light background for the section */
+/*.  */
+/* Individual lesson card styling */
+.lesson-card {
+    background: white;
+    /* Background color for lesson cards */
+    padding: 20px;
+    /* Padding inside lesson cards */
     border-radius: 8px;
-    /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Subtle shadow for depth */
-    padding: 30px;
-    /* Ample padding for content */
-    margin: 20px 0;
-    /* Vertical margin for separation from other content */
-    max-width: 800px;
-    /* Maximum width for better readability */
-    margin-left: auto;
-    /* Center the section horizontally */
-    margin-right: auto;
-    font-family: 'Arial', sans-serif;
-    /* Modern, readable font */
-    color: #333;
-    /* Dark gray color for text for readability */
-    line-height: 1.6;
-    /* Comfortable line spacing */
-    display: flex;
-    /* Enable flexbox layout */
-    flex-wrap: wrap;
-    /* Allow items to wrap to the next line */
-    justify-content: space-around;
-    /* Space out items evenly */
-    align-items: center;
-    /* Vertically align items in the middle */
-}
-
-.picture-box {
-    width: 30%;
-    /* Adjust based on desired size */
-    border: 1px solid #ccc;
-    /* Example border */
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-.picture-box img {
-    width: 100%;
-    /* Make image fill the box */
-    height: auto;
-    /* Keep aspect ratio */
-}
-
-.picture-box {
-    flex-basis: 30%;
-    margin: 10px;
-    /* Add more styles if needed */
-}
-
-.tab-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    /* Rounded corners for lesson cards */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    /* Shadow effect for lesson cards */
+    flex-basis: calc(33.333% - 20px);
+    /* Width of lesson cards accounting for the gap */
     margin-bottom: 20px;
-    background-color: #f4f4f4;
-    padding: 10px;
-    border-top: 1px solid #ccc;
+    /* Bottom margin for spacing under lesson cards */
+}
+
+/* Responsive adjustments for the flex container on smaller screens */
+@media (max-width: 768px) {
+    .flex-container {
+        flex-direction: column;
+        /* Stacks flex items vertically */
+        align-items: center;
+        /* Centers flex items on the cross axis */
+    }
+
+    .lesson-card {
+        flex-basis: auto;
+        /* Allows the flex item to grow or shrink as needed */
+        width: 100%;
+        /* Sets the width to occupy the full width of the container */
+    }
 }
 
 .tab {
@@ -436,4 +445,58 @@ button:hover,
 
 .tab:hover {
     background-color: #005f73;
+}
+
+.full-width-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.content-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.text-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.video-container {
+    flex-basis: 560px;
+    padding: 20px;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 315px;
+}
+
+.video-source {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.asl-thumbnail {
+    margin-top: 20px;
+    /* space above the thumbnail */
+    text-align: center;
+    /* center the contents */
+}
+
+.asl-thumbnail img {
+    max-width: 100%;
+    /* ensure the image is responsive */
+    height: auto;
+    /* maintain aspect ratio */
+    border-radius: 4px;
+    /* optional: rounded corners */
+}
+
+.asl-thumbnail p {
+    margin-top: 10px;
+    /* space between the image and text */
 }
