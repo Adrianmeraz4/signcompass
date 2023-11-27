@@ -69,10 +69,15 @@
 
 <script>
 
+// was used for testing purposes
 var isTesting = false;
 
+// used for the starting loading animation
 var loadingAnimation = 1;
 
+// this function searches for the highest value in an array
+// and returns the index
+// (may be depracated)
 function indexOfMax(arr) {
     if (arr.length === 0) {
         return -1;
@@ -92,20 +97,28 @@ function indexOfMax(arr) {
 }
 
 
-
-// style="display: none"
+// used to edit the canvas
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
+// gets some of the elements
 var testText = document.getElementById("testText")
 var loadingText = document.getElementById("loading")
 var timerText = document.getElementById("timer")
 let but = document.getElementById("but");
 
+// a list to store Neural Networks
 var models = [];
+
+// used to temporarily store a NN
 var tempmodel;
+
+// number of NN's
 var numModels;
 
+// function for the loading animation
+// will add dots to the onscreen text
+// so the User doesn't get bored
 function loadingAnim() {
   if (loadingAnimation != -1) {
     console.log("ayo");
@@ -127,15 +140,25 @@ function loadingAnim() {
   }
 }
 
+// 
 async function main() 
 {
   if (isTesting) {
   
   } else {
+    // loads all the NN's and puts them into the models list
+
     tempmodel = await tf.loadLayersModel('https://raw.githubusercontent.com/Adrianmeraz4/signcompass/main/AImodels/TSmodel69.json');
     models.push(tempmodel);
     tempmodel = await tf.loadLayersModel('https://raw.githubusercontent.com/Adrianmeraz4/signcompass/main/AImodels/TSmode70.json');
     models.push(tempmodel);
+    tempmodel = await tf.loadLayersModel('https://raw.githubusercontent.com/Adrianmeraz4/signcompass/main/AImodels/TSmodel3.json');
+    models.push(tempmodel);
+    tempmodel = await tf.loadLayersModel('https://raw.githubusercontent.com/Adrianmeraz4/signcompass/main/AImodels/TSmodel4.json');
+    models.push(tempmodel);
+    tempmodel = await tf.loadLayersModel('https://raw.githubusercontent.com/Adrianmeraz4/signcompass/main/AImodels/TSmodel6.json');
+    models.push(tempmodel);
+
     numModels = models.length;
     console.log(models);
   }
