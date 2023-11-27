@@ -1,78 +1,803 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
-    <title>Lesson 5 O-T</O-T></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/style.css">
+    <title>ASL Lesson 5: O-T</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Resets margin and padding for a list of elements to ensure consistency across browsers */
+        body,
+        h1,
+        h2,
+        p,
+        ul,
+        li {
+            margin: 0;
+            /* Removes default margin */
+            padding: 0;
+            /* Removes default padding */
+        }
+
+        /* Body element styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            /* Sets the default font family */
+            line-height: 1.6;
+            /* Sets the default line height */
+            color: #333;
+            /* Sets the default text color */
+            background-color: #f4f4f4;
+            /* Sets the default background color */
+        }
+
+        /* Header element styling */
+        header {
+            background: #005f73;
+            /* Background color for the header */
+            color: #fff;
+            /* Text color for content in the header */
+            padding: 20px 0;
+            /* Vertical padding for the header */
+            text-align: center;
+            /* Centers the text horizontally */
+        }
+
+        /* Main header title styling */
+        header h1 {
+            font-size: 2.5rem;
+            /* Sets the font size for the main title */
+            margin: 0;
+            /* Resets any default margin */
+        }
+
+        /* Responsive styling for header title on smaller screens */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+                /* Decreases font size for smaller screens */
+            }
+        }
+
+        /* Section element styling */
+        section {
+            padding: 20px;
+            /* Padding inside each section */
+            margin: 10px;
+            /* Margin around each section */
+            background: white;
+            /* Background color for each section */
+            border-radius: 8px;
+            /* Rounded corners for the section backgrounds */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            /* Shadow effect for sections */
+        }
+
+        /* Subsection titles styling */
+        section h2 {
+            color: #005f73;
+            /* Text color for subsection titles */
+            margin-bottom: 10px;
+            /* Bottom margin for spacing under the title */
+            font-size: 1.8rem;
+            /* Font size for subsection titles */
+        }
+
+
+
+        /* sample */
+        /* Paragraph text styling */
+        p,
+        ul {
+            font-size: 1rem;
+            /* Slightly larger font size for readability */
+            line-height: 1.7;
+            /* Increased line height for better readability */
+            color: #333;
+            /* Dark grey for improved legibility */
+            margin-bottom: 1rem;
+            /* Adds a bottom margin to separate paragraphs and lists from following content */
+            max-width: 60ch;
+            /* Optimizes line length for reading comfort; 'ch' is the width of the '0' character */
+            text-align: justify;
+            /* Justifies the text for a clean, aligned appearance */
+        }
+
+        /* Unordered list styling */
+        ul {
+            list-style: inside square;
+            /* Removes the default list style */
+            padding-left: 20px;
+            /* Resets padding to align with other content */
+            margin-left: 1rem;
+            /* Adds a left margin where bullet points will be placed */
+            position: relative;
+            /* Enables positioning of pseudo-elements */
+        }
+
+        /* Add custom styled bullets with pseudo-elements */
+        ul li::before {
+            /* The bullet point character */
+            color: #0077b6;
+            /* A color that matches the website's theme */
+            display: inline-block;
+            /* Allows setting of width and margin */
+            width: 1.1rem;
+            /* Width of the bullet area */
+            margin-left: -1.5rem;
+            /* Pulls the bullet into the correct position */
+            text-align: center;
+            /* Centers the bullet in the allocated area */
+        }
+
+        /* Unordered list item styling */
+        ul li {
+            margin-bottom: 0.5rem;
+            /* Adds spacing between list items */
+            padding-left: 0.5rem;
+            /* A little padding from the bullet to the text */
+        }
+
+        /* Footer element styling */
+        footer {
+            text-align: center;
+            /* Centers the text horizontally in the footer */
+            padding: 20px 0;
+            /* Vertical padding for the footer */
+            background: #005f73;
+            /* Background color for the footer */
+            color: white;
+            /* Text color for content in the footer */
+        }
+
+
+
+        /* Button and button-like elements (.btn class) styling */
+        button,
+        .btn {
+            background: #0077b6;
+            /* Background color for buttons */
+            color: #fff;
+            /* Text color for buttons */
+            padding: 10px 20px;
+            /* Padding inside buttons */
+            border: none;
+            /* Removes the border from buttons */
+            border-radius: 5px;
+            /* Rounded corners for buttons */
+            cursor: pointer;
+            /* Changes cursor to pointer when hovering over buttons */
+            transition: background 0.3s ease;
+            /* Transition effect for background color changes */
+        }
+
+        /* Hover effect for buttons */
+        button:hover,
+        .btn:hover {
+            background: #023e8a;
+            /* Darkens the button background on hover */
+        }
+
+
+
+
+        /*. Start */
+
+        .flex-container {
+            display: flex;
+            /* Enables flexbox layout */
+            flex-wrap: wrap;
+            /* Prevents the items from wrapping */
+            align-items: stretch;
+            /* Stretches the child elements to fit the container height */
+            width: 100%;
+            /* Full width of the container */
+            box-sizing: border-box;
+            /* Border and padding are included in the width */
+        }
+
+        .asf-lesson {
+            display: flex;
+            /* Enables flexbox layout */
+            width: 100%;
+            /* Full width of the container */
+        }
+
+
+        .lesson-text {
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: auto;
+            /* Adjusted based on the fixed widths of the example box and sidebar */
+            padding: 20px;
+            /* Adds space inside the borders of the content area */
+            margin-right: 10px;
+            /* Adds space between the lesson text and the example box */
+            background-color: #f9f9f9;
+            /* A subtle background color */
+            border-radius: 4px;
+            /* Slightly rounded corners for a modern look */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Soft shadow for depth */
+            color: #333;
+            /* Darker text for better readability */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* A modern, readable font-family */
+            line-height: 1.4;
+            /* Space between lines for readability */
+            overflow: hidden;
+            /* Ensures no content spills out */
+            border: 1px solid #ddd;
+            /* Adds a border for definition */
+        }
+
+        /* You might want to style the <ul> inside the .lesson-text for better typography */
+        .lesson-text ul {
+            padding-left: 20px;
+            /* Indent the list items */
+            list-style-type: disc;
+            /* Changes the bullet style */
+            margin-bottom: 10px;
+            /* Adds space below the list */
+        }
+
+        /* Style for list items */
+        .lesson-text li {
+            margin-bottom: 10px;
+            /* Adds space between list items */
+            font-size: 1rem;
+            /* Font size for list items */
+        }
+
+        /* Style for the <p> tags inside the .lesson-text for consistent typography */
+        .lesson-text p {
+            margin-bottom: 20px;
+            /* Adds space below paragraphs */
+            font-size: 1rem;
+            /* Font size for paragraphs */
+            text-align: justify;
+            /* Justify text for a polished layout */
+        }
+
+        /* If you have buttons, you might want to style them too */
+        .lesson-text .btn {
+            background-color: #007bff;
+            /* Example button color */
+            color: white;
+            /* Text color for buttons */
+            border: none;
+            /* No border for buttons */
+            padding: 10px 15px;
+            /* Padding inside buttons */
+            text-align: center;
+            /* Center text inside buttons */
+            text-decoration: none;
+            /* No underline on text */
+            display: inline-block;
+            /* Allows setting margins and padding */
+            font-size: 1rem;
+            /* Text size for buttons */
+            margin: 4px 2px;
+            /* Margin around buttons */
+            cursor: pointer;
+            /* Pointer cursor on hover */
+            border-radius: 4px;
+            /* Rounded corners for buttons */
+            transition: background-color 0.3s;
+            /* Smooth transition for hover effect */
+        }
+
+        /* Hover effect for buttons */
+        .lesson-text .btn:hover {
+            background-color: #0056b3;
+            /* Darken button color on hover */
+        }
+
+
+        /* Set a fixed size for .example-box for PC screens */
+        .example-box {
+            position: fixed;
+            right: 200px;
+            width: 200px;
+            /* Fixed width for PC */
+            height: 200px;
+            /* Fixed height for PC */
+            padding: 100px;
+            background-color: #f0f0f0;
+            border-left: 1px solid #ccc;
+            /* Separates example box from text */
+            border-right: 1px solid #ccc;
+            /* Separates example box from sidebar */
+            border-radius: 5px;
+            position: absolute;
+            overflow: hidden;
+            margin-bottom: 5px;
+            /* Spacing between the example box and thumbnails */
+        }
+
+        /* Sidebar for words */
+        .sidebar {
+            position: fixed;
+            /* Takes up 1 part of the available space */
+            right: 1in;
+            width: 100px;
+            /* Adjust the width as needed */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+            border-left: 1px solid #ccc;
+            /* Separates sidebar from content */
+            background-color: #f0f8ff;
+            /* Lightest shade of blue for the sidebar */
+            height: 45%;
+            /* Height to fit content */
+            position: absolute;
+            /* Relative to the flex container */
+            z-index: 1;
+            /* Ensures sidebar is above other content */
+        }
+
+        /* Style adjustments for buttons inside sidebar */
+        .sidebar .tablinks {
+            display: block;
+            background-color: inherit;
+            color: #FF1493;
+            /* Pinkish-red color for the text */
+            padding: 10px 16px;
+            width: 100%;
+            border: none;
+            outline: none;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* Hover effect for sidebar buttons */
+        .sidebar .tablinks:hover {
+            background-color: #f0f8ff;
+            /* Lightest shade of blue for the sidebar */
+        }
+
+        .tabcontent {
+            display: none;
+            /* Initially hidden */
+            /* Other styles remain the same */
+        }
+
+        /* Pop-up box styling */
+        .tabcontent {
+            display: none;
+            /* Keeps the content hidden until it's triggered */
+            position: fixed;
+            /* Keeps the box in the same place in the viewport */
+            right: 0;
+            /* Aligns the box to the right */
+            top: 0;
+            /* Aligns the box to the top */
+            background-color: white;
+            /* Background color for the box */
+            z-index: 3;
+            /* Ensures the box stacks on top of other content */
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            /* Shadow for a 3D effect */
+            overflow-y: auto;
+            /* Allows for a scrollbar if the content is too long */
+            padding: 10px;
+            /* Padding to prevent content from touching the edges of the box */
+            border-left: 1px solid #ccc;
+            /* Border to separate from the rest of the content */
+            max-width: 300px;
+            /* Maximum width of the box */
+            max-height: 90%;
+            /* Maximum height of the box */
+        }
+
+        /* Close button styling */
+        .closebtn {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            background-color: #f44336;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+        }
+
+
+        /*.  */
+        /* Individual lesson card styling */
+        .lesson-card {
+            background: white;
+            /* Background color for lesson cards */
+            padding: 20px;
+            /* Padding inside lesson cards */
+            border-radius: 8px;
+            /* Rounded corners for lesson cards */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            /* Shadow effect for lesson cards */
+            flex-basis: calc(33.333% - 20px);
+            /* Width of lesson cards accounting for the gap */
+            margin-bottom: 20px;
+            /* Bottom margin for spacing under lesson cards */
+        }
+
+        /* Responsive adjustments for the flex container on smaller screens */
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column;
+                /* Stacks flex items vertically */
+                align-items: center;
+                /* Centers flex items on the cross axis */
+            }
+
+            .lesson-card {
+                flex-basis: auto;
+                /* Allows the flex item to grow or shrink as needed */
+                width: 100%;
+                /* Sets the width to occupy the full width of the container */
+            }
+        }
+
+        .tab {
+            display: inline-block;
+            background-color: #0077b6;
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            margin: 5px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #005f73;
+        }
+
+        .full-width-section {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .content-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .text-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .video-container {
+            flex-basis: 560px;
+            padding: 20px;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 315px;
+        }
+
+        .video-source {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .asl-thumbnail {
+            margin-top: 20px;
+            /* space above the thumbnail */
+            text-align: center;
+            /* center the contents */
+        }
+
+        .asl-thumbnail img {
+            max-width: 100%;
+            /* ensure the image is responsive */
+            height: auto;
+            /* maintain aspect ratio */
+            border-radius: 4px;
+            /* optional: rounded corners */
+        }
+
+        .asl-thumbnail p {
+            margin-top: 10px;
+            /* space between the image and text */
+        }
+    </style>
 </head>
 
 <body>
-    <div class="bg-primary">
-        <div class="justify-center">
-            <h1 class="site-title text-white font-bold">Lesson 1: Introduction</h1>
-        </div>
+    <header>
+        <h1>Lesson 5: O - T</h1>
+    </header>
+
+    <div class="top-flex-title">
+        <section class="full-width-section">
+            <div class="content-container">
+                <div class="text-content">
+
+                    <h3>Cultural and Linguistic Significance of ASL Letters O, P, Q, R, S, T</h3>
+                    <p>Each letter in American Sign Language (ASL) carries its own unique cultural and linguistic
+                        significance. The letters O, P, Q, R, S, and T are no exception, each bringing a distinct aspect
+                        to the language:</p>
+                    <ul>
+                        <li><strong>Letter O:</strong> The 'O' in ASL is not just a letter but a symbol of unity and
+                            inclusion, often seen in signs that involve concepts of togetherness or wholeness.</li>
+                        <li><strong>Letter P:</strong> The letter 'P' showcases ASL's creativity in using hand
+                            orientations; its formation mirrors that of the letter 'K', representing the language's
+                            innovative approach to manual alphabet design.</li>
+                        <li><strong>Letter Q:</strong> The 'Q' sign, an inverted 'G', is a testament to ASL's dynamic
+                            and flexible nature, where hand orientation plays a crucial role in creating diverse
+                            meanings.</li>
+                        <li><strong>Letter R:</strong> The 'R' in ASL, recognized for its crossed fingers, symbolizes
+                            connection and interrelation, often found in signs that depict relationships or binding
+                            concepts.</li>
+                        <li><strong>Letter S:</strong> The 'S' handshape, a strong and firm fist, is symbolic of
+                            strength and resilience, a theme that resonates deeply within the Deaf community and its
+                            history.</li>
+                        <li><strong>Letter T:</strong> The 'T' in ASL, with its unique thumb placement, often features
+                            in signs that require precision, reflecting the language's emphasis on clear and detailed
+                            communication.</li>
+                    </ul>
+                    <p>These letters not only form the building blocks for finger spelling but also embody important
+                        cultural and communicative values in ASL, enriching the language's expressiveness and depth.</p>
+                </div>
+
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/lYhAAMDQl-Q" frameborder="0" allowfullscreen></iframe>
+                    <p class="video-source">Source: YouTube/ Our Berg Life</p>
+                </div>
+            </div>
     </div>
-    <div class="container justify-center max-md: px-20">
+    </section>
+    </div>
 
-        <h1>Lesson 5: O-T</h1>
-        <h2>Before we start</h2>
-        <p>Before we begin flex and close your hand a few times and make sure your fingers are good to go</p>
-        <p>Remember, your wrist orientation and finger position are crucial in sign making</p>
-        <p>This lesson you will be learning the third line of letters in the alphabet: O, P, Q, R, S, and T. After this
-            lesson you will be given the
-            <br> choice of a multiple choice quiz, the camera identification quiz or returning to the main menu
-        </p>
 
-        <h2>O</h2>
-        <p>Starting simple, the letter O is another sign that is a recreation of its english letter</p>
-        <p>First, your right hand palm should be facing left</p>
-        <p>Next, similar to letter C, make fingers 2-5 curl around top and finger 1 in the opposite direction until the
-            touch</p>
-        <img src="\images\letterO.jpg" alt="letter O" width="150" height="250">
 
-        <h2>P</h2>
-        <p>P can seem tricky at first so read closely and observe the image</p>
-        <p>First, extend your hand to the left with your palm facing the diagonal direction in between you and the
-            ground
-        </p>
-        <p>Fingers 4 and 5 should close into the hand and finger 2 should extend outwards</p>
-        <p>Finger 3 will also extend but go outward slightly down and towards you</p>
-        <p>Finally, position finger 1 in between finger 2 and 3</p>
-        <img src="\images\letterP.jpg" alt="letter P" width="250" height="150">
 
-        <h2>Q</h2>
-        <p>Preface for the image for the letter Q, the image is from the left side of the sign. Read the description for
-            an
-            accurate interpretation</p>
-        <p>Q is fundamentally the letter G pointed down</p>
-        <p>First point downwards with finger 2 with your knuckles facing your listener</p>
-        <p>Fingers 3, 4, and 5 should be closed into the palm</p>
-        <p>Then, extend finger 5 behind finger 2 and make it almost as long </p>
-        <img src="\images\letterQ.jpg" alt="letter Q" width="175" height="225">
+    <div class="flex-container">
 
-        <h2>R</h2>
-        <p>R is a fairly popularly known and simple sign as many elementary schools use this symbol as a quiet way to
-            ask to
-            go to the restroom</p>
-        <p>With your palm facing your listener close fingers 4 and 5 into your hand with finger 1 going over top of them
-        </p>
-        <p>Then simply extend fingers 2 and 3 with finger 2 crossing in front of finger 3</p>
-        <img src="\images\letterR.jpg" alt="letter R" width="150" height="250">
+        <!-- Section for Letter 'O' -->
+        <section class="asf-lesson">
+            <div class="lesson-content">
+                <h2>Letter O</h2>
+                <p>The 'O' in ASL is formed by bringing all fingers together and touching the thumb to the fingertips,
+                    creating a circular shape. This sign visually resembles the letter 'O' and is straightforward but
+                    requires a clear and distinct formation.</p>
+                <ul>
+                    <li><strong>Initial Hand Position:</strong> Start with your hand open, palm facing yourself, fingers
+                        slightly apart.</li>
+                    <li><strong>Forming the Circle:</strong> Curl your fingers towards your palm and touch your thumb to
+                        the tips of your fingers. The fingers should come together to form a circle or 'O' shape.</li>
+                    <li><strong>Ensure Clarity:</strong> Make sure the circle is complete with no gaps between the thumb
+                        and fingers. The shape should be round and visible, clearly representing the letter 'O'.</li>
+                    <li><strong>Steady Hand:</strong> Keep your hand steady while forming the 'O' to maintain the
+                        shape's integrity. The sign should be held at eye level for visibility.</li>
+                </ul>
+                <p>Practicing the 'O' sign is important for its universal use in finger spelling. Repeat the formation
+                    several times to ensure it's easily recognizable and distinct.</p>
+                <a class="btn" href="/TScamera3?t=14"> Practice "O"
+                </a>
+            </div>
+            <aside class="example-box">
+                <img src="\images\letterO.jpg" alt="letter O" width="200" height="200">
+            </aside>
+        </section>
 
-        <h2>S</h2>
-        <p>S as mentioned lessons ago is very similar to A in all ways but one</p>
-        <p>Like A close fingers 2, 3, 4, and 5 into your hand with your palm facing your listener</p>
-        <p>However this time you will put finger 1 over fingers 2 and 3. A small but crucial difference</p>
-        <img src="\images\letterS.jpg" alt="letter S" width="200" height="200">
+    </div>
+    </div>
 
-        <h2>T</h2>
-        <p>T is also similar to previous letters, both M and N</p>
-        <p>With your palm facing your listener close fingers 2, 3, 4, and 5</p>
-        <p>Now position finger 1 between 2 and 3 to complete the sign</p>
-        <img src="\images\letterT.jpg" alt="letter T" width="200" height="200">
+
+
+    <div class="flex-container">
+
+        <!-- Section for Letter 'P' -->
+        <section class="asf-lesson">
+            <div class="lesson-content">
+                <h2>Letter P</h2>
+                <p>The 'P' in ASL is a mirrored version of the letter 'K'. It involves extending the middle and index
+                    fingers to create a right angle, with the thumb extended between them, and then turning the hand so
+                    that the palm is facing downwards.</p>
+                <ul>
+                    <li><strong>Initial Hand Position:</strong> Start with your hand open, palm facing sideways, and
+                        fingers spread apart.</li>
+                    <li><strong>Index and Middle Fingers:</strong> Raise your index and middle fingers while keeping
+                        them together. Then, split them to form a right angle, with the index finger pointing upwards
+                        and the middle finger pointing forward.</li>
+                    <li><strong>Thumb Positioning:</strong> Place your thumb up between the index and middle fingers,
+                        touching the middle segment of the middle finger. The thumb acts as a support, maintaining the
+                        right angle position.</li>
+                    <li><strong>Curling Other Fingers:</strong> Curl your ring and pinky fingers into your palm. They
+                        should be held firmly against the palm, out of sight, to highlight the shape of the 'P'.</li>
+                    <li><strong>Orientation:</strong> Rotate your hand so that the palm faces downwards, maintaining the
+                        right angle and thumb position. This orientation is crucial to represent the letter 'P'
+                        correctly.</li>
+                    <li><strong>Ensure Clarity:</strong> Maintain the right angle and thumb positioning clearly. The
+                        hand should be steady, and the sign held at eye level for visibility.</li>
+                </ul>
+                <p>Practice the 'P' sign multiple times to ensure precision. This letter, with its unique hand
+                    orientation, is an essential part of the ASL alphabet.</p>
+                <a class="btn" href="/TScamera3?t=15"> Practice "P"
+                </a>
+            </div>
+            <aside class="example-box">
+                <img src="\images\letterP.jpg" alt="letter P" width="250" height="150">
+            </aside>
+        </section>
+
+    </div>
+    </div>
+
+
+
+    <div class="flex-container">
+
+        <!-- Section for Letter 'Q' -->
+        <section class="asf-lesson">
+            <div class="lesson-content">
+                <h2>Letter Q</h2>
+                <p>The 'Q' in ASL is similar to the 'G' sign but with a different orientation. It involves pointing the
+                    index finger downward while the thumb extends outward, and the remaining fingers are curled into the
+                    palm.</p>
+                <ul>
+                    <li><strong>Initial Hand Position:</strong> Start with your hand open, palm facing down.</li>
+                    <li><strong>Index Finger Extension:</strong> Extend your index finger straight down, pointing
+                        towards the ground.</li>
+                    <li><strong>Thumb Positioning:</strong> Extend your thumb outwards, perpendicular to the index
+                        finger.</li>
+                    <li><strong>Curling Other Fingers:</strong> Curl your middle, ring, and pinky fingers into your
+                        palm. Ensure they are tightly held to avoid confusion with other signs.</li>
+                    <li><strong>Hand Orientation:</strong> Turn your hand so that your palm faces sideways, maintaining
+                        the extended thumb and pointed index finger.</li>
+                    <li><strong>Ensure Clarity:</strong> Keep the 'Q' sign clear by maintaining the downward direction
+                        of the index finger and the outward position of the thumb. The hand should be steady, and the
+                        sign held at a comfortable level for visibility.</li>
+                </ul>
+                <p>Practicing the 'Q' sign is crucial for its distinct orientation and structure. Repeat the formation
+                    several times, ensuring accuracy and clarity.</p>
+                <a class="btn" href="/TScamera3?t=16"> Practice "Q"
+                </a>
+            </div>
+            <aside class="example-box">
+                <img src="\images\letterQ.jpg" alt="letter Q" width="175" height="225">
+
+            </aside>
+        </section>
+
+    </div>
+    </div>
+
+
+    <div class="flex-container">
+
+        <!-- Section for Letter 'R' -->
+        <section class="asf-lesson">
+            <div class="lesson-content">
+                <h2>Letter R</h2>
+                <p>The 'R' in ASL is formed by crossing the index and middle fingers, similar to the common gesture for
+                    'good luck' or 'crossing fingers.' The thumb is kept alongside the palm while the other fingers are
+                    curled in.</p>
+                <ul>
+                    <li><strong>Initial Hand Position:</strong> Begin with your hand open, fingers extended, and palm
+                        facing forward.</li>
+                    <li><strong>Crossing Fingers:</strong> Cross your index finger over your middle finger. The crossing
+                        should be near the base of the fingers, not at the tips.</li>
+                    <li><strong>Thumb Position:</strong> Keep your thumb in its natural position, resting alongside your
+                        palm. It should not be extended or overly pronounced.</li>
+                    <li><strong>Curling Other Fingers:</strong> Curl your ring and pinky fingers into your palm. They
+                        should be held tightly to avoid confusion with other signs.</li>
+                    <li><strong>Ensure Clarity:</strong> Make sure the crossing of the index and middle fingers is
+                        distinct and the hand is steady. The sign should be held at eye level for visibility.</li>
+                </ul>
+                <p>Practice the 'R' sign multiple times to ensure it is easily recognizable. This letter is important in
+                    ASL finger spelling and can be used in various ASL signs.</p>
+                <a class="btn" href="/TScamera3?t=17"> Practice "R"
+                </a>
+            </div>
+            <aside class="example-box">
+                <img src="\images\letterR.jpg" alt="letter R" width="150" height="250">
+            </aside>
+        </section>
+
+    </div>
+    </div>
+
+
+
+    <div class="flex-container">
+
+        <!-- Section for Letter 'S' -->
+        <section class="asf-lesson">
+            <div class="lesson-content">
+                <h2>Letter S</h2>
+                <p>The 'S' in ASL is made by forming a fist with the thumb placed across the front of the curled
+                    fingers. This sign is similar to the universal sign for a fist or strength, but the position of the
+                    thumb is crucial for it to represent the letter 'S'.</p>
+                <ul>
+                    <li><strong>Initial Hand Position:</strong> Start with your hand open, palm facing yourself, and
+                        fingers spread apart.</li>
+                    <li><strong>Forming the Fist:</strong> Curl your fingers into your palm to make a fist.</li>
+                    <li><strong>Thumb Positioning:</strong> Place your thumb across the front of your curled fingers,
+                        typically over or touching the middle finger.</li>
+                    <li><strong>Ensure Clarity:</strong> Ensure that the thumb is correctly positioned across the
+                        fingers and that the fist is tight enough to be clear and distinguishable as the letter 'S'.
+                    </li>
+                    <li><strong>Steady Hand:</strong> Keep your hand steady and the fist firm. The sign should be held
+                        at eye level for visibility and clear communication.</li>
+                </ul>
+                <p>Practice forming the 'S' sign to ensure its clarity and recognition. This letter is a fundamental
+                    part of the ASL alphabet and is widely used in various signs.</p>
+                <a class="btn" href="/TScamera3?t=18"> Practice "S"
+                </a>
+            </div>
+            <aside class="example-box">
+                <img src="\images\letterS.jpg" alt="letter S" width="200" height="200">
+            </aside>
+        </section>
+
+    </div>
+    </div>
+
+
+    <div class="flex-container">
+
+        <section class="asf-lesson">
+            <div class="lesson-content">
+                <h2>Letter T</h2>
+                <p>The 'T' in ASL is represented by tucking the thumb between the index and middle fingers, with the
+                    rest of the fingers curled into the palm. This sign requires careful placement of the thumb to
+                    accurately represent the letter 'T'.</p>
+                <ul>
+                    <li><strong>Initial Hand Position:</strong> Start with your hand open, all fingers extended, and
+                        palm facing yourself.</li>
+                    <li><strong>Thumb Positioning:</strong> Place your thumb under your index finger, resting it between
+                        the index and middle fingers. The tip of the thumb should slightly protrude between the two
+                        fingers.</li>
+                    <li><strong>Curling Fingers:</strong> Curl your index, middle, ring, and pinky fingers into your
+                        palm, securing the thumb in place.</li>
+                    <li><strong>Ensure Clarity:</strong> Make sure the thumb is correctly positioned and visible between
+                        the index and middle fingers. The fingers should be tightly curled over the thumb to distinctly
+                        form the letter 'T'.</li>
+                    <li><strong>Steady Hand:</strong> Keep your hand steady and the sign held at eye level for
+                        visibility. The formation should be clear and easily recognizable as the letter 'T'.</li>
+                </ul>
+                <p>Practicing the 'T' sign is important for its unique structure in the ASL alphabet. Repeat the
+                    formation several times, checking for accuracy and clarity.</p>
+                <a class="btn" href="/TScamera3?t=19"> Practice "T"
+                </a>
+            </div>
+            <aside class="example-box">
+                <img src="\images\letterT.jpg" alt="letter T" width="200" height="200">
+            </aside>
+        </section>
+
+    </div>
+    </div>
+
+
+    <script>
+        function openWord(wordName) {
+            // Close any open tabcontent
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            // Show the clicked tabcontent
+            document.getElementById(wordName).style.display = "block";
+        }
+
+        function closeTab(wordName) {
+            // Hide the tabcontent
+            document.getElementById(wordName).style.display = "none";
+        }
+    </script>
 </body>
 
 </html>

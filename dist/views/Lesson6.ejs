@@ -1,68 +1,796 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Lesson 5</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASL Lesson 6: U-Z</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Resets margin and padding for a list of elements to ensure consistency across browsers */
+        body,
+        h1,
+        h2,
+        p,
+        ul,
+        li {
+            margin: 0;
+            /* Removes default margin */
+            padding: 0;
+            /* Removes default padding */
+        }
+
+        /* Body element styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            /* Sets the default font family */
+            line-height: 1.6;
+            /* Sets the default line height */
+            color: #333;
+            /* Sets the default text color */
+            background-color: #f4f4f4;
+            /* Sets the default background color */
+        }
+
+        /* Header element styling */
+        header {
+            background: #005f73;
+            /* Background color for the header */
+            color: #fff;
+            /* Text color for content in the header */
+            padding: 20px 0;
+            /* Vertical padding for the header */
+            text-align: center;
+            /* Centers the text horizontally */
+        }
+
+        /* Main header title styling */
+        header h1 {
+            font-size: 2.5rem;
+            /* Sets the font size for the main title */
+            margin: 0;
+            /* Resets any default margin */
+        }
+
+        /* Responsive styling for header title on smaller screens */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+                /* Decreases font size for smaller screens */
+            }
+        }
+
+        /* Section element styling */
+        section {
+            padding: 20px;
+            /* Padding inside each section */
+            margin: 10px;
+            /* Margin around each section */
+            background: white;
+            /* Background color for each section */
+            border-radius: 8px;
+            /* Rounded corners for the section backgrounds */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            /* Shadow effect for sections */
+        }
+
+        /* Subsection titles styling */
+        section h2 {
+            color: #005f73;
+            /* Text color for subsection titles */
+            margin-bottom: 10px;
+            /* Bottom margin for spacing under the title */
+            font-size: 1.8rem;
+            /* Font size for subsection titles */
+        }
+
+
+
+        /* sample */
+        /* Paragraph text styling */
+        p,
+        ul {
+            font-size: 1rem;
+            /* Slightly larger font size for readability */
+            line-height: 1.7;
+            /* Increased line height for better readability */
+            color: #333;
+            /* Dark grey for improved legibility */
+            margin-bottom: 1rem;
+            /* Adds a bottom margin to separate paragraphs and lists from following content */
+            max-width: 60ch;
+            /* Optimizes line length for reading comfort; 'ch' is the width of the '0' character */
+            text-align: justify;
+            /* Justifies the text for a clean, aligned appearance */
+        }
+
+        /* Unordered list styling */
+        ul {
+            list-style: inside square;
+            /* Removes the default list style */
+            padding-left: 20px;
+            /* Resets padding to align with other content */
+            margin-left: 1rem;
+            /* Adds a left margin where bullet points will be placed */
+            position: relative;
+            /* Enables positioning of pseudo-elements */
+        }
+
+        /* Add custom styled bullets with pseudo-elements */
+        ul li::before {
+            /* The bullet point character */
+            color: #0077b6;
+            /* A color that matches the website's theme */
+            display: inline-block;
+            /* Allows setting of width and margin */
+            width: 1.1rem;
+            /* Width of the bullet area */
+            margin-left: -1.5rem;
+            /* Pulls the bullet into the correct position */
+            text-align: center;
+            /* Centers the bullet in the allocated area */
+        }
+
+        /* Unordered list item styling */
+        ul li {
+            margin-bottom: 0.5rem;
+            /* Adds spacing between list items */
+            padding-left: 0.5rem;
+            /* A little padding from the bullet to the text */
+        }
+
+        /* Footer element styling */
+        footer {
+            text-align: center;
+            /* Centers the text horizontally in the footer */
+            padding: 20px 0;
+            /* Vertical padding for the footer */
+            background: #005f73;
+            /* Background color for the footer */
+            color: white;
+            /* Text color for content in the footer */
+        }
+
+
+
+        /* Button and button-like elements (.btn class) styling */
+        button,
+        .btn {
+            background: #0077b6;
+            /* Background color for buttons */
+            color: #fff;
+            /* Text color for buttons */
+            padding: 10px 20px;
+            /* Padding inside buttons */
+            border: none;
+            /* Removes the border from buttons */
+            border-radius: 5px;
+            /* Rounded corners for buttons */
+            cursor: pointer;
+            /* Changes cursor to pointer when hovering over buttons */
+            transition: background 0.3s ease;
+            /* Transition effect for background color changes */
+        }
+
+        /* Hover effect for buttons */
+        button:hover,
+        .btn:hover {
+            background: #023e8a;
+            /* Darkens the button background on hover */
+        }
+
+
+
+
+        /*. Start */
+
+        .flex-container {
+            display: flex;
+            /* Enables flexbox layout */
+            flex-wrap: wrap;
+            /* Prevents the items from wrapping */
+            align-items: stretch;
+            /* Stretches the child elements to fit the container height */
+            width: 100%;
+            /* Full width of the container */
+            box-sizing: border-box;
+            /* Border and padding are included in the width */
+        }
+
+        .asf-lesson {
+            display: flex;
+            /* Enables flexbox layout */
+            width: 100%;
+            /* Full width of the container */
+        }
+
+
+        .lesson-text {
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: auto;
+            /* Adjusted based on the fixed widths of the example box and sidebar */
+            padding: 20px;
+            /* Adds space inside the borders of the content area */
+            margin-right: 10px;
+            /* Adds space between the lesson text and the example box */
+            background-color: #f9f9f9;
+            /* A subtle background color */
+            border-radius: 4px;
+            /* Slightly rounded corners for a modern look */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Soft shadow for depth */
+            color: #333;
+            /* Darker text for better readability */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* A modern, readable font-family */
+            line-height: 1.4;
+            /* Space between lines for readability */
+            overflow: hidden;
+            /* Ensures no content spills out */
+            border: 1px solid #ddd;
+            /* Adds a border for definition */
+        }
+
+        /* You might want to style the <ul> inside the .lesson-text for better typography */
+        .lesson-text ul {
+            padding-left: 20px;
+            /* Indent the list items */
+            list-style-type: disc;
+            /* Changes the bullet style */
+            margin-bottom: 10px;
+            /* Adds space below the list */
+        }
+
+        /* Style for list items */
+        .lesson-text li {
+            margin-bottom: 10px;
+            /* Adds space between list items */
+            font-size: 1rem;
+            /* Font size for list items */
+        }
+
+        /* Style for the <p> tags inside the .lesson-text for consistent typography */
+        .lesson-text p {
+            margin-bottom: 20px;
+            /* Adds space below paragraphs */
+            font-size: 1rem;
+            /* Font size for paragraphs */
+            text-align: justify;
+            /* Justify text for a polished layout */
+        }
+
+        /* If you have buttons, you might want to style them too */
+        .lesson-text .btn {
+            background-color: #007bff;
+            /* Example button color */
+            color: white;
+            /* Text color for buttons */
+            border: none;
+            /* No border for buttons */
+            padding: 10px 15px;
+            /* Padding inside buttons */
+            text-align: center;
+            /* Center text inside buttons */
+            text-decoration: none;
+            /* No underline on text */
+            display: inline-block;
+            /* Allows setting margins and padding */
+            font-size: 1rem;
+            /* Text size for buttons */
+            margin: 4px 2px;
+            /* Margin around buttons */
+            cursor: pointer;
+            /* Pointer cursor on hover */
+            border-radius: 4px;
+            /* Rounded corners for buttons */
+            transition: background-color 0.3s;
+            /* Smooth transition for hover effect */
+        }
+
+        /* Hover effect for buttons */
+        .lesson-text .btn:hover {
+            background-color: #0056b3;
+            /* Darken button color on hover */
+        }
+
+
+        /* Set a fixed size for .example-box for PC screens */
+        .example-box {
+            position: fixed;
+            right: 200px;
+            width: 200px;
+            /* Fixed width for PC */
+            height: 200px;
+            /* Fixed height for PC */
+            padding: 100px;
+            background-color: #f0f0f0;
+            border-left: 1px solid #ccc;
+            /* Separates example box from text */
+            border-right: 1px solid #ccc;
+            /* Separates example box from sidebar */
+            border-radius: 5px;
+            position: absolute;
+            overflow: hidden;
+            margin-bottom: 5px;
+            /* Spacing between the example box and thumbnails */
+        }
+
+        /* Sidebar for words */
+        .sidebar {
+            position: fixed;
+            /* Takes up 1 part of the available space */
+            right: 1in;
+            width: 100px;
+            /* Adjust the width as needed */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+            border-left: 1px solid #ccc;
+            /* Separates sidebar from content */
+            background-color: #f0f8ff;
+            /* Lightest shade of blue for the sidebar */
+            height: 45%;
+            /* Height to fit content */
+            position: absolute;
+            /* Relative to the flex container */
+            z-index: 1;
+            /* Ensures sidebar is above other content */
+        }
+
+        /* Style adjustments for buttons inside sidebar */
+        .sidebar .tablinks {
+            display: block;
+            background-color: inherit;
+            color: #FF1493;
+            /* Pinkish-red color for the text */
+            padding: 10px 16px;
+            width: 100%;
+            border: none;
+            outline: none;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* Hover effect for sidebar buttons */
+        .sidebar .tablinks:hover {
+            background-color: #f0f8ff;
+            /* Lightest shade of blue for the sidebar */
+        }
+
+        .tabcontent {
+            display: none;
+            /* Initially hidden */
+            /* Other styles remain the same */
+        }
+
+        /* Pop-up box styling */
+        .tabcontent {
+            display: none;
+            /* Keeps the content hidden until it's triggered */
+            position: fixed;
+            /* Keeps the box in the same place in the viewport */
+            right: 0;
+            /* Aligns the box to the right */
+            top: 0;
+            /* Aligns the box to the top */
+            background-color: white;
+            /* Background color for the box */
+            z-index: 3;
+            /* Ensures the box stacks on top of other content */
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            /* Shadow for a 3D effect */
+            overflow-y: auto;
+            /* Allows for a scrollbar if the content is too long */
+            padding: 10px;
+            /* Padding to prevent content from touching the edges of the box */
+            border-left: 1px solid #ccc;
+            /* Border to separate from the rest of the content */
+            max-width: 300px;
+            /* Maximum width of the box */
+            max-height: 90%;
+            /* Maximum height of the box */
+        }
+
+        /* Close button styling */
+        .closebtn {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            background-color: #f44336;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+        }
+
+
+        /*.  */
+        /* Individual lesson card styling */
+        .lesson-card {
+            background: white;
+            /* Background color for lesson cards */
+            padding: 20px;
+            /* Padding inside lesson cards */
+            border-radius: 8px;
+            /* Rounded corners for lesson cards */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            /* Shadow effect for lesson cards */
+            flex-basis: calc(33.333% - 20px);
+            /* Width of lesson cards accounting for the gap */
+            margin-bottom: 20px;
+            /* Bottom margin for spacing under lesson cards */
+        }
+
+        /* Responsive adjustments for the flex container on smaller screens */
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column;
+                /* Stacks flex items vertically */
+                align-items: center;
+                /* Centers flex items on the cross axis */
+            }
+
+            .lesson-card {
+                flex-basis: auto;
+                /* Allows the flex item to grow or shrink as needed */
+                width: 100%;
+                /* Sets the width to occupy the full width of the container */
+            }
+        }
+
+        .tab {
+            display: inline-block;
+            background-color: #0077b6;
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            margin: 5px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #005f73;
+        }
+
+        .full-width-section {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .content-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .text-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .video-container {
+            flex-basis: 560px;
+            padding: 20px;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 315px;
+        }
+
+        .video-source {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .asl-thumbnail {
+            margin-top: 20px;
+            /* space above the thumbnail */
+            text-align: center;
+            /* center the contents */
+        }
+
+        .asl-thumbnail img {
+            max-width: 100%;
+            /* ensure the image is responsive */
+            height: auto;
+            /* maintain aspect ratio */
+            border-radius: 4px;
+            /* optional: rounded corners */
+        }
+
+        .asl-thumbnail p {
+            margin-top: 10px;
+            /* space between the image and text */
+        }
+    </style>
 </head>
 
 <body>
-    <div class="bg-primary">
-        <div class="justify-center">
-            <h1 class="site-title text-white font-bold">Lesson 1: Introduction</h1>
-        </div>
+    <header>
+        <h1>Lesson 6: U - Z</h1>
+    </header>
+
+    <div class="top-flex-title">
+        <section class="full-width-section">
+            <div class="content-container">
+                <div class="text-content">
+
+                    <h3>Exploring the Unique Cultural and Linguistic Roles of ASL Letters U, V, W, X, Y, Z</h3>
+                    <p>In American Sign Language (ASL), the letters U, V, W, X, Y, and Z each have distinct roles that
+                        contribute to the language's richness and diversity. These letters are imbued with unique
+                        cultural and communicative significance:</p>
+                    <ul>
+                        <li><strong>Letter U:</strong> The 'U' in ASL is often seen in signs that require a sense of
+                            unity or connection, resonating with its shape that suggests togetherness and harmony.</li>
+                        <li><strong>Letter V:</strong> The 'V' handshape in ASL is used in a variety of signs that
+                            signify choice, direction, or duality, reflecting its visually bifurcated form.</li>
+                        <li><strong>Letter W:</strong> The 'W' in ASL, with its three extended fingers, is a sign often
+                            associated with inclusivity and plurality, reflecting its wide, embracing shape.</li>
+                        <li><strong>Letter X:</strong> The 'X' in ASL, characterized by its hooked finger, is used in
+                            signs that require a sense of mystery or an unknown element, aligning with the letter's
+                            visually intriguing form.</li>
+                        <li><strong>Letter Y:</strong> The 'Y' handshape in ASL is often employed in signs that convey a
+                            sense of choice or divergence, mirroring its forked shape that suggests branching paths.
+                        </li>
+                        <li><strong>Letter Z:</strong> The 'Z' in ASL, uniquely formed by drawing a 'Z' in the air,
+                            represents dynamic movement and energy, aligning with the letter's sharp and angular shape.
+                        </li>
+                    </ul>
+                    <p>These letters not only serve as fundamental components of finger spelling but also embody
+                        significant meanings and concepts within ASL, showcasing the language's depth and
+                        expressiveness.</p>
+                </div>
+
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/lYhAAMDQl-Q" frameborder="0" allowfullscreen></iframe>
+                    <p class="video-source">Source: YouTube/ Our Berg Life</p>
+                </div>
+            </div>
     </div>
-    <div class="container justify-center max-md: px-20">
+    </section>
+    </div>
 
-        <h1>Lesson 6: U-Z</h1>
-        <h2>Before we start</h2>
-        <p>Before we begin flex and close your hand a few times and make sure your fingers are good to go</p>
-        <p>Remember, your wrist orientation and finger position are crucial in sign making</p>
-        <p>This lesson you will be learning the final line of letters in the alphabet: U, V, W, X, Y, and Z. After this
-            lesson you will be given the
-            <br> choice of a multiple choice quiz, the camera identification quiz or returning to the main menu
-        </p>
 
-        <h2>U</h2>
-        <p>All letters in this final lesson are quite simple starting with the letter U</p>
-        <p>U starts with your palm facing your listener and closing fingers 4 and 5 as well as finger 1 in front of them
-        </p>
-        <p>Then extend fingers 2 and 3 side by side to complete the sign</p>
-        <img src="letterU.jpg" alt="letter U" width="150" height="250">
 
-        <h2>V</h2>
-        <p>Similar to sign U, V also replicates its english counterpart</p>
-        <p>Like U, face your palm to your listener and close fingers 4 and 5 into your hand with finger 1 in front of
-            them
-        </p>
-        <p>This time extend fingers 2 and 3 in opposite directions to form a V</p>
-        <img src="letterV.jpg" alt="letter V" width="175" height="225">
 
-        <h2>W</h2>
-        <p>W continues the style of V and U in the concept of its sign</p>
-        <p>Finger 5 will close into the palm and finger 1 will close over it</p>
-        <p>Now extend fingers 2, 3, and 4 in different directions to make a W</p>
-        <img src="letterW.jpg" alt="letter W" width="200" height="200">
+    <div class="flex-container">
 
-        <h2>X</h2>
-        <p>For X there is slight variation in position of finger 1 so read closely</p>
-        <p>Fingers 3, 4, and 5 should close inward with the palm facing the listener</p>
-        <p>Finger 2 will form a hook and Finger 1 can be either closed into the palm like the picture, or closed
-            outside.
-            Both forms are acceptable</p>
-        <img src="letterX.jpg" alt="letter X" width="150" height="250">
+        <!-- Section for Letter 'U' -->
+        <section class="asf-lesson">
+            <div class="lesson-content">
+                <h2>Letter U</h2>
+                <p>The 'U' in ASL is formed by extending the index and middle fingers together while the rest of the
+                    fingers are curled into the palm. The thumb is held alongside the curled fingers. This sign
+                    resembles the letter 'U' with its two parallel extended fingers.</p>
+                <ul>
+                    <li><strong>Initial Hand Position:</strong> Start with your hand open, all fingers extended, and
+                        palm facing forward.</li>
+                    <li><strong>Extend Index and Middle Fingers:</strong> Extend your index and middle fingers straight
+                        up and keep them together, side by side, to form the 'U' shape.</li>
+                    <li><strong>Curling Other Fingers:</strong> Curl your ring and pinky fingers into your palm. They
+                        should be held firmly against the palm.</li>
+                    <li><strong>Thumb Position:</strong> Keep your thumb in its natural position, resting alongside your
+                        palm. It should not be extended or overly pronounced.</li>
+                    <li><strong>Ensure Clarity:</strong> Ensure that the index and middle fingers are clearly extended
+                        and parallel to each other. The hand should be steady, and the sign held at eye level for
+                        visibility.</li>
+                </ul>
+                <p>Practice the 'U' sign several times to ensure its clarity and recognition. This letter is a key
+                    component of the ASL alphabet and is used in various signs.</p>
+                <a class="btn" href="/TScamera3?t=20"> Practice "U"
+                </a>
+            </div>
+            <aside class="example-box">
+                <img src="\images\letterU.jpg" alt="letter U" width="200" height="200">
+            </aside>
+        </section>
 
-        <h2>Y</h2>
-        <p>Y is the final static sign in the alphabet</p>
-        <p>First face your palm towards your listener and close fingers 2, 3, and 4 into the palm</p>
-        <p>Now extend fingers 1 and 5 in opposite direction to form the sign</p>
-        <img src="letterY.jpg" alt="letter Y" width="200" height="200">
+    </div>
+    </div>
 
-        <h2>Z</h2>
-        <p>Z is the final letter of the ASL alphabet and the second dynamic sign</p>
-        <p>The position of fingers 1, 3, 4, and 5 are to remain closed during the sign</p>
-        <p>Finger 2 will extend and trace a Z in the air</p>
-        <p>Congratulations, you completed the alphabet in ASL</p>
-        <img src="letterZ.jpg" alt="letter Z" width="150" height="250">
+
+    <div class="flex-container">
+
+        <!-- Section for Letter 'V' -->
+        <section class="asf-lesson">
+            <div class="lesson-content">
+                <h2>Letter V</h2>
+                <p>The 'V' in ASL is formed by extending and separating the index and middle fingers, while the rest of
+                    the fingers and the thumb are curled into the palm. This sign mimics the shape of the letter 'V'
+                    with its two extended fingers forming a 'v' shape.</p>
+                <ul>
+                    <li><strong>Initial Hand Position:</strong> Start with your hand open, all fingers extended, and
+                        palm facing forward.</li>
+                    <li><strong>Extend and Separate Fingers:</strong> Extend your index and middle fingers while keeping
+                        them separated, forming a 'v' shape.</li>
+                    <li><strong>Curling Other Fingers:</strong> Curl your ring finger, pinky finger, and thumb into your
+                        palm. They should be held firmly against the palm.</li>
+                    <li><strong>Ensure Clarity:</strong> Make sure that the index and middle fingers are clearly
+                        extended and separated to distinctly form the letter 'V'. The fingers should be kept straight
+                        and parallel to each other.</li>
+                    <li><strong>Steady Hand:</strong> Keep your hand steady and the sign held at eye level for
+                        visibility. The formation should be clear and easily recognizable as the letter 'V'.</li>
+                </ul>
+                <p>Practice the 'V' sign multiple times to ensure it is easily recognizable and distinct. The letter 'V'
+                    is a fundamental part of the ASL alphabet and is used in various signs.</p>
+                <a class="btn" href="/TScamera3?t=21"> Practice "V"
+                </a>
+            </div>
+            <aside class="example-box">
+                <img src="\images\letterV.jpg" alt="letter V" width="200" height="200">
+            </aside>
+
+    </div>
+    </div>
+
+
+    <div class="flex-container">
+
+        <!-- Section for Letter 'W' -->
+        <section class="asf-lesson">
+            <div class="lesson-content">
+                <h2>Letter W</h2>
+                <p>The 'W' in ASL is formed by extending the index, middle, and ring fingers while keeping them spread
+                    apart, and curling the pinky and thumb into the palm. This sign resembles the letter 'W' with its
+                    three extended and separated fingers.</p>
+                <ul>
+                    <li><strong>Initial Hand Position:</strong> Start with your hand open, all fingers extended, and
+                        palm facing forward.</li>
+                    <li><strong>Extend and Spread Fingers:</strong> Extend your index, middle, and ring fingers while
+                        keeping them spread apart to form the shape of a 'W'.</li>
+                    <li><strong>Curl Pinky and Thumb:</strong> Curl your pinky finger and thumb into your palm. The
+                        pinky and thumb should be tucked in, not overlapping each other.</li>
+                    <li><strong>Ensure Clarity:</strong> Ensure that the three extended fingers are clearly spread apart
+                        and the pinky and thumb are neatly curled into the palm. The formation should be distinct and
+                        recognizable as the letter 'W'.</li>
+                    <li><strong>Steady Hand:</strong> Keep your hand steady and the sign held at eye level for
+                        visibility. The formation should be clear and easily recognizable as the letter 'W'.</li>
+                </ul>
+                <p>Practice the 'W' sign several times to ensure its clarity and recognition. This letter is an
+                    important part of the ASL alphabet and is used in various signs.</p>
+                <a class="btn" href="/TScamera3?t=22"> Practice "W"
+                </a>
+            </div>
+            <aside class="example-box">
+                <img src="\images\letterW.jpg" alt="letter W" width="200" height="200">
+            </aside>
+        </section>
+
+    </div>
+    </div>
+
+
+    <div class="flex-container">
+
+        <!-- Section for Letter 'X' -->
+        <section class="asf-lesson">
+            <div class="lesson-content">
+                <h2>Letter X</h2>
+                <p>The 'X' in ASL is formed by curling the index finger towards the thumb while extending the other
+                    fingers out. The thumb is placed across the side of the index finger, creating a hook-like shape
+                    that represents the letter 'X'.</p>
+                <ul>
+                    <li><strong>Initial Hand Position:</strong> Begin with your hand open, all fingers extended, and
+                        palm facing forward.</li>
+                    <li><strong>Curl Index Finger:</strong> Curl your index finger towards your palm, creating a
+                        hook-like shape. The tip of the index finger should be pointing towards the thumb.</li>
+                    <li><strong>Thumb Positioning:</strong> Place your thumb across the side of the curled index finger,
+                        helping to maintain the hook shape.</li>
+                    <li><strong>Extend Other Fingers:</strong> Keep your middle, ring, and pinky fingers extended
+                        outward, away from the palm.</li>
+                    <li><strong>Ensure Clarity:</strong> Ensure that the index finger is properly curled and the thumb
+                        is correctly positioned to clearly form the letter 'X'. The hand should be steady, and the sign
+                        held at eye level for visibility.</li>
+                </ul>
+                <p>Practice forming the 'X' sign to ensure its clarity and recognition. This letter has a unique shape
+                    in the ASL alphabet and is essential for clear communication.</p>
+                <a class="btn" href="/TScamera3?t=23"> Practice "X"
+                </a>
+            </div>
+            <aside class="example-box">
+                <img src="\images\letterX.jpg" alt="letter X" width="200" height="200">
+            </aside>
+        </section>
+
+    </div>
+    </div>
+
+
+    <div class="flex-container">
+
+        <!-- Section for Letter 'Y' -->
+        <section class="asf-lesson">
+            <div class="lesson-content">
+                <h2>Letter Y</h2>
+                <p>The 'Y' in ASL is formed by extending the thumb and pinky finger while keeping the other three
+                    fingers curled into the palm. This sign resembles the 'Y' shape with its two extended fingers.</p>
+                <ul>
+                    <li><strong>Initial Hand Position:</strong> Start with your hand open, all fingers extended, and
+                        palm facing forward.</li>
+                    <li><strong>Extend Thumb and Pinky:</strong> Extend your thumb and pinky finger, keeping them
+                        straight and apart from each other.</li>
+                    <li><strong>Curl Other Fingers:</strong> Curl your index, middle, and ring fingers into your palm.
+                        They should be held firmly against the palm.</li>
+                    <li><strong>Ensure Clarity:</strong> Make sure the thumb and pinky are clearly extended and
+                        separated, forming the 'Y' shape. The hand should be steady, and the sign held at eye level for
+                        visibility.</li>
+                </ul>
+                <p>Practice the 'Y' sign multiple times to ensure it is easily recognizable and distinct. The letter 'Y'
+                    is an important part of the ASL alphabet and is used in various signs.</p>
+                <a class="btn" href="/TScamera3?t=24"> Practice "Y"
+                </a>
+            </div>
+            <aside class="example-box">
+                <img src="\images\letterY.jpg" alt="letter Y" width="200" height="200">
+            </aside>
+        </section>
+
+    </div>
+    </div>
+
+
+    <div class="flex-container">
+
+        <!-- Section for Letter 'Z' -->
+        <section class="asf-lesson">
+            <div class="lesson-content">
+                <h2>Letter Z</h2>
+                <p>The 'Z' in ASL is unique as it involves a drawing motion. It is represented by pointing the index
+                    finger and tracing the shape of the letter 'Z' in the air. This dynamic sign requires a steady hand
+                    to accurately depict the letter.</p>
+                <ul>
+                    <li><strong>Initial Hand Position:</strong> Begin with your hand open, all fingers extended, and
+                        palm facing forward.</li>
+                    <li><strong>Index Finger Pointing:</strong> Extend your index finger straight out, while curling
+                        your other fingers into your palm. The thumb should be tucked in or resting alongside the curled
+                        fingers.</li>
+                    <li><strong>Trace the 'Z':</strong> With your index finger extended, trace the letter 'Z' in the
+                        air. Start at the top left, move horizontally to the right, diagonally down to the left, and
+                        then horizontally to the right again.</li>
+                    <li><strong>Motion Clarity:</strong> Ensure the motion is smooth and the shape of the 'Z' is clear
+                        and distinct. The movement should be controlled and deliberate to accurately convey the letter.
+                    </li>
+                    <li><strong>Steady Hand:</strong> Keep your hand and arm steady during the tracing motion. The sign
+                        should be at a comfortable level for visibility and clear communication.</li>
+                </ul>
+                <p>Practice the 'Z' sign several times to master the motion. This dynamic letter adds a unique element
+                    to the ASL alphabet and is essential for finger spelling and communication.</p>
+                <a class="btn" href="/TScamera3?t=25"> Practice "Z"
+                </a>
+            </div>
+            <aside class="example-box">
+                <img src="\images\letterZ.jpg" alt="letter Z" width="200" height="200">
+            </aside>
+        </section>
+
+    </div>
+    </div>
+
+
+    <script>
+        function openWord(wordName) {
+            // Close any open tabcontent
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            // Show the clicked tabcontent
+            document.getElementById(wordName).style.display = "block";
+        }
+
+        function closeTab(wordName) {
+            // Hide the tabcontent
+            document.getElementById(wordName).style.display = "none";
+        }
+    </script>
 </body>
 
 </html>

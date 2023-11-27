@@ -70,6 +70,9 @@ app.get('/login', (req, res) => {
 app.get('/TScamera3', (req, res) => {
     res.render('TScamera3', { session: req.session, model1: model1 });
 });
+app.get('/TScamera2', (req, res) => {
+    res.render('TScamera2', { session: req.session, model1: model1 });
+});
 app.get('/logout', (req, res) => {
     req.session.destroy((err) => console.error(err));
     res.redirect('/');

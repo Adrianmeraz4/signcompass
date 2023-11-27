@@ -1,0 +1,260 @@
+<head>
+<style>
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.button2 {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #3399ff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button2:hover {background-color: #0073e6}
+
+.button2:active {
+  background-color: #0073e6;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+</head>
+<div style="text-align: center;">
+<h1 id="loading">Loading Neural Network</h1>
+<div id="butHolder">
+<h1 id="timer"></h1>
+<button id="but" autoplay class="button" style="display: none">
+    Open WebCam
+</button>
+</div>
+
+<div>
+    <video id="vid" width="400" height="400" ></video>
+    <h1 id="testText"></h1>
+</div>
+
+</div>
+<br>
+
+<canvas id="canvas" width="100" height="100" ></canvas>
+
+<script>
+
+var isTesting = false;
+
+var loadingAnimation = 1;
+
+function indexOfMax(arr) {
+    if (arr.length === 0) {
+        return -1;
+    }
+
+    var max = arr[0];
+    var maxIndex = 0;
+
+    for (var i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            maxIndex = i;
+            max = arr[i];
+        }
+    }
+
+    return maxIndex;
+}
+
+
+
+// style="display: none"
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
+
+var testText = document.getElementById("testText")
+var loadingText = document.getElementById("loading")
+var timerText = document.getElementById("timer")
+let but = document.getElementById("but");
+
+var models = [];
+var tempmodel;
+var numModels;
+
+function loadingAnim() {
+  if (loadingAnimation != -1) {
+    console.log("ayo");
+    loadingText.innerHTML = "Loading Neural Network"
+    var temp = loadingAnimation + 0;
+    while (temp != 0) {
+      temp--;
+      loadingText.innerHTML += ".";
+    }
+    loadingAnimation++;
+    if (loadingAnimation == 4) {
+      loadingAnimation = 1;
+    }
+    setTimeout(function() {
+            loadingAnim();
+        }, 500);
+  } else {
+    loadingText.remove();
+  }
+}
+
+async function main() 
+{
+  if (isTesting) {
+  
+  } else {
+    tempmodel = await tf.loadLayersModel('https://raw.githubusercontent.com/Adrianmeraz4/signcompass/main/AImodels/TSmodel69.json');
+    models.push(tempmodel);
+    tempmodel = await tf.loadLayersModel('https://raw.githubusercontent.com/Adrianmeraz4/signcompass/main/AImodels/TSmode70.json');
+    models.push(tempmodel);
+    numModels = models.length;
+    console.log(models);
+  }
+  loadingAnimation = -1;
+  but.style = "display: block; text-align: center;";
+}
+
+loadingAnim();
+main();
+
+var Json;
+var net;
+var net2;
+
+var doMath = false;
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+        
+        let video = document.getElementById("vid");
+        let mediaDevices = navigator.mediaDevices;
+        vid.muted = true;
+        but.addEventListener("click", () => {
+          
+          but.remove();
+          const butHolder = document.getElementById("butHolder");
+          const newBut = document.createElement("button");
+          newBut.classList.add("button2");
+          newBut.innerHTML = "Check Answer"
+          newBut.onclick = newButton;
+          butHolder.appendChild(newBut);
+          
+            // Accessing the user camera and video.
+            mediaDevices
+                .getUserMedia({
+                    video: true,
+                    audio: true,
+                })
+                .then((stream) => {
+ 
+                    // Changing the source of video to current stream.
+                    video.srcObject = stream;
+                    video.addEventListener("loadedmetadata", () => {
+                        video.play();
+                        function step() {
+                          if (doMath) {
+                          doMath = false;
+                          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                          var imgd = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                          var pix = imgd.data;
+                          // 0-4 is RGBA - assume 5 is next pixel
+                          //alert(pix[0]);
+                          // Loop over each pixel and invert the color.
+                          var currentGrays = [];
+                          for (var i = 0, n = pix.length; i < n; i += 4) {
+                              let avg = Math.round((pix[i] + pix[i + 1] + pix[i + 2]) / 3.0);
+                              //alert(avg);
+                              currentGrays.push(avg);
+                          }
+                          
+                          var predictionData = tf.tensor([currentGrays]);
+                          
+                          var totalPredictions = [];
+                          
+                          var k = 0;
+                          while (k < 26) {
+                            totalPredictions.push(0);
+                            k++;
+                          }
+                          console.log(totalPredictions);
+                          for (k = 0; k < numModels; k++) 
+                          {
+                            var prediction = models[k].predict(predictionData ).dataSync();
+                            console.log(prediction);
+                            var j = 0;
+                            while (j < 26) {
+                              totalPredictions[j] += prediction[j];
+                              j++;
+                            }
+                          }
+                          
+                          
+                          var indexed = indexOfMax(totalPredictions)
+                          console.log(totalPredictions);
+                          console.log(indexed);
+                          
+                          var predLetter = String.fromCharCode(65 + indexed);
+                          
+                          testText.innerHTML = "You were using: " + predLetter
+                          
+                          //ctx.font = "30px Arial";
+                          //ctx.fillText("Hello World", 10, 50);
+                          }
+                          // Draw the ImageData at the given (x,y) coordinates.
+                          //ctx.putImageData(currentGrays, 0, 0);
+                          requestAnimationFrame(step);
+                          
+                        }
+                        requestAnimationFrame(step);
+                    });
+                })
+                .catch(alert);
+        });
+    });
+
+function timerAnimation(ti) {
+  if (ti != 0) {
+  timerText.innerHTML = ti;
+  setTimeout(function() {
+      timerAnimation(ti - 1);
+  }, 1000);
+  } else {
+    timerText.innerHTML = "";
+    doMath = true;
+  }
+}
+
+function newButton() {
+  timerAnimation(5);
+}
+
+</script>
