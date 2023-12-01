@@ -1,0 +1,3 @@
+The actual dataset used to train the AI models in on a diffrent website
+
+https://andrewtg.dx.am/Tensorflow/tsTrain2.html
