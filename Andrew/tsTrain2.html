@@ -1,0 +1,522 @@
+<style>
+    div {
+        width: 500px;
+        height: 400px;
+        border: 2px solid black;
+        position: relative;
+    }
+ 
+    video {
+        object-fit: cover;
+    }
+    
+    canvas {
+        object-fit: cover;
+    }
+    
+    body {
+        background-color: #202020;
+    }
+</style>
+<body>
+<div>
+    
+</div>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+  </head>
+
+<br />
+<button id="but" onclick="addRandomTrainingData(0);" autoplay>
+    Start Training
+</button>
+<button id="but" onclick="stopTrain();" autoplay>
+    Stop Training
+</button>
+<canvas id="canvas" width="100" height="100"></canvas>
+<p id="jsonT"></p>
+
+</body>
+
+<script src="https://cdn.rawgit.com/BrainJS/brain.js/45ce6ffc/browser.js"></script>
+<script>
+// video to watch
+// https://www.youtube.com/watch?v=6E6XecoTRVo&t=166s
+
+// bran.js documentation
+// https://github.com/BrainJS/brain.js#brainjs
+
+// asl video
+// https://www.youtube.com/watch?v=8AjjnovEPKk
+
+let canvas = document.querySelector("canvas");
+let ctx = canvas.getContext("2d");
+
+// 10000 pixels
+
+var model = tf.sequential();
+model.add(tf.layers.dense({inputShape: [10000], units: 500, activation: 'relu'}));
+model.add(tf.layers.dense({units: 250, activation: 'relu'}));
+model.add(tf.layers.dense({units: 100, activation: 'relu'}));
+model.add(tf.layers.dense({units: 26, activation: 'softmax'}));
+
+model.compile({loss: 'meanSquaredError', optimizer: 'sgd'});
+
+
+
+var x_data = [];
+var y_data = [];
+
+var xs;
+var ys;
+
+var isBackgroundImg = true;
+var background_data;
+
+var outmode = [
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+];
+var amountTrains = 0;
+
+const BATCHSIZE = 4000;
+const BATCHSIZE2 = 500;
+const ITERATIONS = 20000;
+
+
+var lastLetter = 0;
+
+var contTrain = false;
+
+var modelNum = 0;
+
+var showImage = true
+var noise = 5;
+var backgroundAlpha = 15;
+var numBackgrounds = 13;
+var randomMove = 5;
+
+function indexOfMax(arr) {
+    if (arr.length === 0) {
+        return -1;
+    }
+
+    var max = arr[0];
+    var maxIndex = 0;
+
+    for (var i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            maxIndex = i;
+            max = arr[i];
+        }
+    }
+
+    return maxIndex;
+}
+
+const chooseRandom = (arr, num = 1) => {
+   const res = [];
+   for(let i = 0; i < num; ){
+      const random = Math.floor(Math.random() * arr.length);
+      if(res.indexOf(arr[random]) !== -1){
+         continue;
+      };
+      res.push(arr[random]);
+      i++;
+   };
+   return res;
+};
+
+function addCanvasData2() 
+{
+  isBackgroundImg = false;
+  ctx = canvas.getContext("2d");
+  
+  var imgd = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  var pix = imgd.data;
+  
+  var currentGrays = [];
+  
+  var isFlipped = false;
+  
+  var n = pix.length;
+  var numPixels = 0;
+  var Y = 0;
+  var i = 0;
+  
+  var pix2 = pix.slice();
+  
+  while (Y != 100 ) {
+    var xs = true;
+    var X = 0;
+    
+    while (X > -1 && X < 397) {
+      let avg = Math.round((pix2[400 * Y + X]
+      + pix2[400 * Y + X + 1] + pix2[400 * Y + X + 2]) / 3.0)
+      
+      numPixels = numPixels + 1;
+      
+      pix[i  ] = avg; // red
+      pix[i+1] = avg; // green
+      pix[i+2] = avg; // blue
+      
+      currentGrays.push(avg);
+      i += 4;
+      if (isFlipped) {
+        X -= 4;
+      } else {
+       X += 4;
+      }
+    }
+    Y += 1;
+  }
+  
+  background_data = currentGrays.slice();
+  
+  ctx.putImageData(imgd, 0, 0);
+  
+  canLoadNew = true;
+}
+
+function addCanvasData() 
+{
+  ctx = canvas.getContext("2d");
+  isBackgroundImg = true;
+  
+  
+  var imgd = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  var pix = imgd.data;
+  
+  var currentGrays = [];
+  
+  var isFlipped = false;
+  // if flip
+  if (Math.random() < 0.5) 
+  {
+    //console.log("FLIPPED");
+    isFlipped = true;
+  }
+  
+  var n = pix.length;
+  var numPixels = 0;
+  var Y = 0;
+  var i = 0;
+  
+  var pix2 = pix.slice();
+  
+  var shiftx = (Math.floor(Math.random() * randomMove * 2) - randomMove) * 4;
+  var shifty = (Math.floor(Math.random() * randomMove * 2) - randomMove) * 4;
+  while (Y != 100 ) {
+    var X = 0;
+    
+    while (X > -1 && X < 397) {
+      
+      var X2 = X + shiftx;
+      var Y2 = Y + shifty;
+      
+      if (Y2 > -1 && Y2 < 397 && X2 > -1 && X2 < 397) {
+        pix2[400 * Y + X ] = pix[400 * Y2 + X2]; // red
+        pix2[400 * Y + X +1] = pix[400 * Y2 + X2 + 1]; // green
+        pix2[400 * Y + X +2] = pix[400 * Y2 + X2 + 2]; // blue
+      } else {
+        pix2[400 * Y + X  ] = 0;
+        pix2[400 * Y + X +1] = 0;
+        pix2[400 * Y + X +2] = 0;
+      }
+      i += 4;
+       X += 4;
+      
+    }
+    Y += 1;
+  }
+  
+  
+  Y = 0;
+  i = 0;
+  
+  var i2 = 0
+  
+  while (Y != 100 ) {
+    var X = 0;
+    
+    while (X > -1 && X < 397) {
+      
+      let avg = Math.round((pix2[400 * Y + X]
+      + pix2[400 * Y + X + 1] + pix2[400 * Y + X + 2]) / 3.0);
+      
+      if (avg < backgroundAlpha) {
+        pix2[i ] = background_data[i2];
+        pix2[i + 1] = background_data[i2];
+        pix2[i + 2] = background_data[i2];
+      }
+      i2 += 1;
+      i += 4;
+       X += 4;
+      
+    }
+    Y += 1;
+  }
+  
+  
+  Y = 0;
+  i = 0;
+  
+  while (Y != 100 ) {
+    var xs = true;
+    var X = 0;
+    if (isFlipped) {
+      X = 396;
+    }
+    
+    while (X > -1 && X < 397) {
+      let avg = Math.round((pix2[400 * Y + X]
+      + pix2[400 * Y + X + 1] + pix2[400 * Y + X + 2]) / 3.0)
+      + Math.floor(Math.random() * noise * 2) - noise;
+      numPixels = numPixels + 1;
+      
+      if (avg < 0) {
+        avg = 0;
+      } else if (avg > 255) {
+        avg = 255;
+      }
+      
+      pix[i  ] = avg; // red
+      pix[i+1] = avg; // green
+      pix[i+2] = avg; // blue
+      
+      currentGrays.push(avg);
+      i += 4;
+      if (isFlipped) {
+        X -= 4;
+      } else {
+       X += 4;
+      }
+    }
+    Y += 1;
+  }
+  
+  
+  /*
+  for (var i = 0; i < n; i += 4) {
+    let avg = Math.round((pix[i]
+      + pix[i + 1] + pix[i + 2]) / 3.0);
+    //alert(avg);
+    pix[i  ] = avg; // red
+    pix[i+1] = avg; // green
+    pix[i+2] = avg; // blue
+    currentGrays.push(avg);
+  }
+  */
+  
+  if (showImage) {
+    ctx.putImageData(imgd, 0, 0);
+  }
+  //console.log(outmode.slice());
+  //console.log(numPixels);
+  x_data.push(currentGrays);
+  y_data.push(outmode.slice());
+  //alert(trainingData[amountTrains].input);
+  //alert(trainingData[amountTrains].output);
+  amountTrains = amountTrains + 1;
+  canLoadNew = true;
+}
+
+function loadImg(imgFile) 
+{
+  let tempImg = document.createElement("img");
+  tempImg.width = "100";
+  tempImg.height = "100";
+  tempImg.src = imgFile;
+  tempImg.id = "imy"
+  document.body.appendChild(tempImg);
+  tempImg.onload = function () {
+    let img2 = document.getElementById("imy");
+  /*
+    let tempCanv = document.createElement("canvas");
+    tempCanv.width = "100";
+    tempCanv.height = "100";
+    tempCanv.id = "loadcanv";
+    document.body.appendChild(tempCanv); */
+    ctx.drawImage(tempImg, 0, 0, canvas.width, canvas.height);
+    if (isBackgroundImg) {
+      addCanvasData2();
+    } else {
+      addCanvasData();
+    }
+    tempImg.remove();
+  }
+
+}
+
+var timeoutTime = 50;
+var trainingImgs = [
+// a b c d e
+70, 70, 70, 70, 70,
+// f g h i j
+70, 70, 70, 70, 70,
+// k l m n o
+70, 70, 70, 70, 70,
+// p q r s t
+70, 70, 70, 70, 65,
+// u v w x y z
+70, 70, 70, 70, 70, 70
+];
+var numLetters = 26;
+var canLoadNew = false;
+
+
+
+function waiter2(i)
+{
+  if (canLoadNew) {
+    canLoadNew = false;
+    outmode[lastLetter] = 0;
+      setTimeout(function() {
+            addRandomTrainingData(i + 1);
+        }, timeoutTime);
+    
+  } else {
+    setTimeout(function() {
+          waiter2(i);
+      }, timeoutTime);
+  }
+}
+
+function addLoss(myloss) {
+  var total = 0.0;
+  for (var ii = 0; ii < myloss.length; ii++) {
+    total += myloss[ii];
+  }
+  return total;
+}
+
+var epochLog = 100;
+var tracker = 0.0;
+function onBatchEnd(batch, logs) {
+  if (epochLog-- == 0) {
+  epochLog = 100;
+  tracker += epochLog;
+  console.log('Duration:', tracker / ITERATIONS);
+  console.log(logs.loss);
+  
+  if (logs.loss < 0.01) {
+    tracker = 0;
+    model.stopTraining = true;
+  }
+  //console.log("Loss: " + addLoss(logs.loss));
+  }
+}
+
+async function doTraining() {
+  var trainInfo = await model.fit(xs, ys, {epochs: ITERATIONS, batchSize: BATCHSIZE2, callbacks: {onBatchEnd}});
+  console.log("BOO");
+  modelNum++;
+  if (modelNum >= 30) {
+  
+  var predictionData = tf.tensor([x_data[0]]);
+  //predictionData.print();
+  //console.log(predictionData.shape);
+  
+  var prediction = model.predict(predictionData ).dataSync();
+  //console.log(prediction);
+  console.log(indexOfMax(prediction));
+  console.log(indexOfMax(y_data[0]));
+    
+  console.log("The deed is done");
+  
+  await model.save('downloads://TSmodel' + modelNum);
+  
+  } else {
+    
+    model = tf.sequential();
+    model.add(tf.layers.dense({inputShape: [10000], units: 500, activation: 'relu'}));
+    model.add(tf.layers.dense({units: 250, activation: 'relu'}));
+    model.add(tf.layers.dense({units: 100, activation: 'relu'}));
+    model.add(tf.layers.dense({units: 26, activation: 'softmax'}));
+
+    model.compile({loss: 'meanSquaredError', optimizer: 'sgd'});
+    
+    await model.save('downloads://TSmodel' + modelNum);
+    
+    doTraining();
+  }
+}
+
+function addRandomTrainingData(i) {
+  if (i < BATCHSIZE * 2) {
+    if (isBackgroundImg) {
+      var pic = Math.floor(Math.random() * numBackgrounds) + 1;
+      var loc = "https://andrewtg.dx.am/OpenCVTest/train/back/" + pic + ".png";
+      loadImg(loc);
+        console.log(loc);
+        setTimeout(function() {
+            waiter2(i);
+        }, timeoutTime);
+    } else {
+      console.log(i);
+      var letter = Math.floor(Math.random() * 26);
+      outmode[letter] = 1;
+      lastLetter = letter + 0;
+      var pic = Math.floor(Math.random() * trainingImgs[letter]) + 1;
+      
+      letter = String.fromCharCode(97 + letter);
+      
+      //console.log(letter);
+      //console.log(pic);
+      
+      var loc = "https://andrewtg.dx.am/OpenCVTest/train/" + letter + "/" + pic + ".png";
+        loadImg(loc);
+        console.log(loc);
+        setTimeout(function() {
+            waiter2(i);
+        }, timeoutTime);
+    }
+  } else {
+    console.log(x_data);
+    xs = tf.tensor(x_data);
+    ys = tf.tensor(y_data);
+    //xs = tf.tensor(x_data).reshape([10000, amountTrains]);
+    
+    //ys = tf.tensor(y_data).reshape([26, amountTrains]);
+    //ys = tf.tensor([y_data], [amountTrains, 1]);
+    console.log('x shape:', xs.shape);
+    console.log('y shape:', ys.shape);
+    //ys.print();
+    doTraining();
+    /*
+    //console.log("Training Data");
+    //console.log(trainingData);
+    net.train(trainingData, {
+      // Defaults values --> expected validation
+      iterations: ITERATIONS, // the maximum times to iterate the training data --> number greater than 0
+      errorThresh: 0.005, // the acceptable error percentage from training data --> number between 0 and 1
+      log: true, // true to use console.log, when a function is supplied it is used --> Either true or a function
+      logPeriod: 1, // iterations between logging out --> number greater than 0
+      learningRate: 0.5, // scales with delta to effect training rate --> number between 0 and 1
+      momentum: 0.25, // scales with next layer's change value --> number between 0 and 1
+    });
+    if (contTrain) {
+      trainingData = [];
+      addRandomTrainingData(0);
+    } else {
+      console.log("Guessing 0th image, which is ");
+      console.log(trainingData[0].output);
+      var guess = net.run(trainingData[0].input);
+      console.log(guess);
+      var numGuess = indexOfMax(guess);
+      console.log("That letter is: " + String.fromCharCode(97 + numGuess));
+      
+      const json = net.toJSON();
+      document.getElementById("jsonT").innerHTML = JSON.stringify(json);
+      
+    }
+    */
+  }
+}
+
+function stopTrain() {
+  model.stopTraining = true;
+  //model.save('downloads://TSmodel5');
+}
+
+</script>
